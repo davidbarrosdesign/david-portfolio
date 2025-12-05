@@ -1,0 +1,104 @@
+@use "./tokens.scss" as tokens;
+@use "./mixins.scss" as mixins;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100vh;
+    background: tokens.$off-white;
+    color: tokens.$gray;
+    font-family: tokens.$font-halcom;
+    font-size: tokens.$fs-sm;
+    font-weight: tokens.$fw-regular;
+    line-height: tokens.$lh-relaxed;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* Tipografia */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: tokens.$fw-regular;
+    line-height: tokens.$lh-tight;
+    color: tokens.$black;
+}
+
+h1 {
+    font-size: tokens.$fs-4xl;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        font-size: tokens.$fs-3xl;
+    }
+}
+
+h2 {
+    font-size: tokens.$fs-3xl;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        font-size: tokens.$fs-2xl;
+    }
+}
+
+h3 {
+    font-size: tokens.$fs-2xl;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        font-size: tokens.$fs-xl;
+    }
+}
+
+h4 {
+    font-size: tokens.$fs-xl;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        font-size: tokens.$fs-lg;
+    }
+}
+
+h5 {
+    font-size: tokens.$fs-lg;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        font-size: tokens.$fs-md;
+    }
+}
+
+h6 {
+    font-size: tokens.$fs-md;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        font-size: tokens.$fs-sm;
+    }
+}
+
+small {
+    font-size: tokens.$fs-xs;
+    line-height: tokens.$lh-relaxed;
+}
+
+p {
+    font-size: tokens.$fs-sm;
+    line-height: tokens.$lh-relaxed;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Imagens */
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
