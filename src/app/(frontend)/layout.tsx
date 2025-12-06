@@ -2,7 +2,7 @@ import localFont from "next/font/local";
 import type { Metadata } from "next";
 
 import '../_styles/globals.scss';
-import { Header } from "./_components/parts";
+import { Header, Footer } from "./_components/parts";
 
 export const halcom = localFont({
   src: [
@@ -57,6 +57,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )

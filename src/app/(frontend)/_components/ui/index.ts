@@ -1,2 +1,5 @@
-export { Button } from "./button/Button";
-export { MenuToggle } from "./menu-toggle/MenuToggle";
+import { TextArc } from "./text-arc/TextArc";
+import { Button } from "./button/Button";
+import { MenuToggle } from "./menu-toggle/MenuToggle";
+
+export { Button, MenuToggle, TextArc };
