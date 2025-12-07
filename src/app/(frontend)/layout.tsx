@@ -2,7 +2,7 @@ import localFont from "next/font/local";
 import type { Metadata } from "next";
 
 import '../_styles/globals.scss';
-import { Header, Footer } from "./_components/parts";
+import { Header, Footer } from "./_components/sections";
 
 export const halcom = localFont({
   src: [

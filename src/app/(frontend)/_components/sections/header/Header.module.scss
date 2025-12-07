@@ -72,6 +72,8 @@
   right: 0;
   z-index: 998;
 
+  backdrop-filter: blur(50px);
+
   @media screen and (max-width: tokens.$breakpoint-md) {
     padding: 0 tokens.$spacing-3;
   }

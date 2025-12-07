@@ -1,4 +1,3 @@
-import { Header } from "./header/Header";
-import { Footer } from "./footer/Footer";
+import { MarqueeClients } from "./marquee-clients/MarqueeClients";
 
-export { Header, Footer };
+export { MarqueeClients };

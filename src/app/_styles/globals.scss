@@ -73,10 +73,10 @@ h5 {
 }
 
 h6 {
-    font-size: tokens.$fs-md;
+    font-size: tokens.$fs-sm;
 
     @media screen and (max-width: tokens.$breakpoint-md) {
-        font-size: tokens.$fs-sm;
+        font-size: tokens.$fs-xs;
     }
 }
 
