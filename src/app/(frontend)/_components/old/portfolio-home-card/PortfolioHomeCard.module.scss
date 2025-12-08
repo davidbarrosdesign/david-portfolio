@@ -1,0 +1,188 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+@use '@/app/_styles/mixins.scss' as mixins;
+
+.portfolioBigCards {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    background: tokens.$off-white;
+
+    .portfolioBigCard {
+        position: relative;
+        width: 100%;
+        max-width: 1600px;
+        height: 100svh;
+        padding: tokens.$spacing-5;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: tokens.$spacing-4;
+
+        background: tokens.$off-white;
+
+        will-change: transform;
+
+        @media screen and (max-width: tokens.$breakpoint-lg) {
+            flex-direction: column;
+        }
+
+        @media screen and (max-width: tokens.$breakpoint-md) {
+            padding: tokens.$spacing-3;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+
+            backdrop-filter: blur(var(--exit-blur, 0px));
+            opacity: var(--exit-blur-opacity, 0);
+
+            pointer-events: none;
+            z-index: 5;
+            transition: opacity 0.2s linear;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(tokens.$black, 0.1);
+            opacity: var(--after-opacity, 0);
+
+            transition: opacity 0.1s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .portfolioBigCardClient {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: tokens.$spacing-4;
+
+            @media screen and (max-width: tokens.$breakpoint-lg) {
+                width: 100%;
+                justify-content: center;
+                align-items: flex-end;
+            }
+
+            span {
+                font-size: tokens.$fs-xs;
+                font-weight: tokens.$fw-regular;
+                line-height: tokens.$lh-relaxed;
+                color: tokens.$gray;
+            }
+        }
+
+        .portfolioBigCardBanner {
+            flex: 3;
+
+            position: relative;
+            height: 100%;
+            overflow: visible;
+
+            @media screen and (max-width: tokens.$breakpoint-lg) {
+                flex: 4;
+                width: 100%;
+            }
+
+            @media screen and (max-width: tokens.$breakpoint-sm) {
+                flex: 2;
+            }
+
+            .portfolioBigCardMedia {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                height: 100%;
+                width: 100%;
+
+                overflow: hidden;
+                border-radius: tokens.$radius-lg;
+
+                will-change: clip-path;
+
+                img {
+                    position: relative !important;
+                    aspect-ratio: 16/9;
+                    width: 100% !important;
+                    height: auto !important;
+                    border-radius: inherit;
+                }
+
+                video {
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio: 16/9;
+                    border-radius: inherit;
+                    object-fit: cover;
+                    display: block;
+                }
+            }
+
+            .portfolioBigCardServices {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+
+                width: 100%;
+
+                transform: translate(-50%, -50%);
+
+                ul {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: tokens.$spacing-2;
+
+                    li {
+                        padding: tokens.$spacing-2 tokens.$spacing-3;
+
+                        background: rgba(tokens.$black, 0.25);
+                        backdrop-filter: blur(32px);
+                        border-radius: tokens.$radius-md;
+                        list-style: none;
+
+                        font-size: tokens.$fs-xs;
+                        font-weight: tokens.$fw-regular;
+                        line-height: tokens.$lh-relaxed;
+                        color: tokens.$white;
+                    }
+                }
+            }
+        }
+
+        .portfolioBigCardButton {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: tokens.$spacing-4;
+
+            @media screen and (max-width: tokens.$breakpoint-lg) {
+                width: 100%;
+                align-items: flex-start;
+            }
+
+            a {
+                width: 100%;
+            }
+        }
+    }
+}

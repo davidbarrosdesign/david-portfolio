@@ -1,0 +1,54 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+@use '@/app/_styles/mixins.scss' as mixins;
+
+.testimonials {
+    width: 100%;
+    padding: 0 tokens.$spacing-5;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    @media screen and (max-width: 720px) {
+        padding: 0 tokens.$spacing-3;
+    }
+
+    .testimonialsWrapper {
+        width: 50%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-4;
+
+        .testimonialsContent p {
+            font-size: tokens.$fs-2xl;
+            font-weight: tokens.$fw-regular;
+            line-height: tokens.$lh-normal;
+            color: tokens.$black;
+        }
+
+        .testimonialsInfos {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: tokens.$spacing-2;
+
+            .testimonialsInfosName {
+                font-size: tokens.$fs-sm;
+                font-weight: tokens.$fw-regular;
+                line-height: tokens.$lh-tight;
+                color: tokens.$black;
+            }
+
+            .testimonialsInfosJob {
+                font-size: tokens.$fs-sm;
+                font-weight: tokens.$fw-regular;
+                line-height: tokens.$lh-tight;
+                color: tokens.$gray;
+            }
+        }
+    }
+}
