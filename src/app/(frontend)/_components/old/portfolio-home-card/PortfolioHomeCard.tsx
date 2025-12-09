@@ -13,6 +13,8 @@ export function PortfolioHomeCard({ data }: { data: any }) {
         data.image?.endsWith(".webm") ||
         data.image?.includes("video");
 
+    const hasThumbnail = data.image && data.image !== "";
+
     return (
         <section className={styles.card}>
             <article className={styles.portfolioBigCard}>
@@ -35,11 +37,18 @@ export function PortfolioHomeCard({ data }: { data: any }) {
                                 className={styles.media}
                             />
                         ) : (
+                            hasThumbnail ? (
                             <Image
-                                src={data.thumbnail}
+                                src={data.image}
                                 alt={data.title}
                                 fill
                             />
+                            ) : (
+                                /* Opcional: Fallback visual se não tiver imagem no Notion */
+                                <div style={{ width: '100%', height: '100%', background: '#1a1a1a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <span style={{color: '#666'}}>Sem Imagem</span>
+                                </div>
+                            )
                         )}
                     </div>
 

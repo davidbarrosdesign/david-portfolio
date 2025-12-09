@@ -3,5 +3,6 @@ import { Footer } from "./footer/Footer";
 import { HeroHome } from "./hero-home/HeroHome";
 import { ClientsHome } from "./clients-home/ClientsHome";
 import { ServicesHome } from "./services-home/ServicesHome";
+import { CallToAction } from "./call-to-action/CallToAction";
 
-export { HeroHome, ClientsHome, Header, Footer, ServicesHome };
+export { HeroHome, ClientsHome, Header, Footer, ServicesHome, CallToAction };

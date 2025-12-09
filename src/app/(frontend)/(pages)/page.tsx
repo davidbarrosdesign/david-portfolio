@@ -1,6 +1,6 @@
 import styles from './page.module.scss';
 
-import { HeroHome, ClientsHome, ServicesHome } from '@/app/(frontend)/_components/sections';
+import { HeroHome, ClientsHome, ServicesHome, CallToAction } from '@/app/(frontend)/_components/sections';
 import { TestimonialSection, PortfolioSection } from '@/app/(frontend)/_components/old';
 
 export const dynamic = "force-static";
@@ -36,12 +36,20 @@ export default async function HomePage() {
     <main>
       <HeroHome />
       <PortfolioSection trabalhos={trabalhos} />
+      <hr className={styles.divider} />
       <ClientsHome />
       <hr className={styles.divider} />
       <TestimonialSection depoimentos={depoimentos} />
       <hr className={styles.divider} />
       <ServicesHome />
-      <hr className={styles.divider} />
+      <CallToAction 
+        size="medium"
+        subTitle="Vamos trabalhar juntos?"
+        title="Tem um projeto em mente?"
+        linkTitle="Vamos falar sobre isso!"
+        url="#"
+        target="_blank"
+      />
     </main>
   )
 }

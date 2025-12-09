@@ -9,7 +9,7 @@
     background: tokens.$black;
     color: tokens.$off-white;
 
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: tokens.$breakpoint-md) {
         padding: tokens.$spacing-7 tokens.$spacing-3;
     }
 
@@ -21,159 +21,93 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: tokens.$spacing-8;
+        gap: tokens.$spacing-9;
 
         .footerTop {
             width: 100%;
 
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            justify-content: flex-start;
+            display: flex;
+            justify-content: space-between;
             align-items: flex-start;
             gap: tokens.$spacing-4;
 
-            @media screen and (max-width: 1200px) {
-                grid-template-columns: 1fr;
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 gap: tokens.$spacing-7;
             }
 
-            .footerContact {
+            .footerLinks {
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
-                gap: tokens.$spacing-7;
-
-                @media screen and (max-width: 1200px) {
-                    align-items: center;
-                    text-align: center;
-                }
-
-                .footerCTA {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: tokens.$spacing-3;
-
-                    @media screen and (max-width: 1200px) {
-                        align-items: center;
-                    }
-
-                    .calendarStatus {
-                        position: relative;
-                        padding-left: tokens.$spacing-2;
-
-                        font-size: tokens.$fs-xs;
-                        line-height: tokens.$lh-normal;
-                        color: tokens.$white;
-
-                        &::before {
-                            content: '';
-                            position: absolute;
-                            top: 50%;
-                            left: 0;
-
-                            width: 4px;
-                            height: 4px;
-                            transform: translate(0, -50%);
-
-                            border-radius: 50%;
-                            background: green;
-                        }
-                    }
-
-                    h4 {
-                        color: tokens.$white;
-                    }
-
-                    .footerButtons {
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: flex-start;
-                        align-items: center;
-                        gap: tokens.$spacing-2;
-
-                        @media screen and (max-width: 720px) {
-                            width: 100%;
-                            flex-direction: column;
-                            gap: tokens.$spacing-3;
-                        }
-
-                        a {
-                            @media screen and (max-width: 720px) {
-                                width: 100%;
-                            }
-                        }
-                    }
-                }
-
-                .footerLegal {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: tokens.$spacing-4;
-
-                    @media screen and (max-width: 1200px) {
-                        align-items: center;
-                    }
-
-                    small {
-                        max-width: 480px;
-
-                        display: block;
-
-                        a {
-                            color: tokens.$off-white;
-                            text-decoration: underline;
-
-                            &:hover {
-                                color: tokens.$white;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .footerMenus {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                justify-content: flex-start;
-                align-items: flex-start;
+                justify-content: flex-end;
+                align-items: flex-end;
                 gap: tokens.$spacing-4;
 
-                @media screen and (max-width: 1200px) {
-                    grid-template-columns: 1fr;
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    justify-content: center;
+                    align-items: center;
                 }
 
-                .footerMenu {
+                .footerContacts {
                     display: flex;
                     flex-direction: column;
-                    align-items: flex-start;
-                    gap: tokens.$spacing-3;
+                    justify-content: flex-end;
+                    align-items: flex-end;
+                    gap: 0;
 
-                    @media screen and (max-width: 1200px) {
-                        align-items: center;
+                    @media screen and (max-width: tokens.$breakpoint-md) {
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    a {
+                        font-size: tokens.$fs-xl;
+                        line-height: tokens.$lh-normal;
+                        color: tokens.$white;
+                        text-decoration: none;
                     }
+                }
 
-                    h6 {
-                        color: tokens.$gray;
-                        opacity: .4;
-                    }
+                .footerSocial {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    gap: tokens.$spacing-4;
 
-                    .footerLinks {
+                    a {
+                        position: relative;
+
                         display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        gap: tokens.$spacing-2;
+                        justify-content: center;
+                        align-items: center;
+                        gap: tokens.$spacing-1;
 
-                        @media screen and (max-width: 1200px) {
-                            align-items: center;
+                        font-size: tokens.$fs-sm;
+                        line-height: tokens.$lh-normal;
+                        color: tokens.$white;
+                        text-decoration: none;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            bottom: -4px;
+                            left: 0;
+
+                            width: 100%;
+                            height: 1px;
+                            background: tokens.$white;
+
+                            transition: bottom .25s ease;
                         }
 
-                        a {
-                            font-size: tokens.$fs-sm;
-                            line-height: tokens.$lh-relaxed;
-                            color: tokens.$white;
-                            text-decoration: none;
+                        &:hover {
+                            &::before {
+                                bottom: -2px;
+
+                                transition: bottom .25s ease;
+                            }
                         }
                     }
                 }
@@ -183,15 +117,16 @@
         .footerBottom {
             width: 100%;
 
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            justify-content: flex-start;
-            align-items: flex-start;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             gap: tokens.$spacing-4;
 
-            @media screen and (max-width: 1200px) {
-                grid-template-columns: 1fr;
-                text-align: center;
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                flex-direction: column; 
+                justify-content: center;
+                align-items: center;
+                gap: tokens.$spacing-7;
             }
 
             .footerToTop {
@@ -201,34 +136,64 @@
                     padding: 0;
                     cursor: pointer;
 
-                    small {
-                        font-family: tokens.$font-halcom;
-                        color: tokens.$off-white;
-                        text-decoration: underline;
+                    svg {
+                        color: tokens.$white;
+
+                        opacity: 1;
+
                         transition: opacity .25s ease;
 
                         &:hover {
                             opacity: .6;
+
+                            transition: opacity .25s ease;
                         }
                     }
                 }
             }
 
             .footerCopyright {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                display: flex;
                 justify-content: flex-start;
-                align-items: flex-start;
+                align-items: center;
                 gap: tokens.$spacing-4;
 
-                @media screen and (max-width: 1200px) {
-                    grid-template-columns: 1fr;
-                    text-align: center;
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: tokens.$spacing-2;
                 }
 
                 small {
-                    color: tokens.$gray;
-                    opacity: .4;
+                    color: rgba(tokens.$white, .4);
+
+                    a {
+                        position: relative;
+                        
+                        color: tokens.$white;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            bottom: -4px;
+                            left: 0;
+
+                            width: 100%;
+                            height: 1px;
+                            background: tokens.$white;
+
+                            transition: bottom .25s ease;
+                        }
+
+                        &:hover {
+                            &::before {
+                                bottom: -2px;
+
+                                transition: bottom .25s ease;
+                            }
+                        }
+                    }
                 }
             }
         }
