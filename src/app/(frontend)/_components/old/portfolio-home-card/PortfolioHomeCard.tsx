@@ -1,12 +1,17 @@
 'use client';
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { ArrowUpRight } from "@phosphor-icons/react";
+
 import styles from "./PortfolioHomeCard.module.scss";
 
-import { ArrowUpRight } from "@phosphor-icons/react";
 import { Button } from "../../ui";
 
 export function PortfolioHomeCard({ data }: { data: any }) {
+
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const isVideo =
         data.image?.endsWith(".mp4") ||
@@ -27,6 +32,32 @@ export function PortfolioHomeCard({ data }: { data: any }) {
                     <div
                         className={styles.portfolioBigCardMedia}
                     >
+                        <AnimatePresence>
+                            {!isLoaded && (
+                                <motion.div
+                                    initial={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    style={{
+                                        position: "absolute",
+                                        inset: 0,
+                                        background: "#fff", // Cor de fundo do loader
+                                        zIndex: 2,
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                    }}
+                                >
+                                    {/* Opcional: Um efeito de 'pulso' simples enquanto carrega */}
+                                    <motion.div
+                                        animate={{ opacity: [0.5, 1, 0.5] }}
+                                        transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                                        style={{ width: "100%", height: "100%", background: "#fafafa" }}
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
                         {isVideo ? (
                             <video
                                 src={data.image}
@@ -35,6 +66,7 @@ export function PortfolioHomeCard({ data }: { data: any }) {
                                 muted
                                 playsInline
                                 className={styles.media}
+                                onLoadedData={() => setIsLoaded(true)}
                             />
                         ) : (
                             hasThumbnail ? (
@@ -42,11 +74,17 @@ export function PortfolioHomeCard({ data }: { data: any }) {
                                 src={data.image}
                                 alt={data.title}
                                 fill
+                                style={{
+                                    objectFit: "contain",
+                                    opacity: isLoaded ? 1 : 0,
+                                    transition: "opacity 0.5s ease-in-out"
+                                }}
+                                onLoad={() => setIsLoaded(true)}
                             />
                             ) : (
                                 /* Opcional: Fallback visual se não tiver imagem no Notion */
-                                <div style={{ width: '100%', height: '100%', background: '#1a1a1a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                    <span style={{color: '#666'}}>Sem Imagem</span>
+                                <div style={{ width: '100%', height: '100%', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <span style={{color: '#666'}}>Imagem não encontrada</span>
                                 </div>
                             )
                         )}

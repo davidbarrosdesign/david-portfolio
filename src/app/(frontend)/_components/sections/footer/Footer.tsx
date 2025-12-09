@@ -117,7 +117,7 @@ export function Footer() {
                             {social.map(({ label, slug }, i) => (
                                 <motion.a
                                     key={slug}
-                                    href={`/${slug}`}
+                                    href={slug}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     variants={{
