@@ -5,7 +5,6 @@ import styles from "./TextArc.module.scss";
 export function TextArc({
     text = "Seu texto aqui girando lindamente",
 }) {
-
     return (
         <>
             <svg viewBox="-126 -126 252 252" xmlns="http://www.w3.org/2000/svg" className={styles.textArcSvg}>

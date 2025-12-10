@@ -42,8 +42,11 @@ const tenez = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "David Barros",
-  description: "Product Designer",
+  title: "David Barros | Product Designer • UX/UI • Conversão (CRO & AIO)",
+  description: "Designer com mais de 12 anos de experiência criando produtos digitais, interfaces e soluções focadas na experiência do usuário.",
+  icons: {
+    icon: "/brand/icon.png",
+  },
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {

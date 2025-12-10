@@ -1,5 +1,6 @@
-import styles from './page.module.scss';
+// import styles from './page.module.scss';
 
+import { Divider } from '@/app/(frontend)/_components/ui';
 import { HeroHome, ClientsHome, ServicesHome, CallToAction } from '@/app/(frontend)/_components/sections';
 import { TestimonialSection, PortfolioSection } from '@/app/(frontend)/_components/old';
 
@@ -36,11 +37,11 @@ export default async function HomePage() {
     <main>
       <HeroHome />
       <PortfolioSection trabalhos={trabalhos} />
-      <hr className={styles.divider} />
+      <Divider size="large" />
       <ClientsHome />
-      <hr className={styles.divider} />
+      <Divider size="large" />
       <TestimonialSection depoimentos={depoimentos} />
-      <hr className={styles.divider} />
+      <Divider size="large" />
       <ServicesHome />
       <CallToAction 
         size="medium"

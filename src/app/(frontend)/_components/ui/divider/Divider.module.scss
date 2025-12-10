@@ -1,0 +1,30 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+@use '@/app/_styles/mixins.scss' as mixins;
+
+.divider {
+    width: 100%;
+
+    &.large {
+        height: tokens.$spacing-9;
+
+        @media (max-width: tokens.$breakpoint-md) {
+            height: tokens.$spacing-8;
+        }
+    }
+
+    &.medium {
+        height: tokens.$spacing-8;
+
+        @media (max-width: tokens.$breakpoint-md) {
+            height: tokens.$spacing-7;
+        }
+    }
+
+    &.small {
+        height: tokens.$spacing-7;
+
+        @media (max-width: tokens.$breakpoint-md) {
+            height: tokens.$spacing-6;
+        }
+    }
+}

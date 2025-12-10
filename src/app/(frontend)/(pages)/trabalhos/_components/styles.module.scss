@@ -1,0 +1,303 @@
+// src/app/(frontend)/trabalhos/_components/styles.module.scss
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.feedSection {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: tokens.$spacing-4 tokens.$spacing-5 0 tokens.$spacing-5;
+
+    @media (max-width: tokens.$breakpoint-md) {
+        padding: tokens.$spacing-4 tokens.$spacing-3 0 tokens.$spacing-3;
+    }
+}
+
+.filtersWrapper {
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: tokens.$spacing-4;
+
+    .filtersOptions {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: tokens.$spacing-4;
+    }
+}
+
+// TOGGLE BUTTONS
+.viewToggle {
+    width: 160px;
+    height: 40px;
+
+    display: flex;
+    gap: none;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background: tokens.$white;
+    border-radius: 20px;
+
+    button {
+        width: 80px;
+        height: 40px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        background: transparent;
+        border: none;
+        border-radius: 20px;
+
+        font-family: tokens.$font-halcom;
+        font-size: tokens.$fs-xs;
+        line-height: tokens.$lh-tight;
+        color: tokens.$black;
+
+        cursor: pointer;
+        
+        transition: all 0.45s ease;
+
+        &:hover {
+            font-family: tokens.$font-tenez;
+            font-style: italic;
+
+            transition: all 0.45s ease;
+        }
+
+        &.active {
+            background: rgba(tokens.$black, 0.08);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+            font-family: tokens.$font-tenez;
+            font-style: italic;
+
+            transition: all 0.45s ease;
+        }
+    }
+}
+
+// GRID CONTAINER
+.gridContainer {
+    display: grid;
+    gap: tokens.$spacing-4;
+    
+    // ESTADO GRID (2 colunas)
+    &.grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        @media (max-width: tokens.$breakpoint-md) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    // ESTADO LISTA (1 coluna)
+    &.list {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+// CARD STYLES
+.card {
+    width: 100%;
+    
+    .cardLink {
+        width: 100%;
+        padding: tokens.$spacing-3;
+        
+        text-decoration: none;
+        color: inherit;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: tokens.$spacing-3;
+
+        background: tokens.$white;
+        border-radius: tokens.$radius-lg;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .imageContainer {
+        position: relative;
+
+        width: 100%;
+        overflow: hidden;
+
+        border-radius: tokens.$radius-md;
+        
+        // Aspect ratio padrão para grid
+        aspect-ratio: 16/9; 
+
+        .image {
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: tokens.$gray;
+        }
+    }
+
+    &:hover .image {
+        transform: scale(1.03);
+    }
+
+    .info {
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-2;
+        
+        h3 {
+            color: tokens.$black;
+        }
+
+        .meta {
+            width: 100%;
+            height: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: tokens.$spacing-4;
+
+            ul {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: tokens.$spacing-2;
+                list-style: none;
+
+                li {
+                    font-size: tokens.$fs-xs;
+                    line-height: tokens.$lh-tight;
+                    color: tokens.$gray;
+                }
+            }
+
+            span {
+                font-size: tokens.$fs-xs;
+                line-height: tokens.$lh-tight;
+                color: tokens.$gray;
+            }
+        }
+    }
+
+    // VARIAÇÃO ESPECÍFICA PARA LISTA
+    &.list {
+        .cardLink {
+            position: relative;
+            padding: tokens.$spacing-7 tokens.$spacing-4;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: tokens.$spacing-4;
+
+            background: tokens.$off-white;
+            border-radius: 0px;
+            box-shadow: none;
+            border-bottom: 1px solid rgba(tokens.$gray, 0.2);
+            z-index: 1;
+
+            @media (max-width: tokens.$breakpoint-md) {
+                padding: tokens.$spacing-3;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+
+                width: 0;
+                height: 100%;
+
+                background: tokens.$white;
+                z-index: -1;
+
+                transition: width 0.5s ease;
+            }
+
+            &:hover {
+                &::before {
+                    width: 100%;
+                    transition: width 0.5s ease;
+                }
+            }
+        }
+
+        .imageContainer {
+            width: 150px; // Tamanho fixo ou percentual menor
+            aspect-ratio: 16/9;
+            margin-bottom: 0;
+            flex-shrink: 0; // Não deixa a imagem espremer
+
+            display: none;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+
+            gap: tokens.$spacing-4;
+
+            @media (max-width: tokens.$breakpoint-md) {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: tokens.$spacing-2;
+            }
+
+            h3 {
+                flex: 2;
+
+                font-size: tokens.$fs-md;
+                line-height: tokens.$lh-tight;
+                color: tokens.$black;
+                text-align: left;
+
+                @media (max-width: tokens.$breakpoint-md) {
+                    flex: 1;
+                }
+            }
+
+            .meta {
+                flex: 1;
+
+                @media (max-width: tokens.$breakpoint-md) {
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: tokens.$spacing-2;
+
+                    .year {
+                        display: none;   
+                    }
+                }
+            }
+        }
+    }
+}

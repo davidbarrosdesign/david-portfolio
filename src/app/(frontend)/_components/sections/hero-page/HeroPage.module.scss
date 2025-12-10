@@ -1,0 +1,35 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+@use '@/app/_styles/mixins.scss' as mixins;
+
+.hero {
+    width: 100%;
+    height: auto;
+    padding: tokens.$spacing-8 tokens.$spacing-5 0 tokens.$spacing-5;
+
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding: tokens.$spacing-8 tokens.$spacing-3 0 tokens.$spacing-3;
+    }
+
+    .heroWrapper {
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-2;
+
+        .heroTitle {
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: tokens.$spacing-2;
+        }
+    }
+}
