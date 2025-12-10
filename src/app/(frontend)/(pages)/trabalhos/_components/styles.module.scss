@@ -21,11 +21,60 @@
     align-items: center;
     margin-bottom: tokens.$spacing-4;
 
+    @media (max-width: tokens.$breakpoint-md) {
+        justify-content: flex-start;
+        gap: tokens.$spacing-4;
+    }
+
     .filtersOptions {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: tokens.$spacing-4;
+        gap: tokens.$spacing-2;
+
+        overflow-x: auto; 
+        padding-bottom: 4px;
+
+        // Esconde scrollbar
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        .filterButton {
+            height: 40px;
+            padding: 0px tokens.$spacing-3;
+
+            background: transparent;
+            border: none;
+            border-radius: 20px;
+            
+            font-family: tokens.$font-halcom;
+            font-size: tokens.$fs-xs;
+            line-height: tokens.$lh-tight;
+            color: rgba(tokens.$black, 0.4);
+
+            cursor: pointer;
+            white-space: nowrap; // Impede quebra de linha no nome da categoria
+            
+            transition: all 0.3s ease;
+
+            &:hover {
+                color: tokens.$black;
+
+                transition: all 0.3s ease;
+            }
+
+            &.active {
+                background: rgba(tokens.$black, 0.08);
+
+                color: tokens.$black;
+
+                transition: all 0.3s ease;
+            }
+        }
     }
 }
 
@@ -58,15 +107,14 @@
         font-family: tokens.$font-halcom;
         font-size: tokens.$fs-xs;
         line-height: tokens.$lh-tight;
-        color: tokens.$black;
+        color: rgba(tokens.$black, 0.4);
 
         cursor: pointer;
         
         transition: all 0.45s ease;
 
         &:hover {
-            font-family: tokens.$font-tenez;
-            font-style: italic;
+            color: tokens.$black;
 
             transition: all 0.45s ease;
         }
@@ -75,8 +123,7 @@
             background: rgba(tokens.$black, 0.08);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
-            font-family: tokens.$font-tenez;
-            font-style: italic;
+            color: tokens.$black;
 
             transition: all 0.45s ease;
         }
@@ -166,7 +213,7 @@
         align-items: flex-start;
         gap: tokens.$spacing-2;
         
-        h3 {
+        h4 {
             color: tokens.$black;
         }
 
@@ -222,29 +269,6 @@
             @media (max-width: tokens.$breakpoint-md) {
                 padding: tokens.$spacing-3;
             }
-
-            &::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-
-                width: 0;
-                height: 100%;
-
-                background: tokens.$white;
-                z-index: -1;
-
-                transition: width 0.5s ease;
-            }
-
-            &:hover {
-                &::before {
-                    width: 100%;
-                    transition: width 0.5s ease;
-                }
-            }
         }
 
         .imageContainer {
@@ -271,7 +295,7 @@
                 gap: tokens.$spacing-2;
             }
 
-            h3 {
+            h4 {
                 flex: 2;
 
                 font-size: tokens.$fs-md;
@@ -286,18 +310,77 @@
 
             .meta {
                 flex: 1;
+                justify-content: flex-end;
+                align-items: center;
+                
+                .year {
+                    display: none;   
+                }
 
                 @media (max-width: tokens.$breakpoint-md) {
                     flex-direction: column;
-                    justify-content: flex-start;
+                    justify-content: center;
                     align-items: flex-start;
                     gap: tokens.$spacing-2;
 
-                    .year {
-                        display: none;   
-                    }
                 }
             }
         }
+    }
+}
+
+.floatingImageContainer {
+    position: fixed; // Fixado na tela
+    top: 0;
+    left: 0;
+    width: 280px; // Tamanho do thumbnail flutuante
+    height: 158px; // Proporção aproximada
+    z-index: 100; // Bem acima de tudo
+    pointer-events: none; // CRUCIAL: Permite clicar no link "atrás" da imagem
+    overflow: hidden;
+    border-radius: tokens.$radius-md;
+    
+    // Centraliza a imagem no cursor
+    transform: translate(-50%, -50%); 
+
+    // Só aparece se tiver uma imagem ativa
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: tokens.$off-white; // Fallback
+    &::after {
+        content: "Visualizar";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 80px;
+        height: 80px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: rgba(tokens.$black, 0.4);
+        backdrop-filter: blur(25px);
+        border-radius: 40px;
+
+        font-family: tokens.$font-tenez;
+        font-style: italic;
+        font-size: tokens.$fs-xs;
+        line-height: tokens.$lh-tight;
+        letter-spacing: 0.8px;
+        color: tokens.$white;
+
+        z-index: 200;
+    }
+
+    .floatingImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
     }
 }

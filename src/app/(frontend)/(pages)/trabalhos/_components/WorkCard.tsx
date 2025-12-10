@@ -4,13 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import styles from './styles.module.scss';
+import { WorkItem } from '../types';
 
 interface WorkCardProps {
-    data: any;
+    data: WorkItem;
     view: 'grid' | 'list';
+    setHoveredImg?: (img: string | null) => void;
 }
 
-export function WorkCard({ data, view }: WorkCardProps) {
+export function WorkCard({ data, view, setHoveredImg }: WorkCardProps) {
     const hasImage = data.thumbnail && data.thumbnail !== "";
 
     return (
@@ -20,6 +22,17 @@ export function WorkCard({ data, view }: WorkCardProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className={`${styles.card} ${styles[view]}`}
+            // Eventos para o modo LISTA
+            onMouseEnter={() => {
+                if (view === 'list' && setHoveredImg && hasImage) {
+                    setHoveredImg(data.thumbnail);
+                }
+            }}
+            onMouseLeave={() => {
+                if (view === 'list' && setHoveredImg) {
+                    setHoveredImg(null);
+                }
+            }}
         >
             <Link href={`/trabalhos/${data.slug}`} className={styles.cardLink}>
                 <div className={styles.imageContainer}>
@@ -37,7 +50,7 @@ export function WorkCard({ data, view }: WorkCardProps) {
                 </div>
                 
                 <div className={styles.info}>
-                    <h3>{data.client}</h3>
+                    <h4>{data.client}</h4>
                     <div className={styles.meta}>
                         <ul>
                             {data.services?.map((s: string) => (
