@@ -1,0 +1,109 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.singleWrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    @media (max-width: tokens.$breakpoint-md) {
+        padding-right: tokens.$spacing-3;
+        padding-left: tokens.$spacing-3;
+    }
+
+    .heroThumbnail {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+
+        border-radius: tokens.$radius-lg;
+        background-color: tokens.$off-white;
+    
+        .heroThumbnailImg {
+            object-fit: cover;
+        }
+    }
+
+    .infosWrapper {
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: tokens.$spacing-4;
+
+        @media (max-width: tokens.$breakpoint-md) {
+            flex-direction: column;
+            gap: tokens.$spacing-7;
+        }
+
+        .infoResume {
+            flex: 2;
+
+            p {
+                max-width: 676px;
+
+                font-size: tokens.$fs-md;
+                line-height: tokens.$lh-relaxed;
+                color: tokens.$gray;
+            }
+
+            @media (max-width: tokens.$breakpoint-md) {
+                width: 100%;
+            }
+        }
+
+        .infoList {
+            flex: 1;
+
+            @media (max-width: tokens.$breakpoint-md) {
+                width: 100%;
+                order: -1;
+            }
+
+            .infoItem {
+                padding: tokens.$spacing-4 0px;
+                border-bottom: 1px solid rgba(tokens.$gray, 0.2);
+
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                justify-content: start;
+                align-items: start;
+                grid-gap: tokens.$spacing-4;
+
+                &:first-child {
+                    padding-top: 0px;
+                }
+
+                .infoItemTitle {
+                    font-family: tokens.$font-tenez;
+                    font-style: italic;
+                    font-size: tokens.$fs-md;
+                    line-height: 23px;
+                    color: tokens.$black;
+                }
+
+                .infoItemValue {
+                    font-size: tokens.$fs-sm;
+                    line-height: 23px;
+                    color: tokens.$gray;
+                }
+
+                .servicesList {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+
+                    li {
+                        font-size: tokens.$fs-sm;
+                        line-height: 23px;
+                        color: tokens.$gray;
+                    }
+                }
+            }
+        }
+    }
+}

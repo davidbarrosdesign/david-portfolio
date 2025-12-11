@@ -1,0 +1,94 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.aboutWrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: tokens.$spacing-4;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-right: tokens.$spacing-3;
+        padding-left: tokens.$spacing-3;
+
+        flex-direction: column;
+        gap: tokens.$spacing-5;
+    }
+
+    .aboutTitle {
+        flex: 1;
+        width: 100%;
+
+        span {
+            font-family: tokens.$font-tenez;
+            font-style: italic;
+            font-size: tokens.$fs-lg;
+            line-height: tokens.$lh-tight;
+            color: tokens.$black;
+        }
+    }
+
+    .aboutContent {
+        flex: 1;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-4;
+
+        ul {
+            margin-left: tokens.$spacing-3;
+        }
+    }
+}
+
+.numbersWrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: tokens.$spacing-4;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-right: tokens.$spacing-3;
+        padding-left: tokens.$spacing-3;
+
+        flex-direction: column;
+        gap: tokens.$spacing-5;
+    }
+
+    .numbersContent {
+        flex: 1;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: tokens.$spacing-1;
+
+        .numbersContentNumber {
+            font-size: 56px;
+            line-height: tokens.$lh-tight;
+            font-weight: tokens.$fw-bold;
+            color: tokens.$black;
+        }
+
+        .numbersContentText {
+            font-size: tokens.$fs-sm;
+            line-height: tokens.$lh-tight;
+        }
+    }
+}
