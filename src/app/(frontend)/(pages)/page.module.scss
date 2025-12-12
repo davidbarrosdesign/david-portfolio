@@ -1,0 +1,9 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+@use '@/app/_styles/mixins.scss' as mixins;
+
+.divider {
+    width: 100%;
+    height: 256px;
+    background: transparent;
+    border: none;
+}

@@ -1,0 +1,385 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.feedSection {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: tokens.$spacing-4 tokens.$spacing-5 0 tokens.$spacing-5;
+
+    @media (max-width: tokens.$breakpoint-md) {
+        padding: tokens.$spacing-4 tokens.$spacing-3 0 tokens.$spacing-3;
+    }
+}
+
+.filtersWrapper {
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: tokens.$spacing-4;
+
+    @media (max-width: tokens.$breakpoint-md) {
+        justify-content: flex-start;
+        gap: tokens.$spacing-4;
+    }
+
+    .filtersOptions {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: tokens.$spacing-2;
+
+        overflow-x: auto; 
+        padding-bottom: 4px;
+
+        // Esconde scrollbar
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        .filterButton {
+            height: 40px;
+            padding: 0px tokens.$spacing-3;
+
+            background: transparent;
+            border: none;
+            border-radius: 20px;
+            
+            font-family: tokens.$font-halcom;
+            font-size: tokens.$fs-xs;
+            line-height: tokens.$lh-tight;
+            color: rgba(tokens.$black, 0.4);
+
+            cursor: pointer;
+            white-space: nowrap; // Impede quebra de linha no nome da categoria
+            
+            transition: all 0.3s ease;
+
+            &:hover {
+                color: tokens.$black;
+
+                transition: all 0.3s ease;
+            }
+
+            &.active {
+                background: rgba(tokens.$black, 0.08);
+
+                color: tokens.$black;
+
+                transition: all 0.3s ease;
+            }
+        }
+    }
+}
+
+// TOGGLE BUTTONS
+.viewToggle {
+    width: 160px;
+    height: 40px;
+
+    display: flex;
+    gap: none;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background: tokens.$white;
+    border-radius: 20px;
+
+    button {
+        width: 80px;
+        height: 40px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        background: transparent;
+        border: none;
+        border-radius: 20px;
+
+        font-family: tokens.$font-halcom;
+        font-size: tokens.$fs-xs;
+        line-height: tokens.$lh-tight;
+        color: rgba(tokens.$black, 0.4);
+
+        cursor: pointer;
+        
+        transition: all 0.45s ease;
+
+        &:hover {
+            color: tokens.$black;
+
+            transition: all 0.45s ease;
+        }
+
+        &.active {
+            background: rgba(tokens.$black, 0.08);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+            color: tokens.$black;
+
+            transition: all 0.45s ease;
+        }
+    }
+}
+
+// GRID CONTAINER
+.gridContainer {
+    display: grid;
+    gap: tokens.$spacing-4;
+    
+    // ESTADO GRID (2 colunas)
+    &.grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        @media (max-width: tokens.$breakpoint-md) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    // ESTADO LISTA (1 coluna)
+    &.list {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+// CARD STYLES
+.card {
+    width: 100%;
+    
+    .cardLink {
+        width: 100%;
+        padding: tokens.$spacing-3;
+        
+        text-decoration: none;
+        color: inherit;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: tokens.$spacing-3;
+
+        background: tokens.$white;
+        border-radius: tokens.$radius-lg;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .imageContainer {
+        position: relative;
+
+        width: 100%;
+        overflow: hidden;
+
+        border-radius: tokens.$radius-md;
+        
+        // Aspect ratio padrão para grid
+        aspect-ratio: 16/9; 
+
+        .image {
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: tokens.$gray;
+        }
+    }
+
+    &:hover .image {
+        transform: scale(1.03);
+    }
+
+    .info {
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-2;
+        
+        h4 {
+            color: tokens.$black;
+        }
+
+        .meta {
+            width: 100%;
+            height: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: tokens.$spacing-4;
+
+            ul {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: tokens.$spacing-2;
+                list-style: none;
+
+                li {
+                    font-size: tokens.$fs-xs;
+                    line-height: tokens.$lh-tight;
+                    color: tokens.$gray;
+                }
+            }
+
+            span {
+                font-size: tokens.$fs-xs;
+                line-height: tokens.$lh-tight;
+                color: tokens.$gray;
+            }
+        }
+    }
+
+    // VARIAÇÃO ESPECÍFICA PARA LISTA
+    &.list {
+        .cardLink {
+            position: relative;
+            padding: tokens.$spacing-7 tokens.$spacing-4;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: tokens.$spacing-4;
+
+            background: tokens.$off-white;
+            border-radius: 0px;
+            box-shadow: none;
+            border-bottom: 1px solid rgba(tokens.$gray, 0.2);
+            z-index: 1;
+
+            @media (max-width: tokens.$breakpoint-md) {
+                padding: tokens.$spacing-3;
+            }
+        }
+
+        .imageContainer {
+            width: 150px; // Tamanho fixo ou percentual menor
+            aspect-ratio: 16/9;
+            margin-bottom: 0;
+            flex-shrink: 0; // Não deixa a imagem espremer
+
+            display: none;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+
+            gap: tokens.$spacing-4;
+
+            @media (max-width: tokens.$breakpoint-md) {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: tokens.$spacing-2;
+            }
+
+            h4 {
+                flex: 2;
+
+                font-size: tokens.$fs-md;
+                line-height: tokens.$lh-tight;
+                color: tokens.$black;
+                text-align: left;
+
+                @media (max-width: tokens.$breakpoint-md) {
+                    flex: 1;
+                }
+            }
+
+            .meta {
+                flex: 1;
+                justify-content: flex-end;
+                align-items: center;
+                
+                .year {
+                    display: none;   
+                }
+
+                @media (max-width: tokens.$breakpoint-md) {
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: tokens.$spacing-2;
+
+                }
+            }
+        }
+    }
+}
+
+.floatingImageContainer {
+    position: fixed; // Fixado na tela
+    top: 0;
+    left: 0;
+    width: 280px; // Tamanho do thumbnail flutuante
+    height: 158px; // Proporção aproximada
+    z-index: 100; // Bem acima de tudo
+    pointer-events: none; // CRUCIAL: Permite clicar no link "atrás" da imagem
+    overflow: hidden;
+    border-radius: tokens.$radius-md;
+    
+    // Centraliza a imagem no cursor
+    transform: translate(-50%, -50%); 
+
+    // Só aparece se tiver uma imagem ativa
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: tokens.$off-white; // Fallback
+    &::after {
+        content: "Visualizar";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 80px;
+        height: 80px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: rgba(tokens.$black, 0.4);
+        backdrop-filter: blur(25px);
+        border-radius: 40px;
+
+        font-family: tokens.$font-tenez;
+        font-style: italic;
+        font-size: tokens.$fs-xs;
+        line-height: tokens.$lh-tight;
+        letter-spacing: 0.8px;
+        color: tokens.$white;
+
+        z-index: 200;
+    }
+
+    .floatingImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+}

@@ -1,0 +1,111 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+@use '@/app/_styles/mixins.scss' as mixins;
+
+.button {
+    font-family: tokens.$font-halcom;
+    text-decoration: none;
+    color: tokens.$white;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: tokens.$spacing-2;
+
+    position: relative;
+    width: auto;
+    overflow: hidden;
+    cursor: pointer;
+
+    background-color: tokens.$black;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover {
+        transform: translateY(-.25px) scale(1.005);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    // highlight interno elegante
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.06);
+        opacity: 0;
+        transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+
+    &.small {
+        height: 20px;
+        padding: 0px tokens.$spacing-2;
+        border-radius: tokens.$radius-sm;
+        font-size: tokens.$fs-2xs;
+        font-weight: tokens.$fw-bold;
+    }
+
+    &.medium {
+        height: 30px;
+        padding: 0px tokens.$spacing-3;
+        border-radius: tokens.$radius-md;
+        font-size: tokens.$fs-xs;
+        font-weight: tokens.$fw-bold;
+    }
+
+    &.large {
+        height: 50px;
+        padding: 0px tokens.$spacing-4;
+        border-radius: tokens.$radius-lg;
+        font-size: tokens.$fs-sm;
+    }
+
+    &.solid {
+        &.black {
+            background: tokens.$black;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            color: tokens.$white;
+        }
+
+        &.white {
+            background: tokens.$white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            color: tokens.$black;
+        }
+    }
+
+    &.outline {
+        &.black {
+            border: 1px solid tokens.$white;
+            background: transparent;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            color: tokens.$white;
+        }
+
+        &.white {
+            border: 1px solid tokens.$black;
+            background: transparent;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            color: tokens.$black;
+        }
+    }
+
+    &.ghost {
+        &.black {
+            background: transparent;
+            color: tokens.$black;
+        }
+
+        &.white {
+            background: transparent;
+            color: tokens.$white;
+        }
+    }
+}

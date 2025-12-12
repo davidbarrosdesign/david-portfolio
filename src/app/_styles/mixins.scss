@@ -1,0 +1,10 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin interactive {
+  cursor: pointer;
+  transition: all 0.45s ease-in-out;
+}

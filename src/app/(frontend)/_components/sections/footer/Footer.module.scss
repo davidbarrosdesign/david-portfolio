@@ -1,0 +1,201 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+@use '@/app/_styles/mixins.scss' as mixins;
+
+.footer {
+    width: 100%;
+    height: auto;
+    padding: tokens.$spacing-7 tokens.$spacing-5;
+
+    background: tokens.$black;
+    color: tokens.$off-white;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding: tokens.$spacing-7 tokens.$spacing-3;
+    }
+
+    .footerWrapper {
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: tokens.$spacing-9;
+
+        .footerTop {
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: tokens.$spacing-4;
+
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: tokens.$spacing-7;
+            }
+
+            .footerLinks {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-end;
+                gap: tokens.$spacing-4;
+
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .footerContacts {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: flex-end;
+                    gap: 0;
+
+                    @media screen and (max-width: tokens.$breakpoint-md) {
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    a {
+                        font-size: tokens.$fs-xl;
+                        line-height: tokens.$lh-normal;
+                        color: tokens.$white;
+                        text-decoration: none;
+                    }
+                }
+
+                .footerSocial {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    gap: tokens.$spacing-4;
+
+                    a {
+                        position: relative;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: tokens.$spacing-1;
+
+                        font-size: tokens.$fs-sm;
+                        line-height: tokens.$lh-normal;
+                        color: tokens.$white;
+                        text-decoration: none;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            bottom: -4px;
+                            left: 0;
+
+                            width: 100%;
+                            height: 1px;
+                            background: tokens.$white;
+
+                            transition: bottom .25s ease;
+                        }
+
+                        &:hover {
+                            &::before {
+                                bottom: -2px;
+
+                                transition: bottom .25s ease;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .footerBottom {
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: tokens.$spacing-4;
+
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                flex-direction: column; 
+                justify-content: center;
+                align-items: center;
+                gap: tokens.$spacing-7;
+            }
+
+            .footerToTop {
+                button {
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    cursor: pointer;
+
+                    svg {
+                        color: tokens.$white;
+
+                        opacity: 1;
+
+                        transition: opacity .25s ease;
+
+                        &:hover {
+                            opacity: .6;
+
+                            transition: opacity .25s ease;
+                        }
+                    }
+                }
+            }
+
+            .footerCopyright {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: tokens.$spacing-4;
+
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: tokens.$spacing-2;
+                }
+
+                small {
+                    color: rgba(tokens.$white, .4);
+
+                    a {
+                        position: relative;
+                        
+                        color: tokens.$white;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            bottom: -4px;
+                            left: 0;
+
+                            width: 100%;
+                            height: 1px;
+                            background: tokens.$white;
+
+                            transition: bottom .25s ease;
+                        }
+
+                        &:hover {
+                            &::before {
+                                bottom: -2px;
+
+                                transition: bottom .25s ease;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

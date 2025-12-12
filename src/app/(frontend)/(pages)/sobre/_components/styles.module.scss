@@ -1,0 +1,207 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.imageWrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-right: tokens.$spacing-3;
+        padding-left: tokens.$spacing-3;
+    }
+
+    .imageContainer {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+
+        border-radius: tokens.$radius-lg;
+        background-color: tokens.$off-white;
+
+        img {
+            object-fit: cover;
+        }
+    }
+}
+
+.aboutWrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: tokens.$spacing-4;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-right: tokens.$spacing-3;
+        padding-left: tokens.$spacing-3;
+
+        flex-direction: column;
+        gap: tokens.$spacing-5;
+    }
+
+    .aboutTitle {
+        flex: 1;
+        width: 100%;
+
+        span {
+            font-family: tokens.$font-tenez;
+            font-style: italic;
+            font-size: tokens.$fs-lg;
+            line-height: tokens.$lh-tight;
+            color: tokens.$black;
+        }
+    }
+
+    .aboutContent {
+        flex: 1;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-4;
+
+        ul {
+            margin-left: tokens.$spacing-3;
+        }
+    }
+}
+
+.numbersWrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: tokens.$spacing-4;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-right: tokens.$spacing-3;
+        padding-left: tokens.$spacing-3;
+
+        flex-direction: column;
+        gap: tokens.$spacing-5;
+    }
+
+    .numbersContent {
+        flex: 1;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: tokens.$spacing-1;
+
+        @media screen and (max-width: tokens.$breakpoint-md) {
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        .numbersContentNumber {
+            font-size: 56px;
+            line-height: tokens.$lh-tight;
+            font-weight: tokens.$fw-bold;
+            color: tokens.$black;
+        }
+
+        .numbersContentText {
+            font-size: tokens.$fs-sm;
+            line-height: tokens.$lh-tight;
+        }
+    }
+}
+
+.benefitsWrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: tokens.$spacing-4;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-right: tokens.$spacing-3;
+        padding-left: tokens.$spacing-3;
+
+        flex-direction: column;
+        gap: tokens.$spacing-5;
+    }
+
+    .benefitsTitle {
+        flex: 1;
+        width: 100%;
+
+        span {
+            font-family: tokens.$font-tenez;
+            font-style: italic;
+            font-size: tokens.$fs-lg;
+            line-height: tokens.$lh-tight;
+            color: tokens.$black;
+        }
+    }
+
+    .benefitsContent {
+        flex: 1;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .benefitsRow {
+            width: 100%;
+            padding-top: tokens.$spacing-7;
+            padding-bottom: tokens.$spacing-7;
+
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                padding-top: tokens.$spacing-5;
+                padding-bottom: tokens.$spacing-5;
+            }
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid rgba(tokens.$black, 0.1);
+            }
+
+            .benefitsCard {
+                width: 100%;
+
+                .benefitsCardContent {
+                    width: 100%;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: tokens.$spacing-3;
+                }
+            }
+        }
+    }
+}

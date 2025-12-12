@@ -1,0 +1,94 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+@use '@/app/_styles/mixins.scss' as mixins;
+
+.cta {
+    width: 100%;
+    padding: 0 tokens.$spacing-5;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding: 0 tokens.$spacing-3;
+    }
+
+    .ctaWrapper {
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+
+        &.fit {
+            height: auto;
+            padding-top: tokens.$spacing-8;
+            padding-bottom: tokens.$spacing-8;
+        }
+
+        &.medium {
+            height: auto;
+            padding-top: tokens.$spacing-9;
+            padding-bottom: tokens.$spacing-9;
+        }
+
+        &.large {
+            min-height: 100vh;
+        }
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: tokens.$spacing-3;
+
+        text-align: center;
+
+        .ctaTitle {
+            font-family: tokens.$font-tenez;
+            font-size: tokens.$fs-lg;
+            font-weight: tokens.$fw-regular;
+            font-style: italic;
+            line-height: tokens.$lh-tight;
+            color: tokens.$black;
+        }
+
+        .ctaHeadline {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+
+            font-family: tokens.$font-halcom;
+            font-size: tokens.$fs-4xl;
+            font-weight: tokens.$fw-regular;
+            line-height: tokens.$lh-tight;
+            color: tokens.$black;
+
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                font-size: tokens.$fs-3xl;
+            }
+
+            a {
+                position: relative;
+
+                font-weight: tokens.$fw-bold;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: -8px;
+                    left: 0;
+
+                    width: 100%;
+                    height: 8px;
+                    background-color: tokens.$black;
+
+                    transition: height 0.3s ease-in-out;
+                }
+
+                &:hover {
+                    &::before {
+                        height: 4px;
+                        transition: height 0.3s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+}

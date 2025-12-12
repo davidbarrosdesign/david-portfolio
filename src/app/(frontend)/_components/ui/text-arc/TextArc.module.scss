@@ -1,0 +1,23 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+@use '@/app/_styles/mixins.scss' as mixins;
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.textArcSvg {
+    width: 100px;
+    height: 100px;
+    animation: rotate linear 10s infinite;
+}
+
+.textArc {
+    font-size: 24px;
+    letter-spacing: 5px;
+
+    textPath {
+        fill: rgba(tokens.$black, 0.2);
+    }
+}

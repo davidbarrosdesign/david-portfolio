@@ -1,0 +1,140 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+@use '@/app/_styles/mixins.scss' as mixins;
+
+/* HEADER FIXO */
+.header {
+  width: 100%;
+  padding: 0 tokens.$spacing-5;
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+
+  @media screen and (max-width: tokens.$breakpoint-md) {
+    padding: 0 tokens.$spacing-3;
+  }
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 480px;
+  margin: 0 auto;
+  padding: tokens.$spacing-3;
+
+  background: tokens.$white;
+  border-radius: tokens.$radius-lg;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.headerRight {
+  display: flex;
+  gap: tokens.$spacing-3;
+  align-items: center;
+}
+
+/* SLOTS FIXOS DO layoutId */
+.logoSlot {
+  width: 32px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    width: 32px;
+    height: 30px;
+  }
+}
+
+.toggleBtn {
+  @include mixins.flex-center;
+  width: 30px;
+  height: 30px;
+  background: rgba(tokens.$black, 0.04);
+  border: none;
+  border-radius: tokens.$radius-md;
+  cursor: pointer;
+}
+
+/* MENU CORTINA */
+.menuOverlay {
+  width: 100%;
+  padding: 0 tokens.$spacing-5;
+  overflow: hidden;
+
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 998;
+
+  backdrop-filter: blur(50px);
+
+  @media screen and (max-width: tokens.$breakpoint-md) {
+    padding: 0 tokens.$spacing-3;
+  }
+}
+
+.menuInner {
+  background: tokens.$white;
+  border-radius: tokens.$radius-lg;
+  padding: tokens.$spacing-3;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.menuTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LINKS */
+.menuLinks {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-3;
+  margin-top: tokens.$spacing-7;
+
+  a {
+    text-decoration: none;
+    color: tokens.$black;
+    font-size: tokens.$fs-md;
+  }
+}
+
+/* SOCIAL + FOOTER */
+.menuFooter {
+  margin-top: tokens.$spacing-7;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuSocials {
+  display: flex;
+  gap: tokens.$spacing-3;
+
+  a {
+    color: tokens.$gray;
+    font-size: tokens.$fs-2xs;
+  }
+}
+
+.time {
+  color: tokens.$gray;
+  font-size: tokens.$fs-2xs;
+}
+
+/* BACKDROP */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(tokens.$black, 0.45);
+  z-index: 900;
+}
