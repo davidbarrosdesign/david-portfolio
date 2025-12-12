@@ -25,6 +25,7 @@
     "@payloadcms/richtext-lexical": "3.65.0",
     "@payloadcms/ui": "3.65.0",
     "@phosphor-icons/react": "^2.1.10",
+    "@typebot.io/react": "^0.9.17",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
     "dotenv": "16.4.7",

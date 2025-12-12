@@ -59,17 +59,17 @@ export function Header() {
   }, [open]);
 
   const links = [
-    { label: "Trabalhos", slug: "trabalhos" },
-    { label: "Serviços", slug: "servicos" },
     { label: "Sobre mim", slug: "sobre" },
+    { label: "Trabalhos", slug: "trabalhos" },
+    // { label: "Serviços", slug: "servicos" },
     { label: "Contato", slug: "contato" },
   ];
 
   const socials = [
     { label: "LinkedIn", href: "https://linkedin.com/in/davidbarrosdesign/" },
     { label: "Instagram", href: "https://instagram.com/davidbarros.design/" },
-    { label: "Bluesky", href: "https://bsky.app/profile/davidbarrosdesign.bsky.social" },
-    { label: "Newsletter", href: "https://curadoriatalks.substack.com/" },
+    // { label: "Bluesky", href: "https://bsky.app/profile/davidbarrosdesign.bsky.social" },
+    // { label: "Newsletter", href: "https://curadoriatalks.substack.com/" },
   ];
 
   return (

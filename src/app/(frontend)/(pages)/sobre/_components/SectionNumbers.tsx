@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from "react";
+import { useRef  } from "react";
 import { motion, useInView } from 'framer-motion';
 
 import styles from './styles.module.scss';

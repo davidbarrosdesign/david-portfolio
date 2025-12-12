@@ -1,6 +1,5 @@
-// import styles from './page.module.scss';
-import { Divider } from '../../_components/ui';
-import { HeroPage } from '../../_components/sections';
+import type { Metadata } from "next";
+import { HeroPage, CallToAction } from '../../_components/sections';
 import { WorkFeed } from './_components/WorkFeed';
 
 export const dynamic = "force-static";
@@ -15,6 +14,11 @@ async function getTrabalhos() {
   return json.works;
 }
 
+export const metadata: Metadata = {
+  title: "Trabalhos | David Barros",
+  description: "Confira alguns dos trabalhos especialmente selecionados no portfolio do designer David Barros."
+}
+
 export default async function TrabalhosPage() {
 
     const trabalhos = await getTrabalhos();
@@ -26,7 +30,14 @@ export default async function TrabalhosPage() {
             {/* Conteúdo da página == lista de cards */}
             <WorkFeed initialData={trabalhos} />
 
-            <Divider size="medium" />
+            <CallToAction 
+              size="large"
+              subTitle="Vamos trabalhar juntos?"
+              title="Tem um projeto em mente?"
+              linkTitle="Vamos falar sobre isso!"
+              url="/contato"
+              target="_self"
+            />
         </main>
     );
 }

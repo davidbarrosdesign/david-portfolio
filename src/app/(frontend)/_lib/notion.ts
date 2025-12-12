@@ -6,6 +6,29 @@ export const notion = new Client({
 
 const DB = process.env.NOTION_DB_TRABALHOS;
 
+export async function getClientDetails(id: string) {
+    if (!id) return null;
+    try {
+        const page = await notion.pages.retrieve({ page_id: id });
+        if (!("properties" in page)) return null;
+        
+        const props = page.properties as any;
+        
+        // 1. Pega o Nome (Title)
+        const titleProp = props.nome || props.Name || props.title || props.Título;
+        const name = titleProp?.title?.[0]?.plain_text || "";
+
+        // 2. Pega o Sobre (Rich Text) - Baseado no seu print
+        const aboutProp = props.sobre || props.Sobre || props.About;
+        const about = aboutProp?.rich_text?.[0]?.plain_text || "";
+
+        return { name, about };
+    } catch (error) {
+        console.error(`Erro ao buscar detalhes do cliente ${id}:`, error);
+        return null;
+    }
+}
+
 export async function getRelationTitle(id: string) {
     if (!id) return "";
     try {

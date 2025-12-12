@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import { ArrowLeft } from "@phosphor-icons/react";
 
 import styles from "./HeroPage.module.scss";
@@ -10,12 +11,15 @@ export function HeroPage({
 }: {
     title: string;
 }) {
+
+    const router = useRouter();
+
     return (
         <section className={styles.hero}>
             <div className={styles.heroWrapper}>
                 <div className={styles.heroTitle}>
                     <Button
-                        href="/trabalhos"
+                        onClick={() => router.back()}
                         size="small"
                         style="outline"
                         color="white"

@@ -48,8 +48,8 @@ export default async function HomePage() {
         subTitle="Vamos trabalhar juntos?"
         title="Tem um projeto em mente?"
         linkTitle="Vamos falar sobre isso!"
-        url="#"
-        target="_blank"
+        url="/contato"
+        target="_self"
       />
     </main>
   )

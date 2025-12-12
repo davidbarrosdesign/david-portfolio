@@ -11,32 +11,54 @@ export function Button({
     target = "_self",
     icon: Icon,
     iconPosition = "left",
-    children
+    children,
+    onClick
 }: {
-    href: string;
+    href?: string;
     target?: "_self" | "_blank";
     size?: "small" | "medium" | "large";
     style?: "solid" | "outline" | "ghost";
     color?: "black" | "white";
     icon?: React.ElementType;          // icone opcional
     iconPosition?: "left" | "right";   // posição opcional
-    children: string
+    children: string;
+    onClick?: () => void;
 }) {
-  return (
-    <Link
-        href={href}
-        target={target}
-        className={clsx(styles.button, styles[size], styles[style], styles[color])}
-    >
-      {Icon && iconPosition === "left" && (
-        <Icon size={14} weight="regular" className={styles.icon} />
-      )}
+    const className = clsx(styles.button, styles[size], styles[style], styles[color]);
 
-      <span>{children}</span>
+    const content = (
+        <>
+            {Icon && iconPosition === "left" && (
+                <Icon size={14} weight="regular" className={styles.icon} />
+            )}
 
-      {Icon && iconPosition === "right" && (
-        <Icon size={14} weight="regular" className={styles.icon} />
-      )}
-    </Link>
-  );
+            <span>{children}</span>
+
+            {Icon && iconPosition === "right" && (
+                <Icon size={14} weight="regular" className={styles.icon} />
+            )}
+        </>
+    );
+
+    if (href) {
+        return (
+            <Link
+                href={href}
+                target={target}
+                className={className}
+            >
+                {content}
+            </Link>
+        );
+    }
+
+    return (
+        <button
+            onClick={onClick}
+            className={className}
+            type="button"
+        >
+            {content}
+        </button>
+    );
 }
