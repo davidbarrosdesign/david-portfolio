@@ -10,14 +10,7 @@ import { MarqueeClients } from '../../_components/parts';
 import { TestimonialSection } from '../../_components/old';
 import { CallToAction } from '../../_components/sections';
 
-async function getDepoimentos() {
-  const res = await fetch("http://localhost:3000/api/depoimentos", {
-    next: { revalidate: 300, tags: ["depoimentos"] },
-  });
-
-  const json = await res.json();
-  return json.testimonials;
-}
+import { getAllDepoimentos } from '@/app/(frontend)/_lib/notion';
 
 export const metadata: Metadata = {
   title: "Sobre | David Barros",
@@ -26,8 +19,8 @@ export const metadata: Metadata = {
 
 export default async function SobrePage() {
 
-    let depoimentos = await getDepoimentos();
-    depoimentos = depoimentos.slice(0, 5); // só os 5 primeiros
+    let depoimentos = await getAllDepoimentos();
+    depoimentos = depoimentos.slice(0, 5); // Pega só os 5 primeiros
 
     return (
         <main>

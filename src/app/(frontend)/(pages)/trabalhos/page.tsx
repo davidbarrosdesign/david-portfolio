@@ -2,17 +2,10 @@ import type { Metadata } from "next";
 import { HeroPage, CallToAction } from '../../_components/sections';
 import { WorkFeed } from './_components/WorkFeed';
 
+import { getAllTrabalhos } from '@/app/(frontend)/_lib/notion';
+
 export const dynamic = "force-static";
 export const revalidate = 300;
-
-async function getTrabalhos() {
-  const res = await fetch("http://localhost:3000/api/trabalhos", {
-    next: { revalidate: 300, tags: ["trabalhos"] },
-  });
-
-  const json = await res.json();
-  return json.works;
-}
 
 export const metadata: Metadata = {
   title: "Trabalhos | David Barros",
@@ -21,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function TrabalhosPage() {
 
-    const trabalhos = await getTrabalhos();
+    const trabalhos = await getAllTrabalhos();
 
     return (
         <main>
