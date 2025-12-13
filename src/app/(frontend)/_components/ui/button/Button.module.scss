@@ -98,14 +98,49 @@
     }
 
     &.ghost {
+        span {
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                right: 0;
+                width: 100%;
+                height: 0.5px;
+                background: tokens.$black;
+                overflow: hidden;
+                transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+        }
+
+        &:hover {
+            box-shadow: none;
+
+            span::after {
+                width: 0;
+                transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+        }
+
         &.black {
             background: transparent;
             color: tokens.$black;
+
+            &:hover {
+                background: transparent;
+                color: tokens.$black;
+            }
         }
 
         &.white {
             background: transparent;
             color: tokens.$white;
+
+            &:hover {
+                background: transparent;
+                color: tokens.$white;
+            }
         }
     }
 }

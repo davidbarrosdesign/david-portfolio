@@ -141,7 +141,7 @@ export function Footer() {
                             <small>David Barros © {year}. CNPJ: 20.075.827/0001-71</small>
                         </div>
 
-                        <div className={styles.footerTime}>
+                        {/* <div className={styles.footerTime}>
                             <small>
                                 <Link
                                     href="/politicas-de-privacidade"
@@ -149,7 +149,7 @@ export function Footer() {
                                     Políticas de privacidade
                                 </Link>
                             </small>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className={styles.footerToTop}>

@@ -93,20 +93,20 @@
                             content: "";
                             position: absolute;
                             bottom: -4px;
-                            left: 0;
+                            right: 0;
 
                             width: 100%;
                             height: 1px;
                             background: tokens.$white;
 
-                            transition: bottom .25s ease;
+                            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
                         }
 
                         &:hover {
                             &::before {
-                                bottom: -2px;
+                                width: 0;
 
-                                transition: bottom .25s ease;
+                                transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
                             }
                         }
                     }
@@ -177,20 +177,20 @@
                             content: "";
                             position: absolute;
                             bottom: -4px;
-                            left: 0;
+                            right: 0;
 
                             width: 100%;
                             height: 1px;
                             background: tokens.$white;
 
-                            transition: bottom .25s ease;
+                            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
                         }
 
                         &:hover {
                             &::before {
-                                bottom: -2px;
+                                width: 0;
 
-                                transition: bottom .25s ease;
+                                transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
                             }
                         }
                     }

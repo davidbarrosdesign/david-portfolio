@@ -224,14 +224,17 @@ export default async function TrabalhoSingle({ params }: { params: Promise<{ slu
                 </section>
             </article>
 
+            <Divider size="medium" />
+
             <CallToAction 
-                size="large"
-                subTitle="Gostou deste case?"
-                title="Quero mais projetos como este!"
-                linkTitle="Vamos falar sobre isso!"
-                url="/contato"
-                target="_self"
+              title="Tem um projeto em mente?"
+              content="Vamos criar juntos um website com estética forte e mensagem clara — pronto para converter e fazer sucesso."
+              linkTitle="Vamos falar sobre isso!"
+              url="/contato"
+              target="_self"
             />
+
+            <Divider size="medium" />
         </main>
     );
 }

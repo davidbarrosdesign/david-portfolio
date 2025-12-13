@@ -3,6 +3,7 @@
 
 .cta {
     width: 100%;
+    min-height: 100vh;
     padding: 0 tokens.$spacing-5;
 
     @media screen and (max-width: tokens.$breakpoint-md) {
@@ -12,29 +13,18 @@
     .ctaWrapper {
         width: 100%;
         max-width: 1600px;
+        min-height: 100vh;
+        padding: tokens.$spacing-7;
         margin: 0 auto;
 
-        &.fit {
-            height: auto;
-            padding-top: tokens.$spacing-8;
-            padding-bottom: tokens.$spacing-8;
-        }
-
-        &.medium {
-            height: auto;
-            padding-top: tokens.$spacing-9;
-            padding-bottom: tokens.$spacing-9;
-        }
-
-        &.large {
-            min-height: 100vh;
-        }
+        background: rgba(232, 232, 237, 0.72);
+        border-radius: tokens.$radius-lg;
 
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: tokens.$spacing-3;
+        gap: tokens.$spacing-7;
 
         text-align: center;
 
@@ -48,12 +38,10 @@
         }
 
         .ctaHeadline {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 0;
-
+            display: block;
+            max-width: 485px;
+            margin: 0 auto;
+            
             font-family: tokens.$font-halcom;
             font-size: tokens.$fs-4xl;
             font-weight: tokens.$fw-regular;
@@ -63,32 +51,14 @@
             @media screen and (max-width: tokens.$breakpoint-md) {
                 font-size: tokens.$fs-3xl;
             }
+        }
 
-            a {
-                position: relative;
+        .ctaText {
+            display: block;
+            max-width: 485px;
+            margin: 0 auto;
 
-                font-weight: tokens.$fw-bold;
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    bottom: -8px;
-                    left: 0;
-
-                    width: 100%;
-                    height: 8px;
-                    background-color: tokens.$black;
-
-                    transition: height 0.3s ease-in-out;
-                }
-
-                &:hover {
-                    &::before {
-                        height: 4px;
-                        transition: height 0.3s ease-in-out;
-                    }
-                }
-            }
+            font-size: tokens.$fs-md;
         }
     }
 }

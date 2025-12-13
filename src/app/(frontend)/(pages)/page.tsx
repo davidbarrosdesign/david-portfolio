@@ -28,14 +28,15 @@ export default async function HomePage() {
       <TestimonialSection depoimentos={depoimentos} />
       <Divider size="large" />
       <ServicesHome />
+      <Divider size="large" />
       <CallToAction 
-        size="medium"
-        subTitle="Vamos trabalhar juntos?"
         title="Tem um projeto em mente?"
+        content="Vamos criar juntos um website com estética forte e mensagem clara — pronto para converter e fazer sucesso."
         linkTitle="Vamos falar sobre isso!"
         url="/contato"
         target="_self"
       />
+      <Divider size="large" />
     </main>
   )
 }
