@@ -1,0 +1,261 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+// Container principal da stack (gerenciado pelo GSAP)
+.portfolioStackContainer {
+    position: relative;
+    width: 100%;
+
+    background: tokens.$off-white; // ou a cor de fundo da sua section
+
+    // O Wrapper que o GSAP "pina"
+    .cardWrapper {
+        position: relative;
+        width: 100%;
+        height: 100vh; // Altura total da viewport
+        overflow: hidden;
+    
+        background: tokens.$off-white; // Garante fundo opaco para o stack funcionar
+        border-radius: tokens.$radius-lg;
+        box-shadow: 0px -100px 100px rgba(tokens.$black, 0.1);
+    
+        // Overlay escuro que aparece conforme o card vai indo para trás (opcional)
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+    
+            background: tokens.$black;
+            opacity: var(--after-opacity, 0);
+    
+            pointer-events: none;
+            z-index: 10;
+    
+            transition: opacity 0.1s linear;
+        }
+    
+        // O layout interno do card
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: tokens.$spacing-5;
+        
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: tokens.$spacing-4;
+        
+            // --- ESTADO INVERTIDO (ALTERNÂNCIA) ---
+            &.reversed {
+                flex-direction: row-reverse;
+        
+                @media (max-width: tokens.$breakpoint-lg) {
+                    flex-direction: column-reverse;
+                    justify-content: center;
+                }
+
+                @media (max-width: tokens.$breakpoint-md) {
+                    padding: tokens.$spacing-3;
+                }
+            }
+            // -------------------------------------
+        
+            @media (max-width: tokens.$breakpoint-lg) {
+                flex-direction: column-reverse; // No mobile, imagem sempre em cima ou embaixo
+                padding: tokens.$spacing-4;
+                justify-content: center;
+            }
+
+            @media (max-width: tokens.$breakpoint-md) {
+                padding: tokens.$spacing-3;
+            }
+
+            // 1. Coluna de Conteúdo
+            .cardContent {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: tokens.$spacing-4;
+
+                max-width: 600px; // Limita a largura do texto para leitura confortável
+            
+                @media (max-width: tokens.$breakpoint-lg) {
+                    width: 100%;
+                    max-width: 100%;
+
+                    flex: inherit;
+                    align-items: center;
+                    // justify-content: flex-start;
+                }
+            
+                .metaTop {
+                    display: flex;
+                    align-items: center;
+                    gap: tokens.$spacing-4;
+                    
+                    font-size: tokens.$fs-xs;
+                    line-height: tokens.$lh-normal;
+                    color: tokens.$gray;
+                }
+            
+                .title {
+                    color: tokens.$black;
+
+                    @media (max-width: tokens.$breakpoint-lg) {
+                        text-align: center;
+                    }
+                }
+            
+                .servicesList {
+                    ul {
+                        margin: 0;
+                        padding: 0;
+
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        gap: tokens.$spacing-2;
+                        
+                        list-style: none;
+            
+                        li {
+                            padding: tokens.$spacing-2 tokens.$spacing-3;
+
+                            background: transparent;
+                            border: 1px solid rgba(tokens.$black, 0.2);
+                            border-radius: 30px;
+
+                            font-size: tokens.$fs-xs;
+                            line-height: tokens.$lh-tight;
+                            color: tokens.$gray;
+                        }
+                    }
+                }
+            }
+            
+            // 2. Coluna de Mídia
+            .cardMedia {
+                position: relative;
+                height: 100%;
+                width: 100%;
+
+                flex: 2;
+            
+                @media (max-width: tokens.$breakpoint-lg) {
+                    flex: inherit;
+                    width: 100%;
+                    height: auto;
+                }
+            
+                .mediaWrapper {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    @media (max-width: tokens.$breakpoint-lg) {
+                        height: inherit;
+                    }
+            
+                    video {
+                        position: relative !important;
+                        aspect-ratio: 16/9;
+                        width: 100% !important;
+                        height: auto !important;
+                        object-fit: contain;
+                        border-radius: tokens.$radius-lg;
+                    }
+
+                    img {
+                        position: relative !important;
+                        aspect-ratio: 16/9;
+                        width: 100% !important;
+                        height: auto !important;
+                        object-fit: contain;
+                        border-radius: tokens.$radius-lg;
+                    }
+            
+                    .loaderSkeleton {
+                        position: absolute;
+                        inset: 0;
+                        background-color: tokens.$white;
+                        z-index: 2;
+                    }
+            
+                    .fallback {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: tokens.$off-white;
+                        color: tokens.$gray;
+
+                        @media (max-width: tokens.$breakpoint-lg) {
+                            height: inherit
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.portfolioAll {
+    width: 100%;
+    max-width: 1600px;
+    height: auto;
+    padding-left: tokens.$spacing-5;
+    padding-right: tokens.$spacing-5;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: tokens.$spacing-4;
+
+    @media (max-width: tokens.$breakpoint-md) {
+        padding-left: tokens.$spacing-3;
+        padding-right: tokens.$spacing-3;
+
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .portfolioAllContent {
+        flex: 1;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        @media (max-width: tokens.$breakpoint-md) {
+            justify-content: center;
+            align-items: center;
+
+            h2 {
+                text-align: center;
+            }
+        }
+    }
+
+    .portfolioAllButton {
+        flex: 1;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+
+        @media (max-width: tokens.$breakpoint-md) {
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
