@@ -2,8 +2,9 @@
 
 import { Divider } from '@/app/(frontend)/_components/ui';
 import { HeroHome, ClientsHome, ServicesHome, CallToAction } from '@/app/(frontend)/_components/sections';
-import { TestimonialSection, PortfolioSection } from '@/app/(frontend)/_components/old';
+import { TestimonialSection } from '@/app/(frontend)/_components/old';
 import { getAllTrabalhos, getAllDepoimentos } from '@/app/(frontend)/_lib/notion';
+import { PortfolioSection } from '@/app/(frontend)/(pages)/_components';
 
 export const dynamic = "force-static";
 export const revalidate = 300;
