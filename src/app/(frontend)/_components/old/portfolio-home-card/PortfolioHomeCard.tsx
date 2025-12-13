@@ -24,8 +24,8 @@ export function PortfolioHomeCard({ data }: { data: any }) {
         <section className={styles.card}>
             <article className={styles.portfolioBigCard}>
                 <div className={styles.portfolioBigCardClient}>
-                    <span>{data.client}</span>
-                    <span>{data.year}</span>
+                    <span className={styles.client}>{data.client}</span>
+                    <span className={styles.year}>{data.year}</span>
                 </div>
 
                 <div className={styles.portfolioBigCardBanner}>
