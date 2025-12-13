@@ -8,7 +8,7 @@ export function MenuToggle({ open }: { open: boolean }) {
       width="16"
       height="16"
       viewBox="0 0 24 24"
-      stroke="currentColor"
+      stroke="#161616"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
