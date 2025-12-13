@@ -1,22 +1,20 @@
 'use client'
 
-import Link from "next/link";
-import clsx from 'clsx';
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { ArrowRight } from "@phosphor-icons/react"
+import { Button } from "@/app/(frontend)/_components/ui";
 
 import styles from './CallToAction.module.scss';
 
 export function CallToAction({
-    size = "large",
-    subTitle = "Vamos trabalhar juntos?",
+    content = "Vamos criar juntos um website com estética forte e mensagem clara — pronto para converter.",
     title = "Tem um projeto em mente?",
     linkTitle = "Vamos falar sobre isso!",
     url = "/contato",
     target = "_blank",
 }: {
-    size?: "fit" | "medium" | "large";
-    subTitle?: string;
+    content?: string;
     title?: string;
     linkTitle?: string;
     url?: string;
@@ -43,19 +41,7 @@ export function CallToAction({
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
         >
-            <div className={clsx(styles.ctaWrapper, styles[size])}>
-                <motion.span
-                        className={styles.ctaTitle}
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{
-                            duration: 0.7,
-                            delay: 0.25,
-                            ease: [0.16, 1, 0.3, 1]
-                        }}
-                    >
-                        { subTitle }
-                </motion.span>
+            <div className={styles.ctaWrapper}>
                 <motion.span
                     className={styles.ctaHeadline}
                     initial={{ opacity: 0, y: 30 }}
@@ -67,15 +53,40 @@ export function CallToAction({
                     }}
                 >
                     <span>{ title }</span>
-                    <span>
-                        <Link
-                            href={ url }
-                            target={ target}
-                        >
-                            { linkTitle }
-                        </Link>
-                    </span>
                 </motion.span>
+                <motion.span
+                    className={styles.ctaText}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{
+                        duration: 0.7,
+                        delay: 0.75,
+                        ease: [0.16, 1, 0.3, 1]
+                    }}
+                >
+                    <span>{ content }</span>
+                </motion.span>
+                <motion.div
+                    className={styles.ctaButton}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{
+                        duration: 0.7,
+                        delay: 1.00,
+                        ease: [0.16, 1, 0.3, 1]
+                    }}
+                >
+                    <Button
+                        href={ url }
+                        target={ target }
+                        size="large"
+                        style="ghost"
+                        color="black"
+                        icon={ ArrowRight }
+                    >
+                        { linkTitle }
+                    </Button>
+                </motion.div>
             </div>
         </motion.section>
     )

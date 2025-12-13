@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HeroPage, CallToAction } from '../../_components/sections';
+import { Divider } from '../../_components/ui';
 import { WorkFeed } from './_components/WorkFeed';
 
 import { getAllTrabalhos } from '@/app/(frontend)/_lib/notion';
@@ -23,14 +24,17 @@ export default async function TrabalhosPage() {
             {/* Conteúdo da página == lista de cards */}
             <WorkFeed initialData={trabalhos} />
 
+            <Divider size="medium" />
+
             <CallToAction 
-              size="large"
-              subTitle="Vamos trabalhar juntos?"
               title="Tem um projeto em mente?"
+              content="Vamos criar juntos um website com estética forte e mensagem clara — pronto para converter e fazer sucesso."
               linkTitle="Vamos falar sobre isso!"
               url="/contato"
               target="_self"
             />
+
+            <Divider size="medium" />
         </main>
     );
 }
