@@ -79,7 +79,7 @@
 
 // TOGGLE BUTTONS
 .viewToggle {
-    width: 160px;
+    width: 120px;
     height: 40px;
 
     display: flex;
@@ -87,12 +87,16 @@
     justify-content: center;
     align-items: center;
 
+    background: rgba(232, 232, 237, 0.72);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    background: tokens.$white;
     border-radius: 20px;
 
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        display: none;
+    }
+
     button {
-        width: 80px;
+        width: 60px;
         height: 40px;
         
         display: flex;
