@@ -32,6 +32,7 @@
 
         @media screen and (max-width: tokens.$breakpoint-md) {
             padding: tokens.$spacing-3;
+            gap: tokens.$spacing-2;
         }
 
         &::before {
@@ -74,8 +75,16 @@
 
             @media screen and (max-width: tokens.$breakpoint-lg) {
                 width: 100%;
-                justify-content: center;
-                align-items: flex-end;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                gap: tokens.$spacing-1;
+
+                .client {
+                    font-size: tokens.$fs-md;
+                    line-height: tokens.$lh-tight;
+                    color: tokens.$black;
+                }
             }
 
             span {
