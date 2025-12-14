@@ -20,9 +20,10 @@ export function HeroPage({
                 <div className={styles.heroTitle}>
                     <Button
                         onClick={() => router.back()}
-                        size="small"
-                        style="outline"
-                        color="white"
+                        target="_self"
+                        size="large"
+                        style="ghost"
+                        color="black"
                         icon={ArrowLeft}
                         iconPosition="left"
                     >

@@ -31,6 +31,11 @@
             justify-content: flex-start;
             align-items: flex-start;
             gap: tokens.$spacing-2;
+
+            button {
+                border: none;
+                padding: 0;
+            }
         }
     }
 }
