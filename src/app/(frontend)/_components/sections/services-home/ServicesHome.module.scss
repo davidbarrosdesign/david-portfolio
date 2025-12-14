@@ -78,6 +78,10 @@
                     justify-content: flex-start;
                     align-items: center;
                     gap: tokens.$spacing-4;
+
+                    @media screen and (max-width: tokens.$breakpoint-md) {
+                        justify-content: center;
+                    }
                 }
     
                 .serviceCardContent {
