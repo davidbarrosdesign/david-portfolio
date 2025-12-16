@@ -23,13 +23,13 @@ export function HeroHome() {
         >
             <div className={styles.heroWrapper}>
                 <div className={styles.heroTitle}>
-                    <h1>Olá, sou David — Diretor Criativo e Designer de Produto para fundadores, startups e marcas da nova geração.</h1>
+                    <h1>Olá, sou David — Diretor Criativo e Designer especialista em produtos digitais.</h1>
                 </div>
 
                 <div className={styles.heroContent}>
                     <div className={styles.heroContentText}>
                         <p><strong>Designer independente.</strong></p>
-                        <p>Entregas de alto nível no ritmo de grandes agências — sem abrir mão da excelência.</p>
+                        <p>Criando experiências digitais e resolvendo problemas complexos há mais de uma década.</p>
                     </div>
                     <button
                         className={styles.heroContentButton}

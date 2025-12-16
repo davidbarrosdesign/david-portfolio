@@ -31,9 +31,11 @@ export function ClientsHome() {
             animate={isInView ? "visible" : "hidden"}
         >
             <div className={styles.clientsContent}>
-                <h2>Sempre trabalhando ao lado de <span>grandes marcas</span> do mercado.</h2>
+                <h2>Sempre trabalhando ao lado de grandes marcas do mercado.</h2>
 
-                <p>De produtos digitais a estratégias criativas, eu defino, projeto e lanço ideias que revelam potencial oculto. O sucesso dos meus clientes é o meu também!</p>
+                <p>Cada cliente é um novo desafio e uma nova vontade de resolver problemas complexos. Tenho a sorte de trabalhar com muitas marcas e empresas que valorizam a criatividade e a qualidade.</p>
+
+                <p>Conheça algumas delas:</p>
             </div>
 
             <MarqueeClients />

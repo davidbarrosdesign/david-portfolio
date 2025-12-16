@@ -48,7 +48,7 @@ export function ServicesHome() {
                             <article className={styles.serviceCard}>
                                 <div className={styles.serviceCardContent}>
                                     <h3>Produtos digitais</h3>
-                                    <p>Experiências digitais transformadoras para todos os setores e indústrias, com foco nas metas do seu negócio, excelência na usabilidade, visual incrível e orientado a boas práticas do digital.</p>
+                                    <p>Experiências digitais inovadoras sempre com foco na clareza, conversão, experiência do usuário e impacto real nos negócios.</p>
                                 </div>
                             </article>
                         </motion.div>
@@ -65,7 +65,7 @@ export function ServicesHome() {
                             <article className={styles.serviceCard}>
                                 <div className={styles.serviceCardContent}>
                                     <h3>Web Design</h3>
-                                    <p>Leve seu negócio para o próximo nível com um site ou landing page incrível — e o melhor, no ar em poucos dias em plataformas low-code. Navegação imersiva, otimizados, acessíveis e escaláveis.</p>
+                                    <p>Seu negócio em um nível mais alto, com design funcional e estratégico para elevar seu negócio a outro patamar, trazendo diferenciação e aumentando a percepção de valor da marca.</p>
                                 </div>
                             </article>
                         </motion.div>
@@ -82,7 +82,7 @@ export function ServicesHome() {
                             <article className={styles.serviceCard}>
                                 <div className={styles.serviceCardContent}>
                                     <h3>Design Estratégico</h3>
-                                    <p>Design funcional e estratégico para elevar seu negócio a outro patamar, trazendo diferenciação e aumentando a percepção de valor da marca.</p>
+                                    <p>Conecte sua marca com o público-alvo ideal, e torne-a memorável e impactante. Design feito com intenção e estratégia.</p>
                                 </div>
                             </article>
                         </motion.div>
@@ -99,7 +99,7 @@ export function ServicesHome() {
                             <article className={styles.serviceCard}>
                                 <div className={styles.serviceCardContent}>
                                     <h3>Conversão</h3>
-                                    <p>Relatório completo de usabilidade, design, pontos de fricção e oportunidades de melhoria em seu website, sistema web, aplicativo ou landing page para aumentar a conversão e engajamento.</p>
+                                    <p>Leve seu projeto para outro nível para engajar e converter com estudos e melhorias constantes baseadas no comportamento dos usuários.</p>
                                 </div>
                             </article>
                         </motion.div>

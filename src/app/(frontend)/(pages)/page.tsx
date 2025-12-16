@@ -32,8 +32,8 @@ export default async function HomePage() {
       <Divider size="large" />
       <CallToAction 
         title="Tem um projeto em mente?"
-        content="Vamos criar juntos um website com estética forte e mensagem clara — pronto para converter e fazer sucesso."
-        linkTitle="Vamos falar sobre isso!"
+        content="Vamos transformar sua ideia em realidade com design inovador e estratégico."
+        linkTitle="Me fale sobre seu projeto!"
         url="/contato"
         target="_self"
       />
