@@ -1,0 +1,74 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.bannerWrapper {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    // Ocupa largura fixa desktop, full width mobile
+    width: calc(100% - 48px);
+    max-width: 420px;
+    
+    background: rgba(tokens.$white, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    border: 1px solid rgba(tokens.$black, 0.05);
+    border-radius: tokens.$radius-lg;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    
+    padding: tokens.$spacing-4;
+    z-index: 9990; // Abaixo da transição de página (9998/9999), mas acima de tudo
+
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-4;
+
+    @media (max-width: tokens.$breakpoint-md) {
+        left: 16px;
+        bottom: 16px;
+        width: calc(100% - 32px);
+    }
+}
+
+.content {
+    p {
+        font-size: tokens.$fs-xs; // Pequeno e discreto
+        line-height: 1.5;
+        color: tokens.$gray;
+        margin: 0;
+    }
+
+    .link {
+        color: tokens.$black;
+        text-decoration: underline;
+        font-weight: 500;
+        
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    gap: tokens.$spacing-2;
+
+    button {
+        flex: 1;
+    }
+}
+
+.btnClose {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    color: tokens.$gray;
+    cursor: pointer;
+    padding: 4px;
+    
+    &:hover {
+        color: tokens.$black;
+    }
+}

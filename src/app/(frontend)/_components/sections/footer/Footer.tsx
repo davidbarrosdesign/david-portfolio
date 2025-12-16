@@ -6,6 +6,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight, ArrowUp } from "@phosphor-icons/react";
 
+import { Button, TransitionLink } from "../../../_components/ui"
 import styles from "./Footer.module.scss";
 
 import { useSpotlightHover } from "../../../_hooks/useSpotlightHover";
@@ -72,14 +73,14 @@ export function Footer() {
             >
                 <motion.div className={styles.footerTop} variants={itemFadeUp}>
                     <div className={styles.footerLogo}>
-                        <Link href="/">
+                        <TransitionLink href="/">
                             <Image
                                 src="/brand/logo-branco-david-barros.svg"
                                 width={32}
                                 height={30}
                                 alt="Logo"
                             />
-                        </Link>
+                        </TransitionLink>
                     </div>
 
                     <div className={styles.footerLinks}>
@@ -141,15 +142,18 @@ export function Footer() {
                             <small>David Barros © {year}. CNPJ: 20.075.827/0001-71</small>
                         </div>
 
-                        {/* <div className={styles.footerTime}>
+                        <div className={styles.footerTime}>
                             <small>
-                                <Link
-                                    href="/politicas-de-privacidade"
+                                <Button
+                                    href="/privacidade"
+                                    size="small"
+                                    style="ghost"
+                                    color="white"
                                 >
                                     Políticas de privacidade
-                                </Link>
+                                </Button>
                             </small>
-                        </div> */}
+                        </div>
                     </div>
 
                     <div className={styles.footerToTop}>

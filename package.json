@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@next/third-parties": "^16.0.10",
     "@notionhq/client": "^2.2.5",
     "@payloadcms/db-mongodb": "^3.65.0",
     "@payloadcms/next": "3.65.0",

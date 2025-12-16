@@ -1,0 +1,23 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.layerBlack {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh; // Use 100dvh para mobile se preferir
+    background-color: tokens.$black; // Sua cor preta
+    z-index: 9998; // Bem alto
+    pointer-events: none; // Para não bloquear cliques acidentais se der bug
+}
+
+.layerWhite {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: tokens.$off-white; // Sua cor off-white
+    z-index: 9999; // Acima da preta
+    pointer-events: none;
+}

@@ -92,7 +92,14 @@
     border-radius: 20px;
 
     @media screen and (max-width: tokens.$breakpoint-md) {
-        display: none;
+        position: fixed;
+        bottom: 16px;
+        left: 50%;
+
+        transform: translateX(-50%);
+        background: rgba(232, 232, 237, 1);
+
+        z-index: 100;
     }
 
     button {
@@ -159,6 +166,7 @@
     width: 100%;
     
     .cardLink {
+        position: relative;
         width: 100%;
         padding: tokens.$spacing-3;
         
@@ -329,6 +337,50 @@
                 }
             }
         }
+    }
+}
+
+.gridHoverCursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    // Tamanho do círculo
+    width: 200px;
+    height: 200px;
+    
+    // Centraliza o cursor no ponto X/Y
+    transform: translate(-50%, -50%); 
+    
+    // Estilo Visual (Igual ao seu modo lista)
+    background-color: rgba(tokens.$black, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // Tipografia
+    font-family: tokens.$font-tenez;
+    font-style: italic;
+    font-size: tokens.$fs-xl;
+    line-height: tokens.$lh-tight;
+    letter-spacing: 0.8px;
+    color: tokens.$white;
+    
+    // Comportamento
+    pointer-events: none; // CRUCIAL: Deixa o clique passar para o link embaixo
+    z-index: 20;
+    
+    // Começa escondido
+    opacity: 0;
+    scale: 0.5;
+    transition: opacity 0.3s ease, scale 0.3s ease;
+
+    &.visible {
+        opacity: 1;
+        scale: 1;
     }
 }
 

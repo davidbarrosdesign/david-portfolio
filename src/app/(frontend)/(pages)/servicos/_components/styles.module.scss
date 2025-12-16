@@ -38,6 +38,10 @@
 
         border-bottom: 1px solid rgba(tokens.$gray, 0.2);
 
+        &:last-child {
+            border-bottom: none;
+        }
+
         .serviceWrapper {
             width: 100%;
             height: auto;
