@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight } from "@phosphor-icons/react";
 
 import styles from "./styles.module.scss";
-import { Button } from "@/app/(frontend)/_components/ui";
+import { TransitionLink } from "@/app/(frontend)/_components/ui";
 
 interface PortfolioCardProps {
     data: any;
@@ -28,7 +26,7 @@ export function PortfolioCard({ data, index }: PortfolioCardProps) {
     const hasThumbnail = data.image && data.image !== "";
 
     return (
-        <Link href={data.link}>
+        <TransitionLink href={data.link}>
             <article className={`${styles.card} ${isReversed ? styles.reversed : ''}`}>
                 {/* COLUNA DE CONTEÚDO (Texto) */}
                 <div className={styles.cardContent}>
@@ -97,6 +95,6 @@ export function PortfolioCard({ data, index }: PortfolioCardProps) {
                     </div>
                 </div>
             </article>
-        </Link>
+        </TransitionLink>
     );
 }

@@ -101,9 +101,11 @@
   margin-top: tokens.$spacing-7;
 
   a {
-    text-decoration: none;
-    color: tokens.$black;
-    font-size: tokens.$fs-md;
+    span {
+      text-decoration: none;
+      color: tokens.$black;
+      font-size: tokens.$fs-md;
+    }
   }
 }
 

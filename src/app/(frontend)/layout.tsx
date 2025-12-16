@@ -2,6 +2,8 @@ import localFont from "next/font/local";
 import type { Metadata } from "next";
 
 import '../_styles/globals.scss';
+import { TransitionProvider } from "./_context/TransitionContext";
+import { PageTransition } from "./_components/ui";
 import { Header, Footer } from "./_components/sections";
 
 export const halcom = localFont({
@@ -58,9 +60,12 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       className={`${halcom.variable} ${tenez.variable}`}
     >
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <TransitionProvider>
+          <PageTransition />
+          <Header />
+          {children}
+          <Footer />
+        </TransitionProvider>
       </body>
     </html>
   )

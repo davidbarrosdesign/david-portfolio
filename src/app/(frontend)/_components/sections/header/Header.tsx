@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import styles from "./Header.module.scss";
 
-import { Button, MenuToggle } from "../../ui";
+import { Button, MenuToggle, TransitionLink } from "../../ui";
 import { useSpotlightHover } from "../../../_hooks/useSpotlightHover";
 
 // Sons
@@ -27,6 +27,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const menuSpotlight = useSpotlightHover();
   const socialSpotlight = useSpotlightHover();
+
+  const pathname = usePathname();
 
   // abre OU fecha
   const toggleMenu = useCallback(() => {
@@ -53,6 +55,11 @@ export function Header() {
     return () => window.removeEventListener("keydown", fn);
   }, [open, toggleMenu]);
 
+  // Sempre que o pathname mudar (navegação ocorreu), fecha o menu.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   // scroll lock
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -78,18 +85,23 @@ export function Header() {
       <header className={styles.header}>
         <div className={styles.headerContainer}>
           <div className={styles.logoSlot}>
-            <Link href="/">
+            <TransitionLink href={`/`}>
               <Image
                 src="/brand/logo-preto-david-barros.svg"
                 width={32}
                 height={30}
                 alt="Logo"
               />
-            </Link>
+            </TransitionLink>
           </div>
 
           <div className={styles.headerRight}>
-            <Button href="/contato" size="medium" style="solid" color="black">
+            <Button 
+              href={`/contato`}
+              style="solid"
+              color="black"
+              size="medium"
+            >
               Contato
             </Button>
 
@@ -122,14 +134,14 @@ export function Header() {
               <div className={styles.menuInner}>
                 <div className={styles.menuTop}>
                   <div className={styles.logoSlot}>
-                    <Link href="/">
+                    <TransitionLink href={`/`}>
                       <Image
                         src="/brand/logo-preto-david-barros.svg"
                         width={32}
                         height={30}
                         alt="Logo"
                       />
-                    </Link>
+                    </TransitionLink>
                   </div>
 
                   <button className={styles.toggleBtn} onClick={toggleMenu}>
@@ -145,19 +157,19 @@ export function Header() {
                   variants={{ open: { transition: { staggerChildren: 0.08 } } }}
                 >
                   {links.map(({ label, slug }, i) => (
-                    <motion.a
-                      key={slug}
-                      href={`/${slug}`}
-                      variants={{
-                        normal: { opacity: 1, filter: "blur(0px)" },
-                        hovered: { opacity: 1, filter: "blur(0px)", x: 2 },
-                        dimmed: { opacity: 0.3, filter: "blur(2px)" },
-                      }}
-                      {...menuSpotlight.events(i)}
-                      animate={menuSpotlight.animation(i)}
-                    >
-                      {label}
-                    </motion.a>
+                    <TransitionLink key={slug} href={`/${slug}`}>
+                      <motion.span
+                        variants={{
+                          normal: { opacity: 1, filter: "blur(0px)" },
+                          hovered: { opacity: 1, filter: "blur(0px)", x: 2 },
+                          dimmed: { opacity: 0.3, filter: "blur(2px)" },
+                        }}
+                        {...menuSpotlight.events(i)}
+                        animate={menuSpotlight.animation(i)}
+                      >
+                        {label}
+                      </motion.span>
+                    </TransitionLink>
                   ))}
                 </motion.nav>
 

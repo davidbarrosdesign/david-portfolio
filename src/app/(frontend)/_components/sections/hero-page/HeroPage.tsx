@@ -3,8 +3,9 @@
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "@phosphor-icons/react";
 
-import styles from "./HeroPage.module.scss";
+import { useTransition } from "@/app/(frontend)/_context/TransitionContext";
 import { Button } from "../../ui";
+import styles from "./HeroPage.module.scss";
 
 export function HeroPage({
     title
@@ -14,12 +15,21 @@ export function HeroPage({
 
     const router = useRouter();
 
+    const { startTransition } = useTransition();
+
+    const handleGoBack = () => {
+        // Inicia a animação (tela preta) e depois roda o router.back()
+        startTransition(() => {
+            router.back();
+        });
+    };
+
     return (
         <section className={styles.hero}>
             <div className={styles.heroWrapper}>
                 <div className={styles.heroTitle}>
                     <Button
-                        onClick={() => router.back()}
+                        onClick={handleGoBack}
                         target="_self"
                         size="large"
                         style="ghost"

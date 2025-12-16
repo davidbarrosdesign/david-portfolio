@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import Link from 'next/link';
+import { TransitionLink } from '../transition-link/TransitionLink';
 
 import styles from './Button.module.scss';
 
@@ -19,13 +19,15 @@ export function Button({
     size?: "small" | "medium" | "large";
     style?: "solid" | "outline" | "ghost";
     color?: "black" | "white";
-    icon?: React.ElementType;          // icone opcional
-    iconPosition?: "left" | "right";   // posição opcional
+    icon?: React.ElementType;
+    iconPosition?: "left" | "right";
     children: string;
     onClick?: () => void;
 }) {
+    // Gera as classes CSS complexas do seu módulo
     const className = clsx(styles.button, styles[size], styles[style], styles[color]);
 
+    // O conteúdo interno (ícones + texto)
     const content = (
         <>
             {Icon && iconPosition === "left" && (
@@ -40,18 +42,35 @@ export function Button({
         </>
     );
 
+    // LÓGICA DE RENDERIZAÇÃO
     if (href) {
+        // Verifica se é link interno (começa com /) e não abre em nova aba
+        const isInternal = href.startsWith('/');
+        const isSelfTarget = target === "_self" || !target;
+
+        if (isInternal && isSelfTarget) {
+            // ✅ CASO 1: Link interno com animação
+            // Passamos a 'className' do botão para o TransitionLink
+            return (
+                <TransitionLink href={href} className={className}>
+                    {content}
+                </TransitionLink>
+            );
+        }
+
+        // ✅ CASO 2: Link externo ou nova aba (Next/Link padrão)
         return (
-            <Link
+            <TransitionLink
                 href={href}
                 target={target}
                 className={className}
             >
                 {content}
-            </Link>
+            </TransitionLink>
         );
     }
 
+    // ✅ CASO 3: Botão comum (sem href)
     return (
         <button
             onClick={onClick}

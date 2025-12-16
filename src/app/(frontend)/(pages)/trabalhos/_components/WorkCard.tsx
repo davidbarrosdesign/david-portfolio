@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { TransitionLink } from '@/app/(frontend)/_components/ui';
 import styles from './styles.module.scss';
 import { WorkItem } from '../types';
 
@@ -34,7 +35,7 @@ export function WorkCard({ data, view, setHoveredImg }: WorkCardProps) {
                 }
             }}
         >
-            <Link href={`/trabalhos/${data.slug}`} className={styles.cardLink}>
+            <TransitionLink href={`/trabalhos/${data.slug}`} className={styles.cardLink}>
                 <div className={styles.imageContainer}>
                     {hasImage ? (
                         <Image 
@@ -60,7 +61,7 @@ export function WorkCard({ data, view, setHoveredImg }: WorkCardProps) {
                         <span className={styles.year}>{data.year}</span>
                     </div>
                 </div>
-            </Link>
+            </TransitionLink>
         </motion.article>
     );
 }
