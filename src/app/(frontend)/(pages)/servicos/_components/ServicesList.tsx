@@ -3,12 +3,17 @@
 import { ServiceSection } from "./ServiceSection";
 import styles from './styles.module.scss';
 
+import Thumbnail from "public/images/about-image.webp"
+
 // --- DADOS REAIS DO SEU LAYOUT ---
 const data = [
     {
         id: "produtos",
         title: "Produtos digitais",
         description: "Experiências digitais transformadoras para todos os setores e indústrias, com foco nas metas do seu negócio, excelência na usabilidade e visual incrível.",
+        project: [
+            { client: "Kraxá", url: "#", thumbnail: Thumbnail }
+        ],
         deliverables: [
             { title: "Websites", description: "Sites institucionais de alta performance, SEO otimizado e gestão de conteúdo fácil." },
             { title: "Apps Mobile", description: "Aplicativos nativos ou híbridos com foco em retenção e experiência do usuário." },
@@ -27,6 +32,9 @@ const data = [
         id: "web",
         title: "Webdesign",
         description: "Experiências digitais transformadoras para todos os setores e indústrias, com foco nas metas do seu negócio, excelência na usabilidade e visual incrível.",
+        project: [
+            { client: "stock.cash", url: "#", thumbnail: Thumbnail }
+        ],
         deliverables: [
             { title: "Websites", description: "Sites institucionais de alta performance, SEO otimizado e gestão de conteúdo fácil." },
             { title: "Apps Mobile", description: "Aplicativos nativos ou híbridos com foco em retenção e experiência do usuário." },

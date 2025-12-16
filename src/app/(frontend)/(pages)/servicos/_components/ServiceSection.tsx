@@ -4,12 +4,16 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { DeliverableAccordion } from "./DeliverableAccordion";
 import { ProcessCard } from "./ProcessCard";
+import { ProjectCard } from "./ProjectCard";
 import styles from './styles.module.scss';
+
+import { StaticImageData } from 'next/image';
 
 interface ServiceSectionProps {
     data: {
         title: string;
         description: string;
+        project: { client: string; url: string; thumbnail: string | StaticImageData }[];
         deliverables: { title: string; description: string }[];
         process: { order: string; title: string; description: string }[];
     };
@@ -21,7 +25,7 @@ export function ServiceSection({ data, index }: ServiceSectionProps) {
     const isInView = useInView(ref, { margin: "0px 0px -20% 0px", once: true });
 
     // Estado para controlar qual item está aberto (null = nenhum)
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     const handleToggle = (i: number) => {
         // Se clicar no que já está aberto, fecha (null). Se não, abre o novo (i).
@@ -47,7 +51,9 @@ export function ServiceSection({ data, index }: ServiceSectionProps) {
                     </div>
 
                     <div className={styles.project}>
-                        <p>Projeto</p>
+                        {data.project.map((item, i) => (
+                            <ProjectCard key={i} item={item} />
+                        ))}
                     </div>
                 </div>
 

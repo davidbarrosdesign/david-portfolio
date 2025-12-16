@@ -61,7 +61,7 @@ export function Header() {
   const links = [
     { label: "Sobre mim", slug: "sobre" },
     { label: "Trabalhos", slug: "trabalhos" },
-    // { label: "Serviços", slug: "servicos" },
+    { label: "Serviços", slug: "servicos" },
     { label: "Contato", slug: "contato" },
   ];
 
