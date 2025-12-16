@@ -346,8 +346,8 @@
     left: 0;
     
     // Tamanho do círculo
-    width: 200px;
-    height: 200px;
+    width: 80px;
+    height: 80px;
     
     // Centraliza o cursor no ponto X/Y
     transform: translate(-50%, -50%); 
@@ -364,7 +364,7 @@
     // Tipografia
     font-family: tokens.$font-tenez;
     font-style: italic;
-    font-size: tokens.$fs-xl;
+    font-size: tokens.$fs-xs;
     line-height: tokens.$lh-tight;
     letter-spacing: 0.8px;
     color: tokens.$white;
