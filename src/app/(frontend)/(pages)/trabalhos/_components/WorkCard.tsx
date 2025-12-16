@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { useMotionValue, motion, useSpring } from 'framer-motion';
 import { TransitionLink } from '@/app/(frontend)/_components/ui';
 import styles from './styles.module.scss';
 import { WorkItem } from '../types';
@@ -15,6 +15,25 @@ interface WorkCardProps {
 
 export function WorkCard({ data, view, setHoveredImg }: WorkCardProps) {
     const hasImage = data.thumbnail && data.thumbnail !== "";
+    const [isHovered, setIsHovered] = useState(false);
+
+    // Valores crus do mouse
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    // Valores suavizados (Spring Physics)
+    const smoothX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+    const smoothY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        // Se não for grid, nem gasta processamento
+        if (view !== 'grid') return;
+
+        // Pega a posição do mouse relativa ao card
+        const rect = e.currentTarget.getBoundingClientRect();
+        x.set(e.clientX - rect.left);
+        y.set(e.clientY - rect.top);
+    };
 
     return (
         <motion.article 
@@ -28,14 +47,32 @@ export function WorkCard({ data, view, setHoveredImg }: WorkCardProps) {
                 if (view === 'list' && setHoveredImg && hasImage) {
                     setHoveredImg(data.thumbnail);
                 }
+                if (view === 'grid') setIsHovered(true);
             }}
             onMouseLeave={() => {
                 if (view === 'list' && setHoveredImg) {
                     setHoveredImg(null);
                 }
+                if (view === 'grid') setIsHovered(false);
             }}
         >
-            <TransitionLink href={`/trabalhos/${data.slug}`} className={styles.cardLink}>
+            <TransitionLink 
+                href={`/trabalhos/${data.slug}`}
+                className={styles.cardLink}
+                onMouseMove={handleMouseMove}
+            >
+                {view === 'grid' && (
+                    <motion.div 
+                        className={`${styles.gridHoverCursor} ${isHovered ? styles.visible : ''}`}
+                        style={{ 
+                            left: smoothX, 
+                            top: smoothY 
+                        }}
+                    >
+                        Visualizar
+                    </motion.div>
+                )}
+                
                 <div className={styles.imageContainer}>
                     {hasImage ? (
                         <Image 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 
 import styles from "./styles.module.scss";
@@ -25,9 +25,43 @@ export function PortfolioCard({ data, index }: PortfolioCardProps) {
 
     const hasThumbnail = data.image && data.image !== "";
 
+    const [isHovered, setIsHovered] = useState(false);
+
+    // Valores crus do mouse
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    // Valores suavizados (Spring Physics)
+    const smoothX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+    const smoothY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        // Pega a posição do mouse relativa ao card
+        const rect = e.currentTarget.getBoundingClientRect();
+        x.set(e.clientX - rect.left);
+        y.set(e.clientY - rect.top);
+    };
+
     return (
-        <TransitionLink href={data.link}>
-            <article className={`${styles.card} ${isReversed ? styles.reversed : ''}`}>
+        <TransitionLink
+            href={data.link}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            <article
+                className={`${styles.card} ${isReversed ? styles.reversed : ''}`}
+                onMouseMove={handleMouseMove}
+            >
+                <motion.div 
+                    className={`${styles.gridHoverCursor} ${isHovered ? styles.visible : ''}`}
+                    style={{ 
+                        left: smoothX, 
+                        top: smoothY 
+                    }}
+                >
+                    Visualizar
+                </motion.div>
+                
                 {/* COLUNA DE CONTEÚDO (Texto) */}
                 <div className={styles.cardContent}>
                     <div className={styles.metaTop}>
