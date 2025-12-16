@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Divider } from '../../_components/ui';
-import { HeroPage } from '../../_components/sections';
+import { HeroPage, CallToAction } from '../../_components/sections';
 import { ServicesList } from './_components/ServicesList';
 
 import styles from './page.module.scss';
@@ -19,6 +18,14 @@ export default function ServicosPage() {
             />
             <Divider size="small" />
             <ServicesList />
+            <CallToAction 
+              title="Tem um projeto em mente?"
+              content="Vamos criar juntos um website com estética forte e mensagem clara — pronto para converter e fazer sucesso."
+              linkTitle="Vamos falar sobre isso!"
+              url="/contato"
+              target="_self"
+            />
+            <Divider size="medium" />
         </>
     );
 }
