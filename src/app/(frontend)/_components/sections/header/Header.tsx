@@ -74,9 +74,7 @@ export function Header() {
 
   const socials = [
     { label: "LinkedIn", href: "https://linkedin.com/in/davidbarrosdesign/" },
-    { label: "Instagram", href: "https://instagram.com/davidbarros.design/" },
-    // { label: "Bluesky", href: "https://bsky.app/profile/davidbarrosdesign.bsky.social" },
-    // { label: "Newsletter", href: "https://curadoriatalks.substack.com/" },
+    { label: "Instagram", href: "https://instagram.com/davidbarros.design/" }
   ];
 
   return (

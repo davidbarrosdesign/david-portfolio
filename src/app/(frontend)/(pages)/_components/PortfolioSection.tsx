@@ -37,7 +37,7 @@ export function PortfolioSection({ trabalhos }: { trabalhos: any[] }) {
 
             <section className={styles.portfolioAll}>
                 <div className={styles.portfolioAllContent}>
-                    <h2>From beautiful marketing websites to fun, intuitive mobile apps, all the way to powerful, data-driven SaaS dashboards that your clients will love to use.</h2>
+                    <h2>Desde sites de primeira linha, produtos digitais, marcas e experiências de usuário, criei soluções que transformam ideias em realidade.</h2>
                 </div>
                 <div className={styles.portfolioAllButton}>
                         <Button
