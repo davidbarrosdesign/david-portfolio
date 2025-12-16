@@ -28,6 +28,10 @@
 
         text-align: center;
 
+        @media screen and (max-width: tokens.$breakpoint-md) {
+            padding: tokens.$spacing-4;
+        }
+
         .ctaTitle {
             font-family: tokens.$font-tenez;
             font-size: tokens.$fs-lg;
