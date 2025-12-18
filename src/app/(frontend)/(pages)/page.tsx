@@ -31,9 +31,9 @@ export default async function HomePage() {
       <ServicesHome />
       <Divider size="large" />
       <CallToAction 
-        title="Tem um projeto em mente?"
-        content="Vamos transformar sua ideia em realidade com design inovador e estratégico."
-        linkTitle="Me fale sobre seu projeto!"
+        title="Pronto para levar seu projeto ao próximo nível?"
+        content="Vamos conversar sobre como meu método pode ajudar sua empresa a crescer através do design e da tecnologia."
+        linkTitle="Entre em contato"
         url="/contato"
         target="_self"
       />
