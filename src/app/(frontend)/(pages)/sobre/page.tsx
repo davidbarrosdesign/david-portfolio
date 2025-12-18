@@ -9,6 +9,7 @@ import { SectionBenefits } from './_components/SectionBenefits';
 import { SectionServices } from './_components/SectionServices';
 import { SectionClients } from './_components/SectionClients';
 import { SectionFaq } from './_components/SectionFaq';
+import { SectionCuriosities } from './_components/SectionCuriosities';
 import { TestimonialSection } from '../../_components/old';
 import { CallToAction } from '../../_components/sections';
 
@@ -40,6 +41,8 @@ export default async function SobrePage() {
             <SectionClients />
             <Divider size="large" />
             <TestimonialSection depoimentos={depoimentos} />
+            <Divider size="large" />
+            <SectionCuriosities />
             <Divider size="large" />
             <SectionFaq />
             <Divider size="large" />

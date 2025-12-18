@@ -436,3 +436,131 @@
         }
     }
 }
+
+// curiosidades
+.curiositiesContainer {
+    position: relative;
+    height: 500vh;
+
+    .stickyWrapper {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        overflow: hidden;
+
+        .backgroundTitle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            width: 100%;
+            text-align: center;
+        
+            span {
+                display: block;
+
+                font-size: 18vw;
+                font-weight: tokens.$fw-regular;
+                color: rgba(tokens.$gray, 0.1);
+                line-height: tokens.$lh-tight;
+                letter-spacing: -0.02em;
+                white-space: nowrap;
+
+                pointer-events: none;
+                user-select: none;
+            }
+        }
+
+        .curiositiesCards {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+
+            .cardWrapper {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+                width: 30%;
+                height: 70%;
+                margin: auto;
+
+                @media screen and (max-width: tokens.$breakpoint-lg) {
+                    width: 50%;
+                    height: 80%;
+                }
+
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    width: 80%;
+                    height: 90%;
+                }
+
+                .cardInner {
+                    position: relative;
+                
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                
+                    background: tokens.$off-white;
+                    border-radius: tokens.$radius-lg;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+                
+                    .cardImage {
+                        object-fit: cover;
+                        filter: grayscale(100%);
+                
+                        transition: filter 0.45s ease-in-out;
+                
+                        &:hover {
+                            filter: grayscale(0%);
+                
+                            transition: filter 0.45s ease-in-out;
+                        }
+                    }
+                
+                    .cardOverlay {
+                        position: absolute;
+                        bottom: 16px;
+                        left: 16px;
+                        right: 16px;
+                
+                        padding: tokens.$spacing-3;
+                        
+                        display: flex;
+                        align-items: flex-end;
+                        justify-content: center;
+                        text-align: center;
+                
+                        background: rgba(tokens.$white, 0.8);
+                        backdrop-filter: blur(50px);
+                        border-radius: tokens.$radius-lg;
+                
+                        p {
+                            max-width: 250px;
+                
+                            font-size: tokens.$fs-sm;
+                            line-height: tokens.$lh-relaxed;
+                            color: tokens.$gray;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
