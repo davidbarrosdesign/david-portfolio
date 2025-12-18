@@ -1,4 +1,4 @@
-import { withPayload } from '@payloadcms/next/withPayload'
+import { withPayload } from '@payloadcms/next/withPayload';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -17,8 +17,13 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com', // Caso use covers do Unsplash no Notion
       },
+      {
+        protocol: 'https',
+        hostname: '**', // Permitir tudo por enquanto (dev), ou especifique o domínio do Supabase
+      },
     ],
   },
+  serverExternalPackages: ['@payloadcms/db-mongodb', 'payload', 'sharp'],
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
