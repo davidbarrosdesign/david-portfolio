@@ -243,8 +243,6 @@
             flex-direction: column;
             justify-content: center;
 
-            padding: tokens.$spacing-3;
-
             text-align: center;
         }
 
@@ -437,7 +435,6 @@
     }
 }
 
-// curiosidades
 .curiositiesContainer {
     position: relative;
     height: 500vh;
@@ -496,18 +493,18 @@
                 bottom: 0;
                 left: 0;
 
-                width: 30%;
+                width: 40%;
                 height: 70%;
                 margin: auto;
 
                 @media screen and (max-width: tokens.$breakpoint-lg) {
-                    width: 50%;
+                    width: 60%;
                     height: 80%;
                 }
 
                 @media screen and (max-width: tokens.$breakpoint-md) {
                     width: 80%;
-                    height: 90%;
+                    height: 80%;
                 }
 
                 .cardInner {
