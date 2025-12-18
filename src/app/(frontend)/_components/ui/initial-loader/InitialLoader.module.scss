@@ -1,0 +1,49 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.loaderContainer {
+    position: fixed;
+    inset: 0; // Top, right, bottom, left: 0
+    width: 100vw;
+    height: 100vh;
+    
+    background-color: tokens.$black;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    z-index: 10000; 
+    
+    overflow: hidden;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: tokens.$spacing-4;
+    width: 100%;
+    max-width: 280px;
+}
+
+.logoWrapper {
+    width: 32px;
+    height: auto;
+}
+
+// O container cinza da barra (o fundo dela)
+.progressContainer {
+    width: 100%;
+    height: 4px; // Altura da barra fina
+    background-color: rgba(tokens.$white, 0.2); // Fundo semitransparente
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+// A barra branca que preenche
+.progressBar {
+    height: 100%;
+    background-color: tokens.$white;
+    border-radius: 4px;
+}
