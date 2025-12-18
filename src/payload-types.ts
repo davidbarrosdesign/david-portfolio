@@ -143,6 +143,7 @@ export interface Client {
  */
 export interface Service {
   id: string;
+  order: number;
   title: string;
   description: string;
   deliverables?:
@@ -313,6 +314,7 @@ export interface ClientsSelect<T extends boolean = true> {
  * via the `definition` "services_select".
  */
 export interface ServicesSelect<T extends boolean = true> {
+  order?: T;
   title?: T;
   description?: T;
   deliverables?:

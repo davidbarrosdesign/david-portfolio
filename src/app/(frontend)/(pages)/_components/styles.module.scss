@@ -313,3 +313,100 @@
         scale: 1;
     }
 }
+
+.services {
+    width: 100%;
+    padding: 0 tokens.$spacing-5;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding: 0 tokens.$spacing-3;
+    }
+
+    .servicesWrapper {
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-4;
+
+        @media screen and (max-width: tokens.$breakpoint-md) {
+            flex-direction: column;
+            gap: tokens.$spacing-7;
+        }
+
+        .servicesTitle {
+            flex: 1;
+
+            span {
+                font-family: tokens.$font-tenez;
+                font-weight: tokens.$fw-regular;
+                line-height: tokens.$lh-normal;
+                font-size: tokens.$fs-lg;
+                font-style: italic;
+                color: tokens.$black;
+            }
+        }
+
+        .servicesList {
+            flex: 1;
+            
+            div {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+            
+            .servicesStack {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+    
+                .serviceRow {
+                    padding: tokens.$spacing-7 0;
+    
+                    &:first-child {
+                        padding-top: 0;
+                    }
+    
+                    &:last-child {
+                        padding-bottom: 0;
+                    }
+    
+                    &:not(:last-child) {
+                        border-bottom: 1px solid rgba(tokens.$black, 0.1);
+                    }
+                }
+
+                .serviceButtons {
+                    width: 100%;
+                    padding-top: tokens.$spacing-7;
+
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: tokens.$spacing-4;
+
+                    @media screen and (max-width: tokens.$breakpoint-md) {
+                        justify-content: center;
+                    }
+                }
+    
+                .serviceCardContent {
+                    width: 100%;
+    
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: tokens.$spacing-2;
+                }
+            }
+        }
+    }
+}
