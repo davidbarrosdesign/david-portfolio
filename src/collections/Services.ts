@@ -4,11 +4,24 @@ export const Services: CollectionConfig = {
   slug: 'services',
   admin: {
     useAsTitle: 'title',
+    defaultColumns: ['order', 'title', 'updatedAt'],
   },
   access: {
     read: () => true,
   },
   fields: [
+    {
+      name: 'order',
+      type: 'number',
+      required: true,
+      unique: true, // Opcional: Impede que você coloque dois itens com o número "1"
+      label: 'Ordem de Exibição',
+      defaultValue: 10,
+      admin: {
+        position: 'sidebar', // Coloca na barra lateral para não ocupar espaço
+        description: '1 aparece primeiro, 2 em segundo, etc.',
+      },
+    },
     {
       name: 'title', // Ex: Produtos Digitais
       type: 'text',
