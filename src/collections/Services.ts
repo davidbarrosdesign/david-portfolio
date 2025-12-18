@@ -1,0 +1,79 @@
+import { CollectionConfig } from 'payload'
+
+export const Services: CollectionConfig = {
+  slug: 'services',
+  admin: {
+    useAsTitle: 'title',
+  },
+  access: {
+    read: () => true,
+  },
+  fields: [
+    {
+      name: 'title', // Ex: Produtos Digitais
+      type: 'text',
+      required: true,
+      label: 'Nome do Serviço',
+    },
+    {
+      name: 'description', // O texto introdutório
+      type: 'textarea',
+      required: true,
+    },
+    // --- AQUI ESTÃO OS ENTREGÁVEIS (Array) ---
+    {
+      name: 'deliverables',
+      type: 'array',
+      label: 'Lista de Entregáveis',
+      minRows: 1,
+      fields: [
+        {
+          name: 'title', // Ex: SaaS & Plataformas
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'description', // A explicação detalhada
+          type: 'textarea',
+          required: true,
+        },
+      ],
+    },
+    // --- JÁ VAMOS PREPARAR OS PROCESSOS TAMBÉM ---
+    {
+      name: 'process',
+      type: 'array',
+      label: 'Etapas do Processo',
+      fields: [
+        {
+          name: 'order', // Ex: "1", "2"...
+          type: 'text',
+          admin: { width: '20%' }
+        },
+        {
+          name: 'title', // Ex: Imersão
+          type: 'text',
+          admin: { width: '40%' }
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          admin: { width: '40%' }
+        },
+      ]
+    },
+    // --- DESTAQUE DE PROJETO ---
+    // No seu front, cada serviço mostra um card de projeto destaque.
+    // Vamos deixar preparado para quando criarmos a coleção Projects.
+    // Por enquanto, vou deixar comentado para não dar erro, ok?
+    /*
+    {
+      name: 'featuredProject',
+      type: 'relationship',
+      relationTo: 'projects',
+      hasMany: false,
+      label: 'Projeto em Destaque (Card)',
+    }
+    */
+  ],
+}
