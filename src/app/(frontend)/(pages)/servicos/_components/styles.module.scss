@@ -194,12 +194,12 @@
                         border-radius: 20px;
                         cursor: pointer;
 
-                        transition: background 0.3s ease-in-out;
+                        transition: all 0.3s ease-in-out;
 
                         &:hover {
                             background: rgba(232, 232, 237, 0.9);
 
-                            transition: background 0.3s ease-in-out;
+                            transition: all 0.3s ease-in-out;
                         }
 
                         .header {
@@ -248,7 +248,7 @@
                             align-self: flex-end;
                             gap: tokens.$spacing-2;
 
-                            transition: background 0.3s ease-in-out;
+                            transition: all 0.3s ease-in-out;
 
                             @media (max-width: tokens.$breakpoint-md) {
                                 align-self: flex-start;

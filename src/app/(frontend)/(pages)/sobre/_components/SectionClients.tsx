@@ -1,14 +1,12 @@
 'use client';
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useInView } from 'framer-motion';
+import { MarqueeClients } from '../../../_components/parts';
 
 import styles from './styles.module.scss';
 
-import Profile from "@/../public/images/david-barros-profile-wide.webp";
-
-export function SectionImage() {
+export function SectionClients() {
 
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "0px 0px -100px 0px", once: true });
@@ -28,17 +26,10 @@ export function SectionImage() {
             variants={motionVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className={styles.imageWrapper}
+            className={styles.clientsSection}
         >
-            <div className={styles.imageContainer}>
-                <Image
-                    src={Profile}
-                    alt="Profile"
-                    loading="lazy"
-                    fill
-                    style={{ objectFit: 'contain' }}
-                />
-            </div>
+            <span>Algumas marcas e agências que atendi</span>    
+            <MarqueeClients />
         </motion.section>
     );
 }
