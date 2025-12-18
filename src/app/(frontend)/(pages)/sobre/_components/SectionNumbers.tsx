@@ -1,11 +1,12 @@
 'use client';
 
-import { useRef  } from "react";
+import { useRef } from "react";
 import { motion, useInView } from 'framer-motion';
 
 import styles from './styles.module.scss';
 
 export function SectionNumbers() {
+    
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "0px 0px -100px 0px", once: true });
 
@@ -36,8 +37,13 @@ export function SectionNumbers() {
                 }}
                 className={styles.numbersContent}
             >
-                <span className={styles.numbersContentNumber}>12+</span>
-                <span className={styles.numbersContentText}>anos de experiência</span>
+                <span className={styles.numbersContentNumber}>
+                    12+
+                </span>
+                <span className={styles.numbersContentText}>
+                    anos de experiência<br />
+                    sólida no mercado.
+                </span>
             </motion.div>
 
             <motion.div 
@@ -50,8 +56,13 @@ export function SectionNumbers() {
                 }}
                 className={styles.numbersContent}
             >
-                <span className={styles.numbersContentNumber}>36</span>
-                <span className={styles.numbersContentText}>anos de idade</span>
+                <span className={styles.numbersContentNumber}>
+                    04
+                </span>
+                <span className={styles.numbersContentText}>
+                    países com projetos entregues<br />
+                    (Brasil, EUA, Espanha e Itália)
+                </span>
             </motion.div>
 
             <motion.div 
@@ -64,8 +75,13 @@ export function SectionNumbers() {
                 }}
                 className={styles.numbersContent}
             >
-                <span className={styles.numbersContentNumber}>04</span>
-                <span className={styles.numbersContentText}>países atendidos</span>
+                <span className={styles.numbersContentNumber}>
+                    50+
+                </span>
+                <span className={styles.numbersContentText}>
+                    projetos desenhados<br />
+                    e implementados com sucesso
+                </span>
             </motion.div>
 
             <motion.div 
@@ -78,8 +94,13 @@ export function SectionNumbers() {
                 }}
                 className={styles.numbersContent}
             >
-                <span className={styles.numbersContentNumber}>50+</span>
-                <span className={styles.numbersContentText}>clientes atendidos</span>
+                <span className={styles.numbersContentNumber}>
+                    100%
+                </span>
+                <span className={styles.numbersContentText}>
+                    foco em conversão, usabilidade<br />
+                    e ROI do cliente
+                </span>
             </motion.div>
         </motion.section>
     );

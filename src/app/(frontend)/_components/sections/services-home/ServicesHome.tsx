@@ -48,7 +48,7 @@ export function ServicesHome() {
                             <article className={styles.serviceCard}>
                                 <div className={styles.serviceCardContent}>
                                     <h3>Produtos digitais</h3>
-                                    <p>Experiências digitais inovadoras sempre com foco na clareza, conversão, experiência do usuário e impacto real nos negócios.</p>
+                                    <p>Soluções completas que equilibram estética de ponta com usabilidade intuitiva. Desenvolvo interfaces focadas em resolver problemas complexos e gerar valor real para o seu negócio e para o usuário final.</p>
                                 </div>
                             </article>
                         </motion.div>
@@ -65,7 +65,7 @@ export function ServicesHome() {
                             <article className={styles.serviceCard}>
                                 <div className={styles.serviceCardContent}>
                                     <h3>Web Design</h3>
-                                    <p>Seu negócio em um nível mais alto, com design funcional e estratégico para elevar seu negócio a outro patamar, trazendo diferenciação e aumentando a percepção de valor da marca.</p>
+                                    <p>Crio experiências web de alto nível, com foco em performance, acessibilidade e SEO, utilizando tecnologias modernas e plataformas low-code para agilizar o lançamento.</p>
                                 </div>
                             </article>
                         </motion.div>
@@ -81,8 +81,8 @@ export function ServicesHome() {
                         >
                             <article className={styles.serviceCard}>
                                 <div className={styles.serviceCardContent}>
-                                    <h3>Design Estratégico</h3>
-                                    <p>Conecte sua marca com o público-alvo ideal, e torne-a memorável e impactante. Design feito com intenção e estratégia.</p>
+                                    <h3>Design Estratégico & Inovação</h3>
+                                    <p>Design com intenção! Vou além do visual para construir identidades memoráveis e experiências imersivas, utilizando Inteligência Artificial Generativa e tecnologia para destacar sua marca no mercado.</p>
                                 </div>
                             </article>
                         </motion.div>
@@ -98,8 +98,8 @@ export function ServicesHome() {
                         >
                             <article className={styles.serviceCard}>
                                 <div className={styles.serviceCardContent}>
-                                    <h3>Conversão</h3>
-                                    <p>Leve seu projeto para outro nível para engajar e converter com estudos e melhorias constantes baseadas no comportamento dos usuários.</p>
+                                    <h3>Otimização & Conversão (CRO)</h3>
+                                    <p>O design não termina no lançamento. Analiso o comportamento dos usuários para identificar gargalos e implementar melhorias contínuas que aumentam o engajamento, a retenção e, consequentemente, o seu faturamento.</p>
                                 </div>
                             </article>
                         </motion.div>

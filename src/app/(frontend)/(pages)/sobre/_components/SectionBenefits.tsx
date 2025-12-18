@@ -44,8 +44,8 @@ export function SectionBenefits() {
                     >
                         <article className={styles.benefitsCard}>
                             <div className={styles.benefitsCardContent}>
-                                <h3>Ritmo rápido, sem enrolação</h3>
-                                <p>Entregamos sempre o melhor, com máxima velocidade e qualidade, respeitando rigorosamente os prazos estabelecidos.</p>
+                                <h3>Eficiência e Agilidade</h3>
+                                <p>Processos otimizados e uso de ferramentas low-code e IA para entregar protótipos e produtos finais em tempo recorde, reduzindo custos operacionais.</p>
                             </div>
                         </article>
                 </motion.div>
@@ -62,8 +62,8 @@ export function SectionBenefits() {
                     >
                         <article className={styles.benefitsCard}>
                             <div className={styles.benefitsCardContent}>
-                                <h3>Comunicação facilitada</h3>
-                                <p>Durante o projeto, fico à disposição para esclarecer dúvidas, receber sugestões e realizar tantas reuniões quanto se fizerem necessárias.</p>
+                                <h3>Comunicação Direta</h3>
+                                <p>Sem intermediários. Você fala diretamente com o especialista que entende do seu negócio e executa a solução, garantindo alinhamento total.</p>
                             </div>
                         </article>
                 </motion.div>
@@ -80,8 +80,8 @@ export function SectionBenefits() {
                     >
                         <article className={styles.benefitsCard}>
                             <div className={styles.benefitsCardContent}>
-                                <h3>Equipe enxuta, resultado máximo</h3>
-                                <p>Embora trabalhe de forma independente, conto com outros profissionais experientes de confiança para colaborar nos projetos — sem custo adicional para você.</p>
+                                <h3>Visão de Produto 360º</h3>
+                                <p>Minha expertise não para na interface. Entrego soluções que consideram SEO, acessibilidade, performance de carregamento e escalabilidade técnica.</p>
                             </div>
                         </article>
                 </motion.div>
@@ -98,8 +98,8 @@ export function SectionBenefits() {
                     >
                         <article className={styles.benefitsCard}>
                             <div className={styles.benefitsCardContent}>
-                                <h3>Garantia de excelência</h3>
-                                <p>Não paro de trabalhar até que o projeto esteja plenamente de acordo com suas expectativas e seja aprovado por você.</p>
+                                <h3>Foco Total em Resultados</h3>
+                                <p>Cada pixel tem um propósito. Meu trabalho é orientado por métricas e comportamento do usuário para garantir que o design aumente o seu faturamento.</p>
                             </div>
                         </article>
                 </motion.div>

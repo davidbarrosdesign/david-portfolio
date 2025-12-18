@@ -1,0 +1,53 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.track {
+    // Altura "fictícia" para criar tempo de scroll.
+    // Quanto maior, mais lento o texto se preenche.
+    // 250vh significa: 2.5x a altura da tela de scroll para ler esse parágrafo.
+    height: 250vh; 
+    
+    position: relative;
+    width: 100%;
+}
+
+.stickyContainer {
+    // O pulo do gato: Sticky faz ele fixar no topo
+    position: sticky; 
+    top: 0;
+    
+    // Ocupa a tela toda para podermos centralizar o texto perfeitamente
+    height: 100vh; 
+    width: 100%;
+    
+    display: flex;
+    align-items: center; // Centraliza Verticalmente
+    justify-content: center; // Centraliza Horizontalmente
+    
+    overflow: hidden;
+}
+
+.paragraph {
+    display: block; // Importante ser block para text-align funcionar
+    text-align: center; // Centraliza o texto
+    
+    max-width: 900px; // Limite de largura para leitura confortável
+    margin: 0 auto;
+    padding: 0 tokens.$spacing-5;
+    
+    @media (max-width: tokens.$breakpoint-md) {
+        padding: 0 tokens.$spacing-3;
+        font-size: tokens.$fs-lg; // Ajuste fino mobile se precisar
+    }
+}
+
+.wordWrapper {
+    position: relative;
+    display: inline-block;
+    margin-right: 0.25em; // Espaço entre palavras
+    white-space: pre;
+}
+
+.word {
+    display: inline-block;
+    // Sem transição aqui para responder instantaneamente ao scroll (scrubbing)
+}

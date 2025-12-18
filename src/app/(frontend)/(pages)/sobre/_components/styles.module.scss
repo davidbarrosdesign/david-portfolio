@@ -29,49 +29,45 @@
 
 .aboutWrapper {
     width: 100%;
-    max-width: 1600px;
+    max-width: 676px;
     margin: 0 auto;
     padding-right: tokens.$spacing-5;
     padding-left: tokens.$spacing-5;
 
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: tokens.$spacing-4;
+    gap: tokens.$spacing-7;
+
+    text-align: center;
 
     @media screen and (max-width: tokens.$breakpoint-md) {
         padding-right: tokens.$spacing-3;
         padding-left: tokens.$spacing-3;
-
-        flex-direction: column;
-        gap: tokens.$spacing-5;
     }
 
     .aboutTitle {
-        flex: 1;
         width: 100%;
 
-        span {
-            font-family: tokens.$font-tenez;
-            font-style: italic;
-            font-size: tokens.$fs-lg;
-            line-height: tokens.$lh-tight;
+        p {
+            font-size: tokens.$fs-2xl;
+            line-height: tokens.$lh-normal;
             color: tokens.$black;
+
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                font-size: tokens.$fs-xl;
+            }
         }
     }
 
     .aboutContent {
-        flex: 1;
         width: 100%;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        gap: tokens.$spacing-4;
-
-        ul {
-            margin-left: tokens.$spacing-3;
+        p {
+            font-size: tokens.$fs-md;
+            line-height: tokens.$lh-relaxed;
+            color: tokens.$gray;
         }
     }
 }
@@ -93,7 +89,7 @@
         padding-left: tokens.$spacing-3;
 
         flex-direction: column;
-        gap: tokens.$spacing-5;
+        gap: tokens.$spacing-7;
     }
 
     .numbersContent {
@@ -107,20 +103,24 @@
         gap: tokens.$spacing-1;
 
         @media screen and (max-width: tokens.$breakpoint-md) {
-            justify-content: flex-start;
-            align-items: flex-start;
+            justify-content: center;
+            align-items: center;
         }
 
         .numbersContentNumber {
-            font-size: 56px;
+            font-size: 80px;
             line-height: tokens.$lh-tight;
             font-weight: tokens.$fw-bold;
-            color: tokens.$black;
+            color: rgba(tokens.$black, 0.1);
         }
 
         .numbersContentText {
+            display: block;
+
             font-size: tokens.$fs-sm;
-            line-height: tokens.$lh-tight;
+            line-height: tokens.$lh-normal;
+            text-align: center;
+            color: tokens.$gray;
         }
     }
 }
@@ -142,7 +142,11 @@
         padding-left: tokens.$spacing-3;
 
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: tokens.$spacing-5;
+
+        text-align: center;
     }
 
     .benefitsTitle {
@@ -200,6 +204,233 @@
                     justify-content: flex-start;
                     align-items: flex-start;
                     gap: tokens.$spacing-3;
+
+                    @media screen and (max-width: tokens.$breakpoint-md) {
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.servicesSection {
+    width: 100%;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    .servicesWrapper {
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: tokens.$spacing-8;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: tokens.$spacing-4;
+
+        background: tokens.$white;
+        border-radius: tokens.$radius-lg;
+        box-shadow: 0px 1px 3px rgba(tokens.$black, 0.1);
+
+        @media screen and (max-width: tokens.$breakpoint-lg) {
+            padding: tokens.$spacing-5;
+        }
+
+        @media screen and (max-width: tokens.$breakpoint-md) {
+            flex-direction: column;
+            justify-content: center;
+
+            padding: tokens.$spacing-3;
+
+            text-align: center;
+        }
+
+        .servicesContent {
+            width: 100%;
+            max-width: 420px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: tokens.$spacing-3;
+        }
+
+        .servicesButton {
+            width: 80px;
+            height: 80px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: rgba(232, 232, 237, 0.72);
+            border-radius: 40px;
+
+            transition: transform 0.45s ease-in-out;
+        }
+
+        &:hover {
+            .servicesButton {
+                transform: rotate(45deg);
+
+                transition: transform 0.45s ease-in-out;
+            }
+        }
+    }
+}
+
+.clientsSection {
+    width: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: tokens.$spacing-5;
+
+    span {
+        font-family: tokens.$font-tenez;
+        font-style: italic;
+        font-size: tokens.$fs-md;
+        line-height: tokens.$lh-tight;
+        color: tokens.$black;
+    }
+}
+
+.faqSection {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: tokens.$spacing-4;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-right: tokens.$spacing-3;
+        padding-left: tokens.$spacing-3;
+
+        flex-direction: column;
+        gap: tokens.$spacing-7;
+    }
+
+    .faqTitle {
+        flex: 1;
+        width: 100%;
+
+        .faqTitleWrapper {
+            width: 100%;
+
+            h2 {
+                width: 100%;
+                max-width: 480px;
+
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    max-width: 100%;
+
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .faqContent {
+        flex: 1;
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-4;
+
+        .faqItem {
+            width: 100%;
+            padding: tokens.$spacing-2 tokens.$spacing-4;
+
+            background: rgba(232, 232, 237, 0.72);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border-radius: tokens.$radius-lg;
+            cursor: pointer;
+
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background: rgba(232, 232, 237, 0.9);
+
+                transition: all 0.3s ease-in-out;
+            }
+
+            .faqHeader {
+                width: 100%;
+                height: 40px;
+                
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: tokens.$spacing-2;
+
+                span {
+                    font-size: tokens.$fs-sm;
+                    font-weight: tokens.$fw-bold;
+                    line-height: tokens.$lh-relaxed;
+                    color: tokens.$black;
+                }
+
+                .icon {
+                    width: 10px;
+                    height: 10px;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    svg {
+                        color: tokens.$black;
+                    }
+                }
+            }
+
+            &.open {
+                width: 100%;
+                height: auto;
+                padding: tokens.$spacing-4;
+
+                background: rgba(232, 232, 237, 0.98);
+                border-radius: tokens.$radius-lg;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                align-self: flex-end;
+                gap: tokens.$spacing-2;
+
+                transition: all 0.3s ease-in-out;
+
+                @media (max-width: tokens.$breakpoint-md) {
+                    align-self: flex-start;
+                }
+
+                .faqHeader {
+                    height: auto;
+
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .faqBody {
+                    width: 100%;
+                    height: auto;
                 }
             }
         }

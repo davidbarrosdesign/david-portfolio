@@ -14,7 +14,7 @@ export default function ServicosPage() {
     return (
         <>
             <HeroPage
-                title="Te ajudo a criar produtos e marcas do zero — ou a levar o que já existe para o próximo nível."
+                title="Design estratégico e tecnologia para marcas que buscam o próximo nível de impacto"
             />
             <Divider size="small" />
             <ServicesList />

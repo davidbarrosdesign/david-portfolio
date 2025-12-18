@@ -6,7 +6,9 @@ import { SectionImage } from './_components/SectionImage';
 import { SectionAbout } from './_components/SectionAbout';
 import { SectionNumbers } from './_components/SectionNumbers';
 import { SectionBenefits } from './_components/SectionBenefits';
-import { MarqueeClients } from '../../_components/parts';
+import { SectionServices } from './_components/SectionServices';
+import { SectionClients } from './_components/SectionClients';
+import { SectionFaq } from './_components/SectionFaq';
 import { TestimonialSection } from '../../_components/old';
 import { CallToAction } from '../../_components/sections';
 
@@ -24,24 +26,27 @@ export default async function SobrePage() {
 
     return (
         <main>
-            <HeroPage title="Me chamo David Barros. Sou especialista em produtos digitais." />
+            <HeroPage title="Design estratégico para produtos que escalam e marcas que lideram." />
             <Divider size="small" />
             <SectionImage />
-            <Divider size="medium" />
             <SectionAbout />
-            <Divider size="medium" />
+            <Divider size="large" />
             <SectionNumbers />
-            <Divider size="medium" />
+            <Divider size="large" />
             <SectionBenefits />
-            <Divider size="medium" />
-            <MarqueeClients />
-            <Divider size="medium" />
+            <Divider size="large" />
+            <SectionServices />
+            <Divider size="large" />
+            <SectionClients />
+            <Divider size="large" />
             <TestimonialSection depoimentos={depoimentos} />
-            <Divider size="medium" />
+            <Divider size="large" />
+            <SectionFaq />
+            <Divider size="large" />
             <CallToAction 
-              title="Tem um projeto em mente?"
-              content="Vamos criar juntos um website com estética forte e mensagem clara — pronto para converter e fazer sucesso."
-              linkTitle="Vamos falar sobre isso!"
+              title="Vamos falar sobre o seu projeto"
+              content="Pronto para elevar o nível do seu produto digital?"
+              linkTitle="Entre em contato"
               url="/contato"
               target="_self"
             />
