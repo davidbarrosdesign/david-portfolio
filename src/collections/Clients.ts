@@ -28,7 +28,6 @@ export const Clients: CollectionConfig = {
       name: 'logo',
       type: 'upload',
       relationTo: 'media',
-      required: true,
       label: 'Logotipo',
     },
     // Opcional: Website do cliente
