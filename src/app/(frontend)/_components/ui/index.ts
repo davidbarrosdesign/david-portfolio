@@ -6,5 +6,6 @@ import { PageTransition } from "./page-transition/PageTransition";
 import { TransitionLink } from "./transition-link/TransitionLink";
 import { ScrollRevealText } from "./scroll-review-text/ScrollRevealText";
 import { InitialLoader } from "./initial-loader/InitialLoader";
+import { MarqueeClients } from "./marquee-clients/MarqueeClients";
 
-export { Button, MenuToggle, TextArc, Divider, PageTransition, TransitionLink, ScrollRevealText, InitialLoader };
+export { Button, MenuToggle, TextArc, Divider, PageTransition, TransitionLink, ScrollRevealText, InitialLoader, MarqueeClients };

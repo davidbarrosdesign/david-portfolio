@@ -1,5 +1,6 @@
-
 import type { Metadata } from "next";
+import { getPayload } from 'payload';
+import configPromise from '@payload-config';
 import { Divider } from '../../_components/ui';
 import { HeroPage } from '../../_components/sections';
 import { SectionImage } from './_components/SectionImage';
@@ -25,6 +26,18 @@ export default async function SobrePage() {
     let depoimentos = await getAllDepoimentos();
     depoimentos = depoimentos.slice(0, 5); // Pega só os 5 primeiros
 
+    const payload = await getPayload({ config: configPromise });
+    const { docs: clients } = await payload.find({
+      collection: 'clients',
+      where: {
+        featured: {
+          equals: 'true', // Importante: no seu print você definiu como string 'true', não boolean
+        },
+      },
+      limit: 0, // 0 = Traz todos que derem match (sem limite)
+      sort: 'name', // Opcional: ordena alfabeticamente
+    });
+
     return (
         <main>
             <HeroPage title="Design estratégico para produtos que escalam e marcas que lideram." />
@@ -38,7 +51,7 @@ export default async function SobrePage() {
             <Divider size="large" />
             <SectionServices />
             <Divider size="large" />
-            <SectionClients />
+            <SectionClients clients={clients as any} />
             <Divider size="large" />
             <TestimonialSection depoimentos={depoimentos} />
             <Divider size="large" />

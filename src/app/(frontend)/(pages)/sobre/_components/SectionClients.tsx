@@ -2,11 +2,16 @@
 
 import { useRef } from "react";
 import { motion, useInView } from 'framer-motion';
-import { MarqueeClients } from '../../../_components/parts';
+import { MarqueeClients } from '@/app/(frontend)/_components/ui';
 
 import styles from './styles.module.scss';
 
-export function SectionClients() {
+// Interface para receber os dados
+interface ClientsSectionProps {
+  clients: any[]; // Tipagem rápida, pode melhorar depois
+}
+
+export function SectionClients({ clients }: ClientsSectionProps) {
 
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "0px 0px -100px 0px", once: true });
@@ -29,7 +34,7 @@ export function SectionClients() {
             className={styles.clientsSection}
         >
             <span>Algumas marcas e agências que atendi</span>    
-            <MarqueeClients />
+            <MarqueeClients clients={clients} />
         </motion.section>
     );
 }
