@@ -7,13 +7,16 @@ import { ProcessCard } from "./ProcessCard";
 import { ProjectCard } from "./ProjectCard";
 import styles from './styles.module.scss';
 
-import { StaticImageData } from 'next/image';
-
 interface ServiceSectionProps {
     data: {
         title: string;
         description: string;
-        project: { client: string; url: string; thumbnail: string | StaticImageData }[];
+        // Atualizamos a tipagem para ser flexível com o Payload
+        project: { 
+            client: string; 
+            url: string; 
+            thumbnail: any; // Aceita string ou objeto Media
+        }[];
         deliverables: { title: string; description: string }[];
         process: { order: string; title: string; description: string }[];
     };
@@ -24,13 +27,14 @@ export function ServiceSection({ data, index }: ServiceSectionProps) {
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "0px 0px -20% 0px", once: true });
 
-    // Estado para controlar qual item está aberto (null = nenhum)
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     const handleToggle = (i: number) => {
-        // Se clicar no que já está aberto, fecha (null). Se não, abre o novo (i).
         setOpenIndex(openIndex === i ? null : i);
     };
+
+    // Verificação de segurança para garantir que existe projeto antes de renderizar
+    const hasProject = data.project && data.project.length > 0;
 
     return (
         <motion.section 
@@ -41,7 +45,7 @@ export function ServiceSection({ data, index }: ServiceSectionProps) {
             transition={{ duration: 0.8, delay: index * 0.1 }}
         >
             <div className={styles.serviceWrapper}>
-                {/* COLUNA ESQUERDA (MANTÉM IGUAL) */}
+                {/* COLUNA ESQUERDA */}
                 <div className={styles.leftColumn}>
                     <div className={styles.content}>
                         <h2 className={styles.title}>{data.title}</h2>
@@ -50,14 +54,17 @@ export function ServiceSection({ data, index }: ServiceSectionProps) {
                         )}
                     </div>
 
-                    <div className={styles.project}>
-                        {data.project.map((item, i) => (
-                            <ProjectCard key={i} item={item} />
-                        ))}
-                    </div>
+                    {/* Renderiza o Card do Projeto se houver */}
+                    {hasProject && (
+                        <div className={styles.project}>
+                            {data.project.map((item, i) => (
+                                <ProjectCard key={i} item={item} />
+                            ))}
+                        </div>
+                    )}
                 </div>
 
-                {/* COLUNA DIREITA (Passamos o controle para os filhos) */}
+                {/* COLUNA DIREITA */}
                 <div className={styles.rightColumn}>
                     <h5 className={styles.label}>Entregáveis</h5>
                     <div className={styles.deliverablesList}>
@@ -65,9 +72,7 @@ export function ServiceSection({ data, index }: ServiceSectionProps) {
                             <DeliverableAccordion 
                                 key={i} 
                                 item={item}
-                                // O item está aberto se o índice dele for igual ao estado do pai
                                 isOpen={i === openIndex}
-                                // Passamos a função para ele avisar quando foi clicado
                                 onToggle={() => handleToggle(i)}
                             />
                         ))}
