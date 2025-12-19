@@ -12,6 +12,7 @@ interface ServicesHomeProps {
         id: string;
         title: string;
         description: string;
+        order: string;
     }[];
 }
 

@@ -23,8 +23,8 @@ export default async function HomePage() {
   const payload = await getPayload({ config: configPromise });
   const { docs: services } = await payload.find({
     collection: 'services',
-    sort: 'order', // Se tiver campo de ordem, senão use 'createdAt'
-    limit: 4, // Geralmente na home mostramos os 4 principais
+    sort: 'order',
+    limit: 4,
   });
 
   return (
