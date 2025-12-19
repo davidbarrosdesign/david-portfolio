@@ -35,6 +35,20 @@ export const Clients: CollectionConfig = {
       name: 'website',
       type: 'text',
       label: 'Site Oficial (Opcional)',
+    },
+    {
+      name: 'featured',
+      type: 'select',
+      label: 'Destaque',
+      defaultValue: 'false',
+      options: [
+        { label: 'Sim', value: 'true' },
+        { label: 'Não', value: 'false' },
+      ],
+      admin: {
+        position: 'sidebar',
+        description: 'Se marcado, o cliente será exibido na página inicial',
+      }
     }
   ],
 }
