@@ -166,6 +166,7 @@ export interface Service {
         id?: string | null;
       }[]
     | null;
+  relatedProject?: (string | null) | Project;
   updatedAt: string;
   createdAt: string;
 }
@@ -419,6 +420,7 @@ export interface ServicesSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  relatedProject?: T;
   updatedAt?: T;
   createdAt?: T;
 }
