@@ -1,7 +1,17 @@
 import { buildConfig } from 'payload'
 import path from 'path'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { 
+  lexicalEditor, 
+  FixedToolbarFeature, 
+  HeadingFeature, 
+  BoldFeature,
+  ItalicFeature,
+  UnderlineFeature,
+  OrderedListFeature,
+  UnorderedListFeature,
+  LinkFeature
+} from '@payloadcms/richtext-lexical';
 import { s3Storage } from '@payloadcms/storage-s3'
 import { fileURLToPath } from 'url'
 
@@ -22,7 +32,19 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Clients, Services, Projects],
-  editor: lexicalEditor(),
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      FixedToolbarFeature(), // Barra de ferramentas fixa no topo
+      HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3'] }), // Títulos
+      BoldFeature(),
+      ItalicFeature(),
+      UnderlineFeature(),
+      OrderedListFeature(), // Lista numerada 1. 2. 3.
+      UnorderedListFeature(), // Bullet points
+      LinkFeature({}), // Links
+    ],
+  }),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

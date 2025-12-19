@@ -118,7 +118,7 @@ export const Projects: CollectionConfig = {
                 // Bloco 2: Imagem Grande (Full Width)
                 {
                   slug: 'imageBlock',
-                  labels: { singular: 'Imagem Grande', plural: 'Imagens Grandes' },
+                  labels: { singular: 'Mídia Grande', plural: 'Mídias Grandes' },
                   fields: [
                     {
                       name: 'image',
