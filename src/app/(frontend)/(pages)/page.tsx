@@ -2,10 +2,10 @@
 import { getPayload } from 'payload';
 import configPromise from '@payload-config';
 import { Divider } from '@/app/(frontend)/_components/ui';
-import { HeroHome, ClientsHome, CallToAction } from '@/app/(frontend)/_components/sections';
+import { HeroHome, CallToAction } from '@/app/(frontend)/_components/sections';
 import { TestimonialSection } from '@/app/(frontend)/_components/old';
 import { getAllTrabalhos, getAllDepoimentos } from '@/app/(frontend)/_lib/notion';
-import { PortfolioSection, ServicesSection } from '@/app/(frontend)/(pages)/_components';
+import { PortfolioSection, ServicesSection, ClientsSection } from '@/app/(frontend)/(pages)/_components';
 
 export const dynamic = "force-static";
 export const revalidate = 300;
@@ -26,13 +26,23 @@ export default async function HomePage() {
     sort: 'order',
     limit: 4,
   });
+  const { docs: clients } = await payload.find({
+    collection: 'clients',
+    where: {
+      featured: {
+        equals: 'true', // Importante: no seu print você definiu como string 'true', não boolean
+      },
+    },
+    limit: 0, // 0 = Traz todos que derem match (sem limite)
+    sort: 'name', // Opcional: ordena alfabeticamente
+  });
 
   return (
     <main>
       <HeroHome />
       <PortfolioSection trabalhos={trabalhos} />
       <Divider size="large" />
-      <ClientsHome />
+      <ClientsSection clients={clients as any} />
       <Divider size="large" />
       <TestimonialSection depoimentos={depoimentos} />
       <Divider size="large" />
