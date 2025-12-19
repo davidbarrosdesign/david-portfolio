@@ -1,16 +1,21 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
+import { ProjectMedia } from '../../trabalhos/[slug]/_components/ProjectMedia';
 
 import styles from './styles.module.scss';
 
-import { StaticImageData } from 'next/image';
-
 interface ProjectProps {
-    item: { url: string; thumbnail: string | StaticImageData; client: string; }
+    item: { 
+        url: string; 
+        thumbnail: any; 
+        client: string; 
+    }
 }
 
 export function ProjectCard({ item }: ProjectProps) {
+
+    if (!item || !item.url) return null;
+
     return (
         <Link 
             href={item.url}
@@ -23,15 +28,11 @@ export function ProjectCard({ item }: ProjectProps) {
                     <span className={styles.projectClient}>{item.client}</span>
                 </div>
                 <div className={styles.projectThumb}>
-                    <Image
-                        src={item.thumbnail}
+                    <ProjectMedia
+                        resource={item.thumbnail}
                         alt={item.client}
+                        fill={true}
                         className={styles.projectImage}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        // height={128}
-                        priority
-                        objectFit='contain'
                     />
                 </div>
             </div>

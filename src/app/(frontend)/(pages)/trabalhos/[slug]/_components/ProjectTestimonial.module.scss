@@ -1,0 +1,59 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.testimonialWrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: tokens.$spacing-8 tokens.$spacing-5;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: tokens.$spacing-5;
+
+    background-color: tokens.$off-white; // Um fundo suave para destacar do resto
+    border-radius: tokens.$radius-lg;
+
+    @media (max-width: tokens.$breakpoint-md) {
+        padding: tokens.$spacing-6 tokens.$spacing-4;
+    }
+
+    .icon {
+        color: tokens.$black;
+        opacity: 0.2; // Aspas sUaves
+    }
+
+    .quote {
+        font-family: tokens.$font-tenez; // Fonte serifada para destaque (se tiver) ou a padrão
+        font-style: italic;
+        font-size: tokens.$fs-2xl;
+        line-height: tokens.$lh-tight;
+        color: tokens.$black;
+        margin: 0;
+
+        @media (max-width: tokens.$breakpoint-md) {
+            font-size: tokens.$fs-xl;
+        }
+    }
+
+    .authorInfo {
+        display: flex;
+        flex-direction: column;
+        gap: tokens.$spacing-1;
+        margin-top: tokens.$spacing-2;
+
+        .name {
+            font-weight: tokens.$fw-bold;
+            font-size: tokens.$fs-sm;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: tokens.$black;
+        }
+
+        .role {
+            font-size: tokens.$fs-xs;
+            color: tokens.$gray;
+        }
+    }
+}

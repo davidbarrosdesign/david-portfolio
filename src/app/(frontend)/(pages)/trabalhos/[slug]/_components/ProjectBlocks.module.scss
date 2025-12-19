@@ -1,0 +1,69 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.blocksContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-7;
+}
+
+.textBlock {
+    width: 100%;
+    max-width: 800px; // Texto não deve ser muito largo para leitura
+    margin: 0 auto;
+
+    h1, h2, h3 {
+        margin-top: tokens.$spacing-6;
+        margin-bottom: tokens.$spacing-3;
+        font-family: tokens.$font-tenez;
+    }
+    p {
+        margin-bottom: tokens.$spacing-3;
+        line-height: tokens.$lh-relaxed;
+        color: tokens.$gray;
+    }
+    ul, ol {
+        margin-bottom: tokens.$spacing-3;
+        padding-left: tokens.$spacing-5;
+    }
+}
+
+.fullWidthImage {
+    width: 100%;
+    aspect-ratio: 16/9;
+    position: relative;
+    border-radius: tokens.$radius-lg;
+    overflow: hidden;
+
+    figcaption {
+        margin-top: tokens.$spacing-2;
+        font-size: tokens.$fs-xs;
+        color: tokens.$gray;
+        text-align: center;
+    }
+}
+
+.galleryGrid {
+    display: grid;
+    gap: tokens.$spacing-4;
+    width: 100%;
+
+    &.cols2 { grid-template-columns: 1fr 1fr; }
+    &.cols3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    @media (max-width: tokens.$breakpoint-md) {
+        grid-template-columns: 1fr !important; // Mobile vira 1 coluna
+    }
+
+    .galleryItem {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4/3; // Ou 1/1 se preferir quadrado
+        border-radius: tokens.$radius-md;
+        overflow: hidden;
+    }
+}
+
+.mediaItem {
+    object-fit: cover;
+}
