@@ -132,8 +132,9 @@ export interface Client {
   id: string;
   name: string;
   country: string;
-  logo: string | Media;
+  logo?: (string | null) | Media;
   website?: string | null;
+  featured?: ('true' | 'false') | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -306,6 +307,7 @@ export interface ClientsSelect<T extends boolean = true> {
   country?: T;
   logo?: T;
   website?: T;
+  featured?: T;
   updatedAt?: T;
   createdAt?: T;
 }

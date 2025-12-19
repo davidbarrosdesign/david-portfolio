@@ -113,11 +113,10 @@ export function MarqueeClients({ clients }: MarqueeProps) {
                   <Image
                       src={logoUrl}
                       alt={client.name}
-                      fill
+                      width={150}
+                      height={40}
                       style={{ 
-                        objectFit: 'contain', 
-                        height: '20px',
-                        width: 'auto' 
+                        objectFit: 'contain',
                       }}
                   />
                 )}
