@@ -6,16 +6,38 @@ import { useRef } from "react";
 import TestimonialStack from "../testimonial-card/TestimonialStack";
 import styles from "./TestimonialSection.module.scss";
 
+interface PayloadTestimonial {
+    id: string;
+    author: string;
+    authorRole: string;
+    content: string;
+    client?: {
+        name: string;
+    } | string | null; // Pode vir o objeto ou ID
+}
+
 export function TestimonialSection({ depoimentos }: { depoimentos: any[] }) {
     if (!Array.isArray(depoimentos)) return null;
 
-    const items = depoimentos.map((t: any) => ({
-        index: t.id,
-        title: t.title,
-        jobTitle: t.jobTitle,
-        company: t.company,
-        testimonial: t.testimonial,
-    }));
+    // MAPEAMENTO: Payload -> Formato do Card
+    const items = depoimentos.map((t: PayloadTestimonial) => {
+        // Tratamento de segurança para o nome da empresa
+        const clientName = (typeof t.client === 'object' && t.client?.name) 
+            ? t.client.name 
+            : '';
+
+        return {
+            index: t.id,
+            // No Payload criamos 'author' para o nome da pessoa
+            title: t.author, 
+            // No Payload criamos 'authorRole' para o cargo
+            jobTitle: t.authorRole, 
+            // Pegamos o nome do cliente através do relacionamento
+            company: clientName ? `- ${clientName}` : '', 
+            // No Payload o texto é 'content'
+            testimonial: t.content, 
+        };
+    });
 
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "0px 0px -100px 0px", once: true });

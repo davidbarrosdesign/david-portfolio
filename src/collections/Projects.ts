@@ -83,6 +83,20 @@ export const Projects: CollectionConfig = {
               hasMany: true,
               required: true,
               label: 'Serviços Prestados',
+              admin: {
+                position: 'sidebar', // Fica organizado na lateral
+              },
+            },
+            {
+              name: 'relatedTestimonial',
+              type: 'relationship',
+              relationTo: 'testimonials', // Nome da coleção de depoimentos
+              hasMany: false, // Seleciona apenas 1 depoimento (destaque do case)
+              label: 'Depoimento do Projeto',
+              admin: {
+                position: 'sidebar', // Fica organizado na lateral
+                description: 'Se selecionado, aparecerá em destaque na página do projeto.',
+              },
             },
             {
               name: 'thumbnail',
@@ -90,6 +104,10 @@ export const Projects: CollectionConfig = {
               relationTo: 'media',
               required: true,
               label: 'Capa (Thumbnail)',
+              admin: {
+                position: 'sidebar', // Fica organizado na lateral
+                description: 'Selecione a capa do projeto',
+              },
             },
           ]
         },
