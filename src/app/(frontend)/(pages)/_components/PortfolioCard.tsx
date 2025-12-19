@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
+import { ProjectMedia } from "../trabalhos/[slug]/_components/ProjectMedia";
+import { TransitionLink } from "@/app/(frontend)/_components/ui";
 
 import styles from "./styles.module.scss";
-import { TransitionLink } from "@/app/(frontend)/_components/ui";
 
 interface PortfolioCardProps {
     data: any;
@@ -13,17 +14,15 @@ interface PortfolioCardProps {
 }
 
 export function PortfolioCard({ data, index }: PortfolioCardProps) {
-    const [isLoaded, setIsLoaded] = useState(false);
-
     // Lógica para alternar: Pares (0, 2...) normal, Ímpares (1, 3...) invertido
     const isReversed = index % 2 !== 0;
 
-    const isVideo =
-        data.image?.endsWith(".mp4") ||
-        data.image?.endsWith(".webm") ||
-        data.image?.includes("video");
+    // const isVideo =
+    //     data.image?.endsWith(".mp4") ||
+    //     data.image?.endsWith(".webm") ||
+    //     data.image?.includes("video");
 
-    const hasThumbnail = data.image && data.image !== "";
+    // const hasThumbnail = data.image && data.image !== "";
 
     const [isHovered, setIsHovered] = useState(false);
 
@@ -85,41 +84,12 @@ export function PortfolioCard({ data, index }: PortfolioCardProps) {
                 {/* COLUNA DE MÍDIA (Imagem/Vídeo) */}
                 <div className={styles.cardMedia}>
                     <div className={styles.mediaWrapper}>
-                        {/* LOADER */}
-                        <AnimatePresence>
-                            {!isLoaded && (
-                                <motion.div
-                                    initial={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.5 }}
-                                    className={styles.loaderSkeleton}
-                                />
-                            )}
-                        </AnimatePresence>
-
-                        {/* IMAGEM / VIDEO */}
-                        {isVideo ? (
-                            <video
-                                src={data.image}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                onLoadedData={() => setIsLoaded(true)}
-                            />
-                        ) : hasThumbnail ? (
-                            <Image
-                                src={data.image}
+                        {data.image ? (
+                            <ProjectMedia
+                                resource={data.image}
                                 alt={data.title}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                                priority={index === 0} // Prioriza a primeira imagem
-                                style={{
-                                    objectFit: "contain",
-                                    opacity: isLoaded ? 1 : 0,
-                                    transition: "opacity 0.6s ease-out"
-                                }}
-                                onLoad={() => setIsLoaded(true)}
+                                fill={true} // Preenche o pai (mediaWrapper)
+                                className={styles.projectImage} // Mantém sua classe de estilo para bordas/etc
                             />
                         ) : (
                             <div className={styles.fallback}>

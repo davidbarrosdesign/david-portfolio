@@ -1,9 +1,11 @@
 'use client';
 
-import Image from 'next/image';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useMotionValue, motion, useSpring } from 'framer-motion';
+// 1. Removemos o import de Image
 import { TransitionLink } from '@/app/(frontend)/_components/ui';
+// 2. Importamos o ProjectMedia
+import { ProjectMedia } from '../[slug]/_components/ProjectMedia';
 import styles from './styles.module.scss';
 import { WorkItem } from '../types';
 
@@ -14,7 +16,9 @@ interface WorkCardProps {
 }
 
 export function WorkCard({ data, view, setHoveredImg }: WorkCardProps) {
+    // Verificação simples se existe thumbnail
     const hasImage = data.thumbnail && data.thumbnail !== "";
+    
     const [isHovered, setIsHovered] = useState(false);
 
     // Valores crus do mouse
@@ -61,6 +65,7 @@ export function WorkCard({ data, view, setHoveredImg }: WorkCardProps) {
                 className={styles.cardLink}
                 onMouseMove={handleMouseMove}
             >
+                {/* Cursor "Visualizar" apenas no Grid */}
                 {view === 'grid' && (
                     <motion.div 
                         className={`${styles.gridHoverCursor} ${isHovered ? styles.visible : ''}`}
@@ -73,20 +78,23 @@ export function WorkCard({ data, view, setHoveredImg }: WorkCardProps) {
                     </motion.div>
                 )}
                 
+                {/* --- ÁREA DA IMAGEM/VÍDEO --- */}
                 <div className={styles.imageContainer}>
                     {hasImage ? (
-                        <Image 
-                            src={data.thumbnail} 
+                        <ProjectMedia 
+                            resource={data.thumbnail} 
                             alt={data.title} 
-                            fill 
+                            fill={true} 
                             className={styles.image}
-                            sizes={view === 'grid' ? "(max-width: 768px) 100vw, 50vw" : "100vw"}
+                            // Nota: Removemos 'sizes' pois o ProjectMedia não o utiliza para vídeos,
+                            // e para imagens ele já tem valores padrão inteligentes.
                         />
                     ) : (
                         <div className={styles.placeholder}>Sem imagem</div>
                     )}
                 </div>
                 
+                {/* Infos do Card */}
                 <div className={styles.info}>
                     <h4>{data.client}</h4>
                     <div className={styles.meta}>

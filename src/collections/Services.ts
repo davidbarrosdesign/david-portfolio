@@ -76,17 +76,15 @@ export const Services: CollectionConfig = {
       ]
     },
     // --- DESTAQUE DE PROJETO ---
-    // No seu front, cada serviço mostra um card de projeto destaque.
-    // Vamos deixar preparado para quando criarmos a coleção Projects.
-    // Por enquanto, vou deixar comentado para não dar erro, ok?
-    /*
     {
-      name: 'featuredProject',
+      name: 'relatedProject',
       type: 'relationship',
       relationTo: 'projects',
-      hasMany: false,
-      label: 'Projeto em Destaque (Card)',
-    }
-    */
+      hasMany: false, // Apenas 1 destaque por serviço
+      label: 'Case em Destaque',
+      admin: {
+        position: 'sidebar',
+      }
+    },
   ],
 }

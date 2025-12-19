@@ -182,6 +182,7 @@ export interface Project {
   client: string | Client;
   year: string;
   services: (string | Service)[];
+  relatedTestimonial?: (string | null) | Testimonial;
   thumbnail: string | Media;
   layout?:
     | (
@@ -433,6 +434,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   client?: T;
   year?: T;
   services?: T;
+  relatedTestimonial?: T;
   thumbnail?: T;
   layout?:
     | T
