@@ -18,8 +18,8 @@ export default async function ServicosPage() {
 
     const { docs: services } = await payload.find({
       collection: 'services',
-      sort: 'order', // Se você tiver campo de ordem, ou use '-createdAt'
-      depth: 1, // Traz os relacionamentos se houver
+      sort: 'order',
+      depth: 1,
     });
 
     return (
