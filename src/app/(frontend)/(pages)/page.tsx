@@ -4,7 +4,7 @@ import configPromise from '@payload-config';
 import { Divider } from '@/app/(frontend)/_components/ui';
 import { HeroHome, CallToAction } from '@/app/(frontend)/_components/sections';
 import { TestimonialSection } from '@/app/(frontend)/_components/old';
-import { getAllTrabalhos, getAllDepoimentos } from '@/app/(frontend)/_lib/notion';
+import { getAllTrabalhos } from '@/app/(frontend)/_lib/notion';
 import { PortfolioSection, ServicesSection, ClientsSection } from '@/app/(frontend)/(pages)/_components';
 
 export const dynamic = "force-static";
@@ -16,16 +16,21 @@ export default async function HomePage() {
   let trabalhos = await getAllTrabalhos();
   trabalhos = trabalhos.slice(0, 5); // Pega só os 5 primeiros
 
-  // 2. Busca Depoimentos diretamente
-  let depoimentos = await getAllDepoimentos();
-  depoimentos = depoimentos.slice(0, 5); // Pega só os 5 primeiros
-
   const payload = await getPayload({ config: configPromise });
+
+  const { docs: depoimentos } = await payload.find({
+    collection: 'testimonials',
+    depth: 1, // Importante: Traz os dados do Cliente (nome, logo) em vez de só o ID
+    limit: 5,
+    sort: '-createdAt', // Mais recentes primeiro
+  });
+
   const { docs: services } = await payload.find({
     collection: 'services',
     sort: 'order',
-    limit: 4,
+    limit: 0,
   });
+  
   const { docs: clients } = await payload.find({
     collection: 'clients',
     where: {
@@ -44,7 +49,7 @@ export default async function HomePage() {
       <Divider size="large" />
       <ClientsSection clients={clients as any} />
       <Divider size="large" />
-      <TestimonialSection depoimentos={depoimentos} />
+      <TestimonialSection depoimentos={depoimentos as any} />
       <Divider size="large" />
       <ServicesSection services={services as any} />
       <Divider size="large" />

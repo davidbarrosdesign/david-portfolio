@@ -14,8 +14,6 @@ import { SectionCuriosities } from './_components/SectionCuriosities';
 import { TestimonialSection } from '../../_components/old';
 import { CallToAction } from '../../_components/sections';
 
-import { getAllDepoimentos } from '@/app/(frontend)/_lib/notion';
-
 export const metadata: Metadata = {
   title: "Sobre | David Barros",
   description: "Conheça mais sobre o David Barros, especialista em produtos digitais e designer com mais de 12 anos de experiência criando produtos digitais, interfaces e soluções focadas na experiência do usuário."
@@ -23,10 +21,8 @@ export const metadata: Metadata = {
 
 export default async function SobrePage() {
 
-    let depoimentos = await getAllDepoimentos();
-    depoimentos = depoimentos.slice(0, 5); // Pega só os 5 primeiros
-
     const payload = await getPayload({ config: configPromise });
+
     const { docs: clients } = await payload.find({
       collection: 'clients',
       where: {
@@ -36,6 +32,13 @@ export default async function SobrePage() {
       },
       limit: 0, // 0 = Traz todos que derem match (sem limite)
       sort: 'name', // Opcional: ordena alfabeticamente
+    });
+
+    const { docs: depoimentos } = await payload.find({
+      collection: 'testimonials',
+      depth: 1, // Importante: Traz os dados do Cliente (nome, logo) em vez de só o ID
+      limit: 5,
+      sort: '-createdAt', // Mais recentes primeiro
     });
 
     return (
@@ -53,7 +56,7 @@ export default async function SobrePage() {
             <Divider size="large" />
             <SectionClients clients={clients as any} />
             <Divider size="large" />
-            <TestimonialSection depoimentos={depoimentos} />
+            <TestimonialSection depoimentos={depoimentos as any} />
             <Divider size="large" />
             <SectionCuriosities />
             <Divider size="large" />
