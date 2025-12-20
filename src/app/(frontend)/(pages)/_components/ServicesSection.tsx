@@ -5,15 +5,11 @@ import { useRef } from "react";
 import { Button } from "@/app/(frontend)/_components/ui";
 
 import styles from './styles.module.scss';
+import { Service } from "@/payload-types";
 
 // Definimos o que esperamos receber
 interface ServicesHomeProps {
-    services: {
-        id: string;
-        title: string;
-        description: string;
-        order: string;
-    }[];
+    services: Service[];
 }
 
 export function ServicesSection({ services }: ServicesHomeProps) {

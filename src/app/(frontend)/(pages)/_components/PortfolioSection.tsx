@@ -7,19 +7,40 @@ import { PortfolioStack } from "./PortfolioStack";
 import { Button, Divider } from "@/app/(frontend)/_components/ui";
 import styles from './styles.module.scss';
 
-export function PortfolioSection({ trabalhos }: { trabalhos: any[] }) {
+export interface PortfolioItem {
+    id: string;
+    title: string;
+    client: string;
+    year: string;
+    services: string[];
+    thumbnail: string;
+    slug: string;
+}
+
+export function PortfolioSection({ trabalhos }: { trabalhos: PortfolioItem[] }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
+
+    const motionVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.9,
+                ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
+            }
+        }
+    };
 
     // 1. ADAPTER: Transforma os dados do Notion para o formato que o Card espera
     const items = trabalhos.map((t, i) => ({
         id: t.id,
-        index: i, // Importante para a lógica de alternância (par/ímpar)
+        index: i,
         title: t.title,
         client: t.client,
         year: t.year,
         services: t.services,
-        // O Notion chama de 'thumbnail', o Card espera 'image'
         image: t.thumbnail, 
         link: `/trabalhos/${t.slug}`,
     }));
@@ -27,9 +48,9 @@ export function PortfolioSection({ trabalhos }: { trabalhos: any[] }) {
     return (
         <motion.section
             ref={ref}
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            variants={motionVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
         >
             <PortfolioStack items={items} />
 

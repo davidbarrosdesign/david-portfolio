@@ -4,11 +4,12 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { MarqueeClients } from "@/app/(frontend)/_components/ui";
 
+import { Client } from "@/payload-types";
 import styles from "./styles.module.scss";
 
 // Interface para receber os dados
 interface ClientsSectionProps {
-  clients: any[]; // Tipagem rápida, pode melhorar depois
+  clients: Client[];
 }
 
 export function ClientsSection({ clients }: ClientsSectionProps) {

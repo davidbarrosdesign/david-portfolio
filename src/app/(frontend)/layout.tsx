@@ -46,7 +46,7 @@ const tenez = localFont({
 
 export const metadata: Metadata = {
   title: "David Barros | Product Designer • UX/UI • Conversão (CRO & AIO)",
-  description: "Designer com mais de 12 anos de experiência criando produtos digitais, interfaces e soluções focadas na experiência do usuário.",
+  description: "Mais de 12 anos de experiência criando produtos digitais e soluções focadas na experiência do usuário. Transforme sua ideia em um produto escalável e lucrativo!",
   icons: {
     icon: "/brand/icon.png",
   },

@@ -5,22 +5,16 @@ import { useRef } from "react";
 
 import TestimonialStack from "../testimonial-card/TestimonialStack";
 import styles from "./TestimonialSection.module.scss";
+import { Testimonial } from "@/payload-types";
 
-interface PayloadTestimonial {
-    id: string;
-    author: string;
-    authorRole: string;
-    content: string;
-    client?: {
-        name: string;
-    } | string | null; // Pode vir o objeto ou ID
-}
+export function TestimonialSection({ depoimentos }: { depoimentos: Testimonial[] }) {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { margin: "0px 0px -100px 0px", once: true });
 
-export function TestimonialSection({ depoimentos }: { depoimentos: any[] }) {
     if (!Array.isArray(depoimentos)) return null;
 
     // MAPEAMENTO: Payload -> Formato do Card
-    const items = depoimentos.map((t: PayloadTestimonial) => {
+    const items = depoimentos.map((t: Testimonial) => {
         // Tratamento de segurança para o nome da empresa
         const clientName = (typeof t.client === 'object' && t.client?.name) 
             ? t.client.name 
@@ -39,8 +33,7 @@ export function TestimonialSection({ depoimentos }: { depoimentos: any[] }) {
         };
     });
 
-    const ref = useRef(null);
-    const isInView = useInView(ref, { margin: "0px 0px -100px 0px", once: true });
+
 
     const motionVariants = {
         hidden: { opacity: 0, y: 100 },
