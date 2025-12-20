@@ -334,6 +334,8 @@
 
         @media screen and (max-width: tokens.$breakpoint-md) {
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
             gap: tokens.$spacing-7;
         }
 
@@ -347,6 +349,10 @@
                 font-size: tokens.$fs-lg;
                 font-style: italic;
                 color: tokens.$black;
+
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    text-align: center;
+                }
             }
         }
 
@@ -359,6 +365,11 @@
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: flex-start;
+
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    justify-content: center;
+                    align-items: center;
+                }
             }
             
             .servicesStack {
@@ -368,6 +379,10 @@
     
                 .serviceRow {
                     padding: tokens.$spacing-7 0;
+
+                    @media screen and (max-width: tokens.$breakpoint-md) {
+                        text-align: center;
+                    }
     
                     &:first-child {
                         padding-top: 0;
@@ -404,7 +419,12 @@
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    gap: tokens.$spacing-2;
+                    gap: tokens.$spacing-3;
+
+                    @media screen and (max-width: tokens.$breakpoint-md) {
+                        justify-content: center;
+                        align-items: center;
+                    }
                 }
             }
         }

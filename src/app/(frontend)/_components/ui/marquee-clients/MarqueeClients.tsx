@@ -3,17 +3,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { motion, useAnimation } from 'framer-motion';
-import { Media } from "@/payload-types";
+import { Media, Client } from "@/payload-types";
 
 import styles from './MarqueeClients.module.scss';
 
 // Vamos receber a lista via Props
 interface MarqueeProps {
-  clients: {
-    id: string;
-    name: string;
-    logo: string | Media; // O Payload pode mandar só o ID ou o objeto Media completo
-  }[];
+  clients: Client[];
 }
 
 export function MarqueeClients({ clients }: MarqueeProps) {
@@ -81,8 +77,8 @@ export function MarqueeClients({ clients }: MarqueeProps) {
   }
 
   // HELPER para extrair a URL da imagem
-  const getLogoUrl = (logo: string | Media) => {
-    if (typeof logo === 'object' && logo?.url) {
+  const getLogoUrl = (logo: string | Media | null | undefined) => {
+    if (typeof logo === 'object' && logo !== null && 'url' in logo && logo.url) {
       return logo.url; // URL vinda do Supabase
     }
     return ''; // Fallback ou placeholder

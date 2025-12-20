@@ -5,6 +5,8 @@ import { Divider } from '@/app/(frontend)/_components/ui';
 import { HeroHome, CallToAction } from '@/app/(frontend)/_components/sections';
 import { TestimonialSection } from '@/app/(frontend)/_components/old';
 import { PortfolioSection, ServicesSection, ClientsSection } from '@/app/(frontend)/(pages)/_components';
+import { Project, Media, Client, Service } from '@/payload-types';
+import { PortfolioItem } from '@/app/(frontend)/(pages)/_components/PortfolioSection';
 
 export const dynamic = "force-static";
 export const revalidate = 300;
@@ -30,37 +32,42 @@ export default async function HomePage() {
     collection: 'clients',
     where: {
       featured: {
-        equals: 'true', // Importante: no seu print você definiu como string 'true', não boolean
+        equals: 'true',
       },
     },
-    limit: 0, // 0 = Traz todos que derem match (sem limite)
-    sort: 'name', // Opcional: ordena alfabeticamente
+    limit: 0,
+    sort: 'name',
   });
 
   const { docs: projectsData } = await payload.find({
     collection: 'projects',
     where: {
-      featured: { equals: 'true' }, // Traz apenas os destacados
+      featured: { equals: 'true' },
     },
     sort: '-createdAt',
     limit: 5,
-    depth: 1, // Traz os dados do Cliente e a URL da imagem
+    depth: 1,
   });
 
-  const trabalhos = projectsData.map((doc: any) => {
+  const trabalhos: PortfolioItem[] = projectsData.map((doc: Project) => {
     // Tratamento de Imagem (Pode ser objeto ou string)
-    const thumbnail = (doc.thumbnail && typeof doc.thumbnail === 'object') 
-      ? doc.thumbnail.url 
-      : doc.thumbnail;
+    const thumbnailObj = doc.thumbnail as Media | string; // Cast para auxiliar verificação
+    const thumbnail = (typeof thumbnailObj === 'object' && thumbnailObj !== null && 'url' in thumbnailObj) 
+      ? thumbnailObj.url || ''
+      : (typeof thumbnailObj === 'string' ? thumbnailObj : '');
 
     // Tratamento de Cliente (Pode ser objeto ou ID)
-    const clientName = (doc.client && typeof doc.client === 'object') 
-      ? doc.client.name 
+    const clientObj = doc.client as Client | string;
+    const clientName = (typeof clientObj === 'object' && clientObj !== null && 'name' in clientObj) 
+      ? clientObj.name 
       : 'Cliente';
 
     // Tratamento de Serviços (Array de objetos -> Array de strings)
     const serviceList = Array.isArray(doc.services)
-      ? doc.services.map((s: any) => (typeof s === 'object' ? s.title : s))
+      ? doc.services.map((s) => {
+          const serviceObj = s as Service | string;
+          return (typeof serviceObj === 'object' && serviceObj !== null && 'title' in serviceObj) ? serviceObj.title : String(serviceObj);
+      })
       : [];
 
     return {
@@ -69,7 +76,7 @@ export default async function HomePage() {
       client: clientName,
       year: doc.year,
       services: serviceList,
-      thumbnail: thumbnail, // Agora é uma URL string (video ou img)
+      thumbnail: thumbnail,
       slug: doc.slug,
     };
   });
@@ -79,11 +86,11 @@ export default async function HomePage() {
       <HeroHome />
       <PortfolioSection trabalhos={trabalhos} />
       <Divider size="large" />
-      <ClientsSection clients={clients as any} />
+      <ClientsSection clients={clients} />
       <Divider size="large" />
-      <TestimonialSection depoimentos={depoimentos as any} />
+      <TestimonialSection depoimentos={depoimentos} />
       <Divider size="large" />
-      <ServicesSection services={services as any} />
+      <ServicesSection services={services} />
       <Divider size="large" />
       <CallToAction 
         title="Pronto para levar seu projeto ao próximo nível?"
@@ -92,7 +99,7 @@ export default async function HomePage() {
         url="/contato"
         target="_self"
       />
-      <Divider size="large" />
+      <Divider size="medium" />
     </main>
   )
 }
