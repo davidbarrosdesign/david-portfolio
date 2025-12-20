@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import Image from "next/image";
 import { ProjectMedia } from "../trabalhos/[slug]/_components/ProjectMedia";
 import { TransitionLink } from "@/app/(frontend)/_components/ui";
 
@@ -14,23 +13,13 @@ interface PortfolioCardProps {
 }
 
 export function PortfolioCard({ data, index }: PortfolioCardProps) {
-    // Lógica para alternar: Pares (0, 2...) normal, Ímpares (1, 3...) invertido
     const isReversed = index % 2 !== 0;
-
-    // const isVideo =
-    //     data.image?.endsWith(".mp4") ||
-    //     data.image?.endsWith(".webm") ||
-    //     data.image?.includes("video");
-
-    // const hasThumbnail = data.image && data.image !== "";
 
     const [isHovered, setIsHovered] = useState(false);
 
-    // Valores crus do mouse
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
-    // Valores suavizados (Spring Physics)
     const smoothX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
     const smoothY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 

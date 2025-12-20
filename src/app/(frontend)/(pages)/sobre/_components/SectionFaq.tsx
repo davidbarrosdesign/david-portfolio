@@ -6,34 +6,13 @@ import { FaqItem } from "./FaqItem";
 
 import styles from './styles.module.scss';
 
-const faq_data = [
-    {
-        question: "Você faz apenas o design ou também entrega o produto implementado?",
-        answer: "Ofereço soluções completas, desde a estratégia e o design de interface até a implementação técnica. Como designer e desenvolvedor, utilizo tecnologias modernas como Next.js ou plataformas low-code para garantir que a visão criativa seja executada com precisão e performance."
-    },
-    {
-        question: "Como a Inteligência Artificial é integrada aos seus projetos?",
-        answer: "Utilizo IA para acelerar processos de pesquisa, gerar assets visuais únicos e otimizar o código. Isso permite entregar projetos mais robustos em menos tempo, focando a energia humana onde ela é insubstituível: na estratégia e na empatia com o usuário."
-    },
-    {
-        question: "Você tem experiência atendendo empresas de outros países?",
-        answer: "Sim, tenho experiência global colaborando com empresas no Brasil, Estados Unidos, Espanha e Itália, adaptando o design e a comunicação para diferentes contextos culturais e fusos horários."
-    },
-    {
-        question: "Quais tecnologias você utiliza para garantir sites rápidos e inovadores?",
-        answer: "Meu stack principal envolve Next.js e React para alta performance, Framer Motion para animações fluidas e integrações headless (como Notion ou CMS dedicados) para facilitar a gestão de conteúdo."
-    },
-    {
-        question: "Como seu trabalho ajuda a aumentar o faturamento da minha empresa?",
-        answer: "Através de Design Estratégico e CRO (Otimização de Conversão). Não crio apenas telas bonitas; projeto fluxos que eliminam fricção, transmitem autoridade e guiam o usuário intuitivamente até a compra ou contato."
-    },
-    {
-        question: "Você trabalha com sistemas complexos ou apenas sites institucionais?",
-        answer: "Trabalho com ambos. Tenho vasta experiência em Dashboards, SaaS e plataformas complexas, onde o desafio é transformar grandes volumes de dados em interfaces simples e acionáveis."
-    }
-];
+interface FaqDoc {
+    id: string;
+    question: string;
+    answer: string;
+}
 
-export function SectionFaq() {
+export function SectionFaq({ items }: { items: FaqDoc[] }) {
 
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "0px 0px -100px 0px", once: true });
@@ -54,6 +33,9 @@ export function SectionFaq() {
         }
     };
 
+    // Se não tiver itens, não renderiza a seção (ou renderiza vazia)
+    if (!items || items.length === 0) return null;
+
     return (
         <motion.section
             ref={ref}
@@ -69,9 +51,9 @@ export function SectionFaq() {
             </div>
 
             <div className={styles.faqContent}>
-                {faq_data.map((item, i) => (
+                {items.map((item, i) => (
                     <FaqItem 
-                        key={i}
+                        key={item.id || i}
                         item={item}
                         isOpen={i === openIndex}
                         onToggle={() => handleToggle(i)}
