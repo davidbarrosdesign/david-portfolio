@@ -1,5 +1,7 @@
 'use client';
 
+import { useRef } from 'react';
+import { motion, useInView } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "@phosphor-icons/react";
 
@@ -18,15 +20,39 @@ export function HeroPage({
     const { startTransition } = useTransition();
 
     const handleGoBack = () => {
-        // Inicia a animação (tela preta) e depois roda o router.back()
         startTransition(() => {
             router.back();
         });
     };
 
+    const ref = useRef(null);
+    const isInView = useInView(ref, { margin: "0px 0px -10% 0px", once: true });
+
+    const revealVariants = {
+        hidden: { 
+            y: "100%",
+            opacity: 0,
+            filter: "blur(20px)",
+        },
+        visible: {
+            y: "0%",
+            opacity: 1,
+            filter: "blur(0px)",
+            transition: {
+                delay: 1,
+                duration: 2,
+                ease: [0.16, 1, 0.3, 1] as const,
+            }
+        }
+    };
+
     return (
-        <section className={styles.hero}>
-            <div className={styles.heroWrapper}>
+        <section className={styles.hero} ref={ref}>
+            <motion.div
+                className={styles.heroWrapper}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+            >
                 <div className={styles.heroTitle}>
                     <Button
                         onClick={handleGoBack}
@@ -39,9 +65,13 @@ export function HeroPage({
                     >
                         Voltar
                     </Button>
-                    <h1>{title}</h1>
+                    <h1 className={styles.titleMask}>
+                        <motion.span variants={revealVariants}>
+                            {title}
+                        </motion.span>
+                    </h1>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }
