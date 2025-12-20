@@ -49,16 +49,35 @@
             align-items: flex-start;
             gap: tokens.$spacing-4;
 
-            p {
-                max-width: 676px;
+            .servicesList {
+                margin: 0;
+                padding: 0;
 
-                font-size: tokens.$fs-md;
-                line-height: tokens.$lh-relaxed;
-                color: tokens.$black;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: tokens.$spacing-2;
+                
+                list-style: none;
 
-                span {
+                li {
+                    padding: tokens.$spacing-2 tokens.$spacing-3;
+
+                    background: transparent;
+                    border: 1px solid rgba(tokens.$black, 0.2);
+                    border-radius: 30px;
+
+                    font-size: tokens.$fs-xs;
+                    line-height: tokens.$lh-tight;
                     color: tokens.$gray;
                 }
+            }
+
+            h2 {
+                font-size: tokens.$fs-xl;
+                line-height: tokens.$lh-relaxed;
+                color: tokens.$black;
             }
 
             @media (max-width: tokens.$breakpoint-md) {
@@ -69,49 +88,33 @@
         .infoList {
             flex: 1;
 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: start;
+            align-items: start;
+            grid-gap: tokens.$spacing-4;
+
             @media (max-width: tokens.$breakpoint-md) {
                 width: 100%;
-                order: -1;
             }
 
             .infoItem {
-                padding: tokens.$spacing-4 0px;
-                border-bottom: 1px solid rgba(tokens.$gray, 0.2);
-
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                justify-content: start;
-                align-items: start;
-                grid-gap: tokens.$spacing-4;
-
-                &:first-child {
-                    padding-top: 0px;
-                }
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: tokens.$spacing-1;
 
                 .infoItemTitle {
-                    font-family: tokens.$font-tenez;
-                    font-style: italic;
-                    font-size: tokens.$fs-md;
-                    line-height: 23px;
-                    color: tokens.$black;
-                }
-
-                .infoItemValue {
-                    font-size: tokens.$fs-sm;
-                    line-height: 23px;
+                    font-size: tokens.$fs-xs;
+                    line-height: tokens.$lh-relaxed;
                     color: tokens.$gray;
                 }
 
-                .servicesList {
-                    padding: 0;
-                    margin: 0;
-                    list-style: none;
-
-                    li {
-                        font-size: tokens.$fs-sm;
-                        line-height: 23px;
-                        color: tokens.$gray;
-                    }
+                .infoItemValue {
+                    font-size: 16px;
+                    line-height: tokens.$lh-relaxed;
+                    color: tokens.$black;
                 }
             }
         }

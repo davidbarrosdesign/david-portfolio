@@ -2,6 +2,9 @@
 
 .blocksContainer {
     width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+
     display: flex;
     flex-direction: column;
     gap: tokens.$spacing-7;
@@ -9,31 +12,48 @@
 
 .textBlock {
     width: 100%;
-    max-width: 800px; // Texto não deve ser muito largo para leitura
+    max-width: 676px;
     margin: 0 auto;
 
-    h1, h2, h3 {
-        margin-top: tokens.$spacing-6;
-        margin-bottom: tokens.$spacing-3;
-        font-family: tokens.$font-tenez;
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: tokens.$spacing-4;
+
+        h1, h2, h3 {
+            color: tokens.$black;
+        }
+    
+        p {
+            font-size:16px;
+            line-height: tokens.$lh-relaxed;
+            color: tokens.$gray;
+        }
+
+        ul, ol {
+            display: flex;
+            flex-direction: column;
+            gap: tokens.$spacing-2;
+
+            padding-left: tokens.$spacing-4;
+
+            font-size: 16px;
+            line-height: tokens.$lh-relaxed;
+            color: tokens.$gray;
+        }
     }
-    p {
-        margin-bottom: tokens.$spacing-3;
-        line-height: tokens.$lh-relaxed;
-        color: tokens.$gray;
-    }
-    ul, ol {
-        margin-bottom: tokens.$spacing-3;
-        padding-left: tokens.$spacing-5;
-    }
+
 }
 
 .fullWidthImage {
-    width: 100%;
-    aspect-ratio: 16/9;
     position: relative;
-    border-radius: tokens.$radius-lg;
+
+    width: 100%;
     overflow: hidden;
+
+    aspect-ratio: 16/9;
+
+    border-radius: tokens.$radius-lg;
 
     figcaption {
         margin-top: tokens.$spacing-2;
@@ -44,12 +64,19 @@
 }
 
 .galleryGrid {
-    display: grid;
-    gap: tokens.$spacing-4;
     width: 100%;
 
-    &.cols2 { grid-template-columns: 1fr 1fr; }
-    &.cols3 { grid-template-columns: 1fr 1fr 1fr; }
+    display: grid;
+
+    gap: tokens.$spacing-4;
+
+    &.cols2 { 
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &.cols3 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 
     @media (max-width: tokens.$breakpoint-md) {
         grid-template-columns: 1fr !important; // Mobile vira 1 coluna
@@ -57,10 +84,12 @@
 
     .galleryItem {
         position: relative;
+
         width: 100%;
-        aspect-ratio: 4/3; // Ou 1/1 se preferir quadrado
-        border-radius: tokens.$radius-md;
         overflow: hidden;
+
+        aspect-ratio: 16/9;
+        border-radius: tokens.$radius-lg;
     }
 }
 

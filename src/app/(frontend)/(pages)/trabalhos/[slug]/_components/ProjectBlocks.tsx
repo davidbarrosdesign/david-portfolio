@@ -1,10 +1,19 @@
 'use client';
 
-import { ProjectMedia } from "./ProjectMedia"; // Aquele componente que criamos
+import { motion } from 'framer-motion';
+import type { Project } from '@/payload-types';
+import { ProjectMedia } from "./ProjectMedia";
 import { RichTextParser } from "./RichTextParser";
-import styles from './ProjectBlocks.module.scss'; // Vamos usar o CSS existente ou adaptar
+import styles from './ProjectBlocks.module.scss';
 
-export function ProjectBlocks({ blocks }: { blocks: any[] }) {
+const blockAnimation = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-10%" },
+    transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }
+};
+
+export function ProjectBlocks({ blocks }: { blocks: Project['layout'] }) {
     if (!blocks || !Array.isArray(blocks)) return null;
 
     return (
@@ -15,28 +24,40 @@ export function ProjectBlocks({ blocks }: { blocks: any[] }) {
                 switch (blockType) {
                     case 'contentBlock':
                         return (
-                            <div key={index} className={styles.textBlock}>
+                            <motion.div
+                                key={index}
+                                className={styles.textBlock}
+                                {...blockAnimation}
+                            >
                                 <RichTextParser content={block.content} />
-                            </div>
+                            </motion.div>
                         );
 
                     case 'imageBlock':
                         return (
-                            <figure key={index} className={styles.fullWidthImage}>
+                            <motion.figure
+                                key={index}
+                                className={styles.fullWidthImage}
+                                {...blockAnimation}
+                            >
                                 <ProjectMedia 
                                     resource={block.image} 
                                     className={styles.mediaItem}
                                     fill={true}
                                 />
                                 {block.caption && <figcaption>{block.caption}</figcaption>}
-                            </figure>
+                            </motion.figure>
                         );
 
                     case 'galleryBlock':
                         const isThreeCols = block.columns === '3';
                         return (
-                            <div key={index} className={`${styles.galleryGrid} ${isThreeCols ? styles.cols3 : styles.cols2}`}>
-                                {block.images?.map((img: any, imgIndex: number) => (
+                            <motion.div
+                                key={index}
+                                className={`${styles.galleryGrid} ${isThreeCols ? styles.cols3 : styles.cols2}`}
+                                {...blockAnimation}
+                            >
+                                {block.images?.map((img, imgIndex) => (
                                     <div key={imgIndex} className={styles.galleryItem}>
                                         <ProjectMedia 
                                             resource={img} 
@@ -45,7 +66,7 @@ export function ProjectBlocks({ blocks }: { blocks: any[] }) {
                                         />
                                     </div>
                                 ))}
-                            </div>
+                            </motion.div>
                         );
 
                     default:
