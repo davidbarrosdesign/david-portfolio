@@ -41,6 +41,12 @@ export default async function SobrePage() {
       sort: '-createdAt', // Mais recentes primeiro
     });
 
+    const { docs: faqItems } = await payload.find({
+        collection: 'faq',
+        limit: 100, // Traz todas as perguntas
+        sort: '-createdAt', // Mais recentes primeiro
+    });
+
     return (
         <main>
             <HeroPage title="Design estratégico para produtos que escalam e marcas que lideram." />
@@ -60,7 +66,7 @@ export default async function SobrePage() {
             <Divider size="large" />
             <SectionCuriosities />
             <Divider size="large" />
-            <SectionFaq />
+            <SectionFaq items={faqItems as any} />
             <Divider size="large" />
             <CallToAction 
               title="Vamos falar sobre o seu projeto"
