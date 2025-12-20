@@ -83,8 +83,7 @@ export default async function TrabalhoSingle({ params }: { params: Promise<{ slu
 
     // Cliente (Extraindo nome e país/sobre)
     const clientName = (typeof project.client === 'object') ? project.client.name : 'Cliente Confidencial';
-    // Se quiser adicionar "Sobre o Cliente" no CMS Client.ts futuramente, pegaria aqui:
-    const clientAbout = "Empresa parceira com foco em inovação.";
+    const clientCountry = (typeof project.client === 'object') ? project.client.country : 'Brasil';
 
     // Depoimento Relacionado
     const testimonial = (typeof project.relatedTestimonial === 'object') ? project.relatedTestimonial : null;
@@ -110,17 +109,22 @@ export default async function TrabalhoSingle({ params }: { params: Promise<{ slu
                 <Divider size="small"/>
 
                 <section className={styles.infosWrapper}>
-                    <div className={styles.infoResume}>
-                        <p><span>Sobre o cliente:</span> { clientAbout }</p>
-                        <p><span>Resumo do projeto:</span> { project.subtitle }</p>
-                    </div>
                     <div className={styles.infoList}>
                         <div className={styles.infoItem}>
                             <span className={styles.infoItemTitle}>Cliente</span>
                             <span className={styles.infoItemValue}>{ clientName }</span>
                         </div>
                         <div className={styles.infoItem}>
-                            <span className={styles.infoItemTitle}>Serviços</span>
+                            <span className={styles.infoItemTitle}>País</span>
+                            <span className={styles.infoItemValue}>{ clientCountry }</span>
+                        </div>
+                        <div className={styles.infoItem}>
+                            <span className={styles.infoItemTitle}>Ano</span>
+                            <span className={styles.infoItemValue}>{ project.year }</span>
+                        </div>
+                    </div>
+                    <div className={styles.infoResume}>
+                        <div className={styles.infoItem}>
                             <ul className={styles.servicesList}>
                                 {serviceNames.length > 0 ? (
                                     serviceNames.map((name, index) => (
@@ -131,10 +135,10 @@ export default async function TrabalhoSingle({ params }: { params: Promise<{ slu
                                 )}
                             </ul>
                         </div>
-                        <div className={styles.infoItem}>
-                            <span className={styles.infoItemTitle}>Ano</span>
-                            <span className={styles.infoItemValue}>{ project.year }</span>
-                        </div>
+
+                        <h2>
+                            { project.subtitle }
+                        </h2>
                     </div>
                 </section>
 

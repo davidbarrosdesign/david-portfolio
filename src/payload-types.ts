@@ -17,6 +17,7 @@ export interface Config {
     services: Service;
     projects: Project;
     testimonials: Testimonial;
+    faq: Faq;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -29,6 +30,7 @@ export interface Config {
     services: ServicesSelect<false> | ServicesSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    faq: FaqSelect<false> | FaqSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -245,6 +247,17 @@ export interface Testimonial {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq".
+ */
+export interface Faq {
+  id: string;
+  question: string;
+  answer: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -273,6 +286,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'testimonials';
         value: string | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'faq';
+        value: string | Faq;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -481,6 +498,16 @@ export interface TestimonialsSelect<T extends boolean = true> {
   author?: T;
   authorRole?: T;
   client?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq_select".
+ */
+export interface FaqSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
   updatedAt?: T;
   createdAt?: T;
 }

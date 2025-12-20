@@ -12,21 +12,21 @@ interface ProjectTestimonialProps {
 
 export function ProjectTestimonial({ author, role, company, content }: ProjectTestimonialProps) {
     return (
-        <figure className={styles.testimonialWrapper}>
+        <article className={styles.testimonialWrapper}>
             <div className={styles.icon}>
                 <Quotes size={32} weight="fill" />
             </div>
             
             <blockquote className={styles.quote}>
-                "{content}"
+                &quot;{content}&quot;
             </blockquote>
 
-            <figcaption className={styles.authorInfo}>
+            <div className={styles.authorInfo}>
                 <span className={styles.name}>{author}</span>
                 <span className={styles.role}>
                     {role} {company && `• ${company}`}
                 </span>
-            </figcaption>
-        </figure>
+            </div>
+        </article>
     );
 }
