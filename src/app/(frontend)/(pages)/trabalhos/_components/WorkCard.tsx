@@ -96,13 +96,16 @@ export function WorkCard({ data, view, setHoveredImg }: WorkCardProps) {
                 
                 {/* Infos do Card */}
                 <div className={styles.info}>
-                    <h4>{data.client}</h4>
-                    <div className={styles.meta}>
+                    <div className={styles.services}>
                         <ul>
                             {data.services?.map((s: string) => (
                                 <li key={s}>{s}</li>
                             ))}
                         </ul>
+                    </div>
+                    <h4>{data.title}</h4>
+                    <div className={styles.meta}>
+                        <span className={styles.client}>{data.client}</span>
                         <span className={styles.year}>{data.year}</span>
                     </div>
                 </div>

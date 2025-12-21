@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { useState, useEffect, useMemo, useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useInView } from 'framer-motion';
 import Image from 'next/image';
 
 import { WorkCard } from './WorkCard';
@@ -13,6 +13,22 @@ import { WorkItem } from '../types';
 export function WorkFeed({ initialData }: { initialData: WorkItem[] }) {
     const [view, setView] = useState<'grid' | 'list'>('grid');
     const [activeFilter, setActiveFilter] = useState('Todos');
+
+    const ref = useRef(null);
+    const isInView = useInView(ref, { margin: "0px 0px -100px 0px", once: true });
+
+    const motionVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: 2,
+                duration: 0.9,
+                ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
+            }
+        }
+    };
 
     // 1. Extrair categorias únicas dos trabalhos carregados
     const categories = useMemo(() => {
@@ -57,7 +73,13 @@ export function WorkFeed({ initialData }: { initialData: WorkItem[] }) {
     }, [view, mouseX, mouseY]);
 
     return (
-        <section className={styles.feedSection}>
+        <motion.section
+            ref={ref}
+            className={styles.feedSection}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={motionVariants}
+        >
 
             {/* Imagem flutuante */}
             <AnimatePresence>
@@ -72,7 +94,7 @@ export function WorkFeed({ initialData }: { initialData: WorkItem[] }) {
                     >
                         <Image 
                             src={hoveredImg} 
-                            alt="Project Preview" 
+                            alt="Prévia do projeto" 
                             fill 
                             sizes="400px" // Otimização
                             className={styles.floatingImage}
@@ -127,6 +149,6 @@ export function WorkFeed({ initialData }: { initialData: WorkItem[] }) {
                     <p>Nenhum trabalho encontrado nesta categoria.</p>
                 </div>
             )}
-        </section>
+        </motion.section>
     );
 }
