@@ -6,6 +6,7 @@ import { DeliverableAccordion } from "./DeliverableAccordion";
 import { ProcessCard } from "./ProcessCard";
 import { ProjectCard } from "./ProjectCard";
 import styles from './styles.module.scss';
+import { Media } from "@/payload-types";
 
 interface ServiceSectionProps {
     data: {
@@ -15,7 +16,7 @@ interface ServiceSectionProps {
         project: { 
             client: string; 
             url: string; 
-            thumbnail: any; // Aceita string ou objeto Media
+            thumbnail: string | Media | null | undefined; // Aceita string ou objeto Media
         }[];
         deliverables: { title: string; description: string }[];
         process: { order: string; title: string; description: string }[];

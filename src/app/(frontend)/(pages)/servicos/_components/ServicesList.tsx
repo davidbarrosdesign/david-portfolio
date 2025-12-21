@@ -1,6 +1,7 @@
 'use client';
 
 import { ServiceSection } from "./ServiceSection";
+import { Media } from "@/payload-types";
 import styles from './styles.module.scss';
 
 // A interface agora reflete os dados já tratados que vêm da Page
@@ -12,7 +13,7 @@ interface FormattedService {
     project: { 
         client: string; 
         url: string; 
-        thumbnail: string | any; // Aceita string (URL) ou objeto Media
+        thumbnail: string | Media | null | undefined; // Aceita string (URL) ou objeto Media
     }[];
 }
 
@@ -29,7 +30,6 @@ export function ServicesList({ services }: ServicesListProps) {
     return (
         <div className={styles.mainWrapper}>
             {services.map((service, i) => (
-                // Passamos o objeto direto, pois ele já está no formato correto
                 <ServiceSection 
                     key={i} 
                     data={service} 

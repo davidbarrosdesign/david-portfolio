@@ -6,6 +6,7 @@ import { ArrowRight } from "@phosphor-icons/react"
 import { PortfolioStack } from "./PortfolioStack";
 import { Button, Divider } from "@/app/(frontend)/_components/ui";
 import styles from './styles.module.scss';
+import { PortfolioCardData } from "./types";
 
 export interface PortfolioItem {
     id: string;
@@ -34,7 +35,7 @@ export function PortfolioSection({ trabalhos }: { trabalhos: PortfolioItem[] }) 
     };
 
     // 1. ADAPTER: Transforma os dados do Notion para o formato que o Card espera
-    const items = trabalhos.map((t, i) => ({
+    const items: PortfolioCardData[] = trabalhos.map((t, i) => ({
         id: t.id,
         index: i,
         title: t.title,

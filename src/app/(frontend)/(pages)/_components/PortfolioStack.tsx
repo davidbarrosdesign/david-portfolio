@@ -10,7 +10,9 @@ import styles from "./styles.module.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function PortfolioStack({ items }: { items: any[] }) {
+import { PortfolioCardData } from "./types";
+
+export function PortfolioStack({ items }: { items: PortfolioCardData[] }) {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 

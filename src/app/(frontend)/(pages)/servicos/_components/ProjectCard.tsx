@@ -1,13 +1,14 @@
 'use client';
 import Link from 'next/link';
 import { ProjectMedia } from '../../trabalhos/[slug]/_components/ProjectMedia';
+import { Media } from "@/payload-types";
 
 import styles from './styles.module.scss';
 
 interface ProjectProps {
     item: { 
         url: string; 
-        thumbnail: any; 
+        thumbnail: string | Media | null | undefined;  
         client: string; 
     }
 }

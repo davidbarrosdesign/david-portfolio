@@ -45,6 +45,13 @@
                 padding-top: 10px;
                 margin-top: -10px;
 
+                .pageName {
+                    font-family: tokens.$font-tenez;
+                    font-style: italic;
+                    font-size: tokens.$fs-md;
+                    color: tokens.$black;
+                }
+
                 span {
                     display: block;
                     will-change: transform, opacity, filter;

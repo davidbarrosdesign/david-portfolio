@@ -7,8 +7,10 @@ import { TransitionLink } from "@/app/(frontend)/_components/ui";
 
 import styles from "./styles.module.scss";
 
+import { PortfolioCardData } from "./types";
+
 interface PortfolioCardProps {
-    data: any;
+    data: PortfolioCardData;
     index: number;
 }
 
