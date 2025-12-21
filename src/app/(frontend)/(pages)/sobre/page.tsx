@@ -16,7 +16,7 @@ import { CallToAction } from '../../_components/sections';
 
 export const metadata: Metadata = {
   title: "Sobre | David Barros",
-  description: "Conheça mais sobre o David Barros, especialista em produtos digitais e designer com mais de 12 anos de experiência criando produtos digitais, interfaces e soluções focadas na experiência do usuário."
+  description: "Conheça David Barros, designer sênior com vasta experiência no Brasil, EUA, Espanha e Itália. Especialista em unir design estratégico, UX/UI e automação com IA para impulsionar o faturamento de grandes negócios."
 }
 
 export default async function SobrePage() {
@@ -27,24 +27,24 @@ export default async function SobrePage() {
       collection: 'clients',
       where: {
         featured: {
-          equals: 'true', // Importante: no seu print você definiu como string 'true', não boolean
+          equals: 'true',
         },
       },
-      limit: 0, // 0 = Traz todos que derem match (sem limite)
-      sort: 'name', // Opcional: ordena alfabeticamente
+      limit: 0,
+      sort: 'name',
     });
 
     const { docs: depoimentos } = await payload.find({
       collection: 'testimonials',
-      depth: 1, // Importante: Traz os dados do Cliente (nome, logo) em vez de só o ID
+      depth: 1,
       limit: 5,
-      sort: '-createdAt', // Mais recentes primeiro
+      sort: '-createdAt',
     });
 
     const { docs: faqItems } = await payload.find({
         collection: 'faq',
-        limit: 100, // Traz todas as perguntas
-        sort: '-createdAt', // Mais recentes primeiro
+        limit: 100,
+        sort: '-createdAt',
     });
 
     return (
@@ -60,13 +60,13 @@ export default async function SobrePage() {
             <Divider size="large" />
             <SectionServices />
             <Divider size="large" />
-            <SectionClients clients={clients as any} />
+            <SectionClients clients={clients} />
             <Divider size="large" />
-            <TestimonialSection depoimentos={depoimentos as any} />
+            <TestimonialSection depoimentos={depoimentos} />
             <Divider size="large" />
             <SectionCuriosities />
             <Divider size="large" />
-            <SectionFaq items={faqItems as any} />
+            <SectionFaq items={faqItems} />
             <Divider size="large" />
             <CallToAction 
               title="Vamos falar sobre o seu projeto"

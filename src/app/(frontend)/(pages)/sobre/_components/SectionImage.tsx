@@ -1,8 +1,8 @@
 'use client';
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useInView } from 'framer-motion';
+import Image from "next/image";
 
 import styles from './styles.module.scss';
 
@@ -18,27 +18,33 @@ export function SectionImage() {
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }
+            transition: {
+                delay: 2,
+                duration: 0.9,
+                ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
+            }
         }
     };
 
     return (
-        <motion.section
+        <section
             ref={ref}
-            variants={motionVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
             className={styles.imageWrapper}
         >
-            <div className={styles.imageContainer}>
+            <motion.div 
+                className={styles.imageContainer}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                variants={motionVariants}
+            >
                 <Image
                     src={Profile}
-                    alt="Profile"
+                    alt="David Barros - Designer"
                     loading="lazy"
                     fill
                     style={{ objectFit: 'contain' }}
                 />
-            </div>
-        </motion.section>
+            </motion.div>
+        </section>
     );
 }
