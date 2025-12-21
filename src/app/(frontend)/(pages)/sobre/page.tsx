@@ -49,7 +49,10 @@ export default async function SobrePage() {
 
     return (
         <main>
-            <HeroPage title="Design estratégico para produtos que escalam e marcas que lideram." />
+            <HeroPage
+                title="Design estratégico para produtos que escalam e marcas que lideram."
+                page="Sobre mim"
+            />
             <Divider size="small" />
             <SectionImage />
             <SectionAbout />

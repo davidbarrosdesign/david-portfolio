@@ -10,9 +10,11 @@ import { Button } from "../../ui";
 import styles from "./HeroPage.module.scss";
 
 export function HeroPage({
-    title
+    title,
+    page
 }: {
     title: string;
+    page?: string;
 }) {
 
     const router = useRouter();
@@ -65,9 +67,14 @@ export function HeroPage({
                     >
                         Voltar
                     </Button>
+                    <div className={styles.titleMask}>
+                        <motion.span variants={revealVariants} className={styles.pageName}>
+                            { page }
+                        </motion.span>
+                    </div>
                     <h1 className={styles.titleMask}>
-                        <motion.span variants={revealVariants}>
-                            {title}
+                        <motion.span variants={revealVariants} className={styles.title}>
+                            { title }
                         </motion.span>
                     </h1>
                 </div>

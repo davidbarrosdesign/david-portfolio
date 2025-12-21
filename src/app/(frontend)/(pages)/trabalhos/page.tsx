@@ -73,7 +73,10 @@ export default async function TrabalhosPage() {
 
     return (
         <main>
-            <HeroPage title="Projetos que unem design estratégico e tecnologia de ponta." />
+            <HeroPage
+            title="Projetos que unem design estratégico e tecnologia de ponta."
+            page="Trabalhos"
+            />
 
             {/* Conteúdo da página == lista de cards */}
             <WorkFeed initialData={trabalhos} />

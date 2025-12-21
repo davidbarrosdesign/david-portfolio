@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getPayload } from 'payload';
 import configPromise from '@payload-config';
+import { Service, Project } from '@/payload-types';
 import { Divider } from '../../_components/ui';
 import { HeroPage, CallToAction } from '../../_components/sections';
 import { ServicesList } from './_components/ServicesList';
@@ -12,7 +13,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Serviços | David Barros",
-  description: "Serviços do David Barros"
+  description: "Soluções em Design de Produto, Web Design Premium, CRO e Inteligência Artificial. Leve seu produto digital ao próximo nível com estratégias focadas em conversão, usabilidade e tecnologias escaláveis."
 }
 
 export default async function ServicosPage() {
@@ -25,13 +26,13 @@ export default async function ServicosPage() {
       depth: 2,
     });
 
-    const services = servicesData.map((service: any) => {
+    const services = servicesData.map((service: Service) => {
         
         // Tratamento do Projeto em Destaque
-        const projectArray: any[] = [];
+        const projectArray: { client: string; url: string; thumbnail: string | null | undefined }[] = [];
         
         if (service.relatedProject && typeof service.relatedProject === 'object') {
-            const p = service.relatedProject;
+            const p = service.relatedProject as Project;
             
             // Extrai dados seguros do projeto
             const clientName = (p.client && typeof p.client === 'object') 
@@ -53,9 +54,16 @@ export default async function ServicosPage() {
             ...service,
             // O componente ServiceSection espera um array 'project'
             project: projectArray,
-            // Garante que listas existam para não quebrar o map
-            deliverables: service.deliverables || [],
-            process: service.process || []
+            // Garante que listas existam e tenham os campos obrigatórios (string)
+            deliverables: (service.deliverables || []).map(d => ({
+                title: d.title || '',
+                description: d.description || ''
+            })),
+            process: (service.process || []).map(p => ({
+                order: p.order || '',
+                title: p.title || '',
+                description: p.description || ''
+            }))
         };
     });
 
@@ -63,6 +71,7 @@ export default async function ServicosPage() {
         <>
             <HeroPage
                 title="Design estratégico e tecnologia para marcas que buscam o próximo nível de impacto"
+                page="Serviços"
             />
             <Divider size="small" />
             <ServicesList services={services} />
