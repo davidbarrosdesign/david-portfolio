@@ -6,6 +6,7 @@
     margin: 0 auto;
     padding-right: tokens.$spacing-5;
     padding-left: tokens.$spacing-5;
+    overflow: hidden;
 
     @media screen and (max-width: tokens.$breakpoint-md) {
         padding-right: tokens.$spacing-3;
@@ -23,6 +24,7 @@
 
         img {
             object-fit: cover;
+            border-radius: tokens.$radius-lg;
         }
     }
 }
@@ -489,22 +491,24 @@
             .cardWrapper {
                 position: absolute;
                 top: 0;
-                right: 0;
-                bottom: 0;
                 left: 0;
+                bottom: 0;
+                right: 0;
 
                 width: 40%;
-                height: 70%;
+                max-width: 600px;
+                height: auto;
+                max-height: 80vh;
+                aspect-ratio: 3 / 4;
+
                 margin: auto;
 
                 @media screen and (max-width: tokens.$breakpoint-lg) {
-                    width: 60%;
-                    height: 80%;
+                    width: 50%;
                 }
 
                 @media screen and (max-width: tokens.$breakpoint-md) {
-                    width: 80%;
-                    height: 80%;
+                    width: 60%;
                 }
 
                 .cardInner {

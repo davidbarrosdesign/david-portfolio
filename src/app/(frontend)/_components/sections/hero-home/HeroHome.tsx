@@ -13,18 +13,18 @@ export function HeroHome() {
 
     const revealVariants = {
         hidden: { 
-            y: "100%", // Começa totalmente para cima (fora da máscara)
+            y: "100%", 
             opacity: 0,
-            filter: "blur(20px)", // Blur inicial forte
+            filter: "blur(20px)", 
         },
         visible: {
-            y: "0%", // Desliza para a posição original
+            y: "0%", 
             opacity: 1,
-            filter: "blur(0px)", // Remove o blur
+            filter: "blur(0px)", 
             transition: {
                 delay: 1,
-                duration: 2, // Duração mais longa para ser elegante
-                ease: [0.16, 1, 0.3, 1] as const, // Curva "swift-out" suave
+                duration: 2, 
+                ease: [0.16, 1, 0.3, 1] as const, 
             }
         }
     };

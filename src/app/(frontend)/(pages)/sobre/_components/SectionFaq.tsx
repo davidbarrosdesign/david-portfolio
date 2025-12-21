@@ -4,15 +4,11 @@ import { useRef, useState } from "react";
 import { motion, useInView } from 'framer-motion';
 import { FaqItem } from "./FaqItem";
 
+import { Faq } from "@/payload-types";
+
 import styles from './styles.module.scss';
 
-interface FaqDoc {
-    id: string;
-    question: string;
-    answer: string;
-}
-
-export function SectionFaq({ items }: { items: FaqDoc[] }) {
+export function SectionFaq({ items }: { items: Faq[] }) {
 
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "0px 0px -100px 0px", once: true });
