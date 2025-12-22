@@ -1,0 +1,335 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.mainWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    background: tokens.$off-white;
+
+    .serviceSection {
+        width: 100%;
+        height: 100%;
+        padding: tokens.$spacing-8 tokens.$spacing-5;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-8;
+
+        @media (max-width: tokens.$breakpoint-md) {
+            padding: tokens.$spacing-7 tokens.$spacing-3;
+            
+            gap: tokens.$spacing-7;
+        }
+
+        background: tokens.$off-white;
+        border-bottom: 1px solid rgba(tokens.$gray, 0.2);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .serviceWrapper {
+            width: 100%;
+            height: auto;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: tokens.$spacing-4;
+
+            @media (max-width: tokens.$breakpoint-md) {
+                grid-template-columns: repeat(1, 1fr);
+                gap: tokens.$spacing-7;
+            }
+
+            .leftColumn {
+                width: 100%;
+                height: auto;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: tokens.$spacing-4;
+
+                .content {
+                    width: 100%;
+                    height: auto;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: tokens.$spacing-4;
+                }
+
+                .project {
+                    width: 100%;
+                    height: auto;
+
+                    .projectWrapper {
+                        display: block;
+                        width: 100%;
+                        max-width: 225px;
+                        height: auto;
+
+                        padding: tokens.$spacing-1;
+
+                        background: tokens.$white;
+                        border-radius: tokens.$radius-md;
+                        box-shadow: 0 1px 3px rgba(tokens.$black, 0.05);
+
+                        cursor: pointer;
+
+                        .projectCard {
+                            width: 100%;
+                            height: auto;
+
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            gap: tokens.$spacing-1;
+
+                            .projectHeader {
+                                width: 100%;
+                                height: auto;
+
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                gap: tokens.$spacing-4;
+
+                                .projectTitle {
+                                    font-size: tokens.$fs-2xs;
+                                    line-height: tokens.$lh-tight;
+                                    color: tokens.$gray;
+                                }
+
+                                .projectClient {
+                                    font-size: tokens.$fs-xs;
+                                    line-height: tokens.$lh-tight;
+                                    color: tokens.$black;
+                                }
+                            }
+
+                            .projectThumb {
+                                position: relative;
+                                width: 100%;
+                                height: auto;
+                                overflow: hidden;
+
+                                border-radius: tokens.$radius-md;
+
+                                aspect-ratio: 16/9;
+
+                                .projectImage {
+                                    object-fit: cover;
+                                    
+                                    transition: transform 0.5s ease;
+
+                                    &:hover {
+                                        transform: scale(1.05);
+
+                                        transition: transform 0.5s ease;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .rightColumn {
+                width: 100%;
+                height: auto;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: tokens.$spacing-4;
+
+                .deliverablesList {
+                    width: 100%;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: tokens.$spacing-2;
+
+                    .accordionItem {
+                        width: fit-content;
+                        max-width: 100%;
+                        min-height: 40px;
+                        padding: 0px tokens.$spacing-3;
+                        overflow: hidden;
+
+                        background: rgba(232, 232, 237, 0.72);
+                        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                        border-radius: 20px;
+                        cursor: pointer;
+
+                        transition: all 0.3s ease-in-out;
+
+                        &:hover {
+                            background: rgba(232, 232, 237, 0.9);
+
+                            transition: all 0.3s ease-in-out;
+                        }
+
+                        .header {
+                            width: 100%;
+                            height: 40px;
+                            
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            gap: tokens.$spacing-2;
+                            white-space: nowrap;
+
+                            span {
+                                font-size: tokens.$fs-sm;
+                                font-weight: tokens.$fw-bold;
+                                line-height: tokens.$lh-normal;
+                                color: tokens.$black;
+                            }
+
+                            .icon {
+                                width: 10px;
+                                height: 10px;
+
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                svg {
+                                    color: tokens.$black;
+                                }
+                            }
+                        }
+
+                        &.open {
+                            width: 100%;
+                            max-width: 480px;
+                            padding: tokens.$spacing-3;
+
+                            background: rgba(232, 232, 237, 0.98);
+                            border-radius: tokens.$radius-lg;
+
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            align-self: flex-end;
+                            gap: tokens.$spacing-2;
+
+                            transition: all 0.3s ease-in-out;
+
+                            @media (max-width: tokens.$breakpoint-md) {
+                                align-self: flex-start;
+                            }
+
+                            .header {
+                                height: auto;
+
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+
+                            .content {
+                                width: 100%;
+                                height: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .processWrapper {
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-4;
+
+        h3 {
+            span {
+                display: block;
+                color: tokens.$gray;
+            }
+        }
+
+        .processList {
+            width: 100%;
+            height: auto;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: tokens.$spacing-4;
+
+            @media (max-width: tokens.$breakpoint-md) {
+                flex-direction: column;
+            }
+
+            .processCard {
+                width: 100%;
+                height: auto;
+                padding: tokens.$spacing-3;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: tokens.$spacing-4;
+
+                background: tokens.$white;
+                border-radius: tokens.$radius-lg;
+
+                .processHeader {
+                    span {
+                        font-family: tokens.$font-tenez;
+                        font-style: italic;
+                        font-size: tokens.$fs-xs;
+                        line-height: tokens.$lh-normal;
+                        color: tokens.$black;
+                    }
+                }
+
+                .processContent {
+                    width: 100%;
+                    height: auto;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: tokens.$spacing-2;
+
+                    span {
+                        font-size: tokens.$fs-md;
+                        line-height: tokens.$lh-normal;
+                        color: tokens.$black;
+                    }
+                }
+            }
+        }
+    }
+}
