@@ -150,9 +150,11 @@ export interface Client {
  */
 export interface Service {
   id: string;
-  order: number;
   title: string;
+  slug: string;
   description: string;
+  order: number;
+  relatedProject?: (string | null) | Project;
   deliverables?:
     | {
         title: string;
@@ -168,7 +170,9 @@ export interface Service {
         id?: string | null;
       }[]
     | null;
-  relatedProject?: (string | null) | Project;
+  metaTitle?: string | null;
+  metaDescription?: string | null;
+  metaImage?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -419,9 +423,11 @@ export interface ClientsSelect<T extends boolean = true> {
  * via the `definition` "services_select".
  */
 export interface ServicesSelect<T extends boolean = true> {
-  order?: T;
   title?: T;
+  slug?: T;
   description?: T;
+  order?: T;
+  relatedProject?: T;
   deliverables?:
     | T
     | {
@@ -437,7 +443,9 @@ export interface ServicesSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
-  relatedProject?: T;
+  metaTitle?: T;
+  metaDescription?: T;
+  metaImage?: T;
   updatedAt?: T;
   createdAt?: T;
 }
