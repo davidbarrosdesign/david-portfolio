@@ -13,7 +13,7 @@
 
 .filtersWrapper {
     width: 100%;
-    height: 40px;
+    height: 50px;
 
     display: flex;
     justify-content: space-between;
@@ -29,10 +29,15 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: tokens.$spacing-2;
+        gap: tokens.$spacing-1;
 
-        overflow-x: auto; 
-        padding-bottom: 4px;
+        overflow-x: auto;
+        height: 50px;
+        padding: tokens.$spacing-1;
+
+        background: tokens.$white;
+        border-radius: tokens.$radius-lg;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
         // Esconde scrollbar
         &::-webkit-scrollbar {
@@ -43,12 +48,12 @@
         scrollbar-width: none;
 
         .filterButton {
-            height: 40px;
+            height: 100%;
             padding: 0px tokens.$spacing-3;
 
-            background: transparent;
             border: none;
-            border-radius: 20px;
+            background: rgba(232, 232, 237, 0.50);
+            border-radius: tokens.$radius-md;
             
             font-family: tokens.$font-halcom;
             font-size: tokens.$fs-xs;
@@ -61,13 +66,13 @@
             transition: all 0.3s ease;
 
             &:hover {
-                color: tokens.$black;
+                background: rgba(232, 232, 237, 0.72);
 
                 transition: all 0.3s ease;
             }
 
             &.active {
-                background: rgba(tokens.$black, 0.08);
+                background: rgba(232, 232, 237, 0.90);
 
                 color: tokens.$black;
 
@@ -80,16 +85,17 @@
 // TOGGLE BUTTONS
 .viewToggle {
     width: 120px;
-    height: 40px;
+    height: 50px;
+    padding: tokens.$spacing-1;
 
     display: flex;
-    gap: none;
     justify-content: center;
     align-items: center;
+    gap: tokens.$spacing-1;
 
-    background: rgba(232, 232, 237, 0.72);
+    background: tokens.$white;
+    border-radius: tokens.$radius-lg;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
 
     @media screen and (max-width: tokens.$breakpoint-md) {
         position: fixed;
@@ -97,22 +103,21 @@
         left: 50%;
 
         transform: translateX(-50%);
-        background: rgba(232, 232, 237, 1);
 
         z-index: 100;
     }
 
     button {
         width: 60px;
-        height: 40px;
+        height: 100%;
         
         display: flex;
         align-items: center;
         justify-content: center;
         
-        background: transparent;
+        background: rgba(232, 232, 237, 0.50);
+        border-radius: tokens.$radius-md;
         border: none;
-        border-radius: 20px;
 
         font-family: tokens.$font-halcom;
         font-size: tokens.$fs-xs;
@@ -124,14 +129,13 @@
         transition: all 0.45s ease;
 
         &:hover {
-            color: tokens.$black;
+            background: rgba(232, 232, 237, 0.72);
 
             transition: all 0.45s ease;
         }
 
         &.active {
-            background: rgba(tokens.$black, 0.08);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            background: rgba(232, 232, 237, 0.90);
 
             color: tokens.$black;
 
