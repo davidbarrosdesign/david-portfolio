@@ -154,6 +154,7 @@ export interface Service {
   slug: string;
   description: string;
   order: number;
+  icon: string | Media;
   relatedProject?: (string | null) | Project;
   deliverables?:
     | {
@@ -167,6 +168,7 @@ export interface Service {
         order?: string | null;
         title?: string | null;
         description?: string | null;
+        icon: string | Media;
         id?: string | null;
       }[]
     | null;
@@ -427,6 +429,7 @@ export interface ServicesSelect<T extends boolean = true> {
   slug?: T;
   description?: T;
   order?: T;
+  icon?: T;
   relatedProject?: T;
   deliverables?:
     | T
@@ -441,6 +444,7 @@ export interface ServicesSelect<T extends boolean = true> {
         order?: T;
         title?: T;
         description?: T;
+        icon?: T;
         id?: T;
       };
   metaTitle?: T;

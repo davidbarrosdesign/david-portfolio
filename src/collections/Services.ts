@@ -42,8 +42,19 @@ export const Services: CollectionConfig = {
               label: 'Ordem de Exibição',
               defaultValue: 10,
               admin: {
-                position: 'sidebar', // Coloca na barra lateral para não ocupar espaço
+                position: 'sidebar',
                 description: '1 aparece primeiro, 2 em segundo, etc.',
+              },
+            },
+            {
+              name: 'icon',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+              label: 'Ícone',
+              admin: {
+                position: 'sidebar',
+                description: 'Ícone do serviço',
               },
             },
             {
@@ -92,19 +103,23 @@ export const Services: CollectionConfig = {
               minRows: 1,
               fields: [
                 {
-                  name: 'order', // Ex: "1", "2"...
+                  name: 'order',
                   type: 'text',
-                  admin: { width: '20%' }
                 },
                 {
-                  name: 'title', // Ex: Imersão
+                  name: 'title',
                   type: 'text',
-                  admin: { width: '40%' }
                 },
                 {
                   name: 'description',
                   type: 'textarea',
-                  admin: { width: '40%' }
+                },
+                {
+                  name: 'icon',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: true,
+                  label: 'Ícone'
                 },
               ]
             },
