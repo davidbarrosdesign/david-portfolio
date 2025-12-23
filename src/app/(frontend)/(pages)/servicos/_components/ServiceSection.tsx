@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from "@/app/(frontend)/_components/ui";
-import { Service } from "../types";
+import { Service } from "@/payload-types";
 import styles from './styles.module.scss';
 
 export function ServiceSection({ data, index }: { data: Service; index: number }) {
@@ -28,7 +28,7 @@ export function ServiceSection({ data, index }: { data: Service; index: number }
 
                     <div className={styles.deliverablesList}>
                         <ul>
-                            {data.deliverables.map((item, i) => (
+                            {data.deliverables?.map((item, i) => (
                                 <li key={i}>{item.title}</li>
                             ))}
                         </ul>
@@ -45,7 +45,7 @@ export function ServiceSection({ data, index }: { data: Service; index: number }
                         </Button>
 
                         <Button
-                            href="/servicos"
+                            href={`/servicos/${data.slug}`}
                             size="large"
                             style="ghost"
                             color="black"

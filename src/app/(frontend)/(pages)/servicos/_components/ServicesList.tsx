@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { ServiceSection } from "./ServiceSection";
-import { Service } from "../types";
+import { Service } from "@/payload-types";
 import styles from './styles.module.scss';
 
 gsap.registerPlugin(ScrollTrigger);
