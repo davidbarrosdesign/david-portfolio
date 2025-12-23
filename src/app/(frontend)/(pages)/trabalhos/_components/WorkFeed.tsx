@@ -11,6 +11,7 @@ import styles from './styles.module.scss';
 import { WorkItem } from '../types';
 
 export function WorkFeed({ initialData }: { initialData: WorkItem[] }) {
+    
     const [view, setView] = useState<'grid' | 'list'>('grid');
     const [activeFilter, setActiveFilter] = useState('Todos');
 
@@ -30,12 +31,26 @@ export function WorkFeed({ initialData }: { initialData: WorkItem[] }) {
         }
     };
 
-    // 1. Extrair categorias únicas dos trabalhos carregados
-    const categories = useMemo(() => {
-        // Pega todos os serviços de todos os trabalhos e coloca num array plano
-        const allServices = initialData.flatMap(work => work.services);
-        // Remove duplicatas usando Set e ordena alfabeticamente
-        return Array.from(new Set(allServices)).sort();
+    // 1. Calcular categorias e contagens simultaneamente
+    const { categories, counts } = useMemo(() => {
+        // Inicializa contagem com o total
+        const tempCounts: Record<string, number> = {
+            'Todos': initialData.length
+        };
+        const allServicesSet = new Set<string>();
+
+        initialData.forEach(work => {
+            work.services?.forEach(service => {
+                allServicesSet.add(service);
+                // Incrementa a contagem para cada serviço encontrado
+                tempCounts[service] = (tempCounts[service] || 0) + 1;
+            });
+        });
+
+        return {
+            categories: Array.from(allServicesSet).sort(),
+            counts: tempCounts
+        };
     }, [initialData]);
 
     // 2. Filtrar os dados com base na seleção
@@ -54,14 +69,12 @@ export function WorkFeed({ initialData }: { initialData: WorkItem[] }) {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Configuração da física do movimento (Spring)
     const springConfig = { damping: 20, stiffness: 150, mass: 0.5 };
     const x = useSpring(mouseX, springConfig);
     const y = useSpring(mouseY, springConfig);
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            // Só precisamos rastrear se estiver em modo lista
             if (view === 'list') {
                 mouseX.set(e.clientX);
                 mouseY.set(e.clientY);
@@ -110,7 +123,7 @@ export function WorkFeed({ initialData }: { initialData: WorkItem[] }) {
                         onClick={() => setActiveFilter('Todos')}
                         className={`${styles.filterButton} ${activeFilter === 'Todos' ? styles.active : ''}`}
                     >
-                        Todos
+                        Todos ({counts['Todos']})
                     </button>
                     
                     {categories.map((category) => (
@@ -119,7 +132,7 @@ export function WorkFeed({ initialData }: { initialData: WorkItem[] }) {
                             onClick={() => setActiveFilter(category)}
                             className={`${styles.filterButton} ${activeFilter === category ? styles.active : ''}`}
                         >
-                            {category}
+                            {category} ({counts[category] || 0})
                         </button>
                     ))}
                 </div>

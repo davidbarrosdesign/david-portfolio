@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPayload } from 'payload';
 import configPromise from '@payload-config';
-// import Image from "next/image";
-import { ProjectBlocks } from "./_components/ProjectBlocks";
-import { ProjectMedia } from "./_components/ProjectMedia";
-import { ProjectTestimonial } from "./_components/ProjectTestimonial";
+import { SectionThumbnail } from "./_components/SectionThumbnail";
+import { SectionInfos } from "./_components/SectionInfos";
+import { SectionContent } from "./_components/SectionContent";
+import { SectionTestimonial } from "./_components/SectionTestimonial";
 import { Divider } from "@/app/(frontend)/_components/ui";
 import { HeroPage, CallToAction } from "@/app/(frontend)/_components/sections";
 import styles from "./page.module.scss";
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const project = docs[0];
 
-    if (!project) return { title: "Trabalho não encontrado" };
+    if (!project) return { title: "Projeto não encontrado" };
 
     // Extração segura da URL da imagem para SEO
     let imageUrl = "";
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     return {
         title: `${project.title} | David Barros`,
-        description: project.metaDescription || project.subtitle || `Confira o case ${project.title}`,
+        description: project.metaDescription || project.subtitle || `Confira o projeto ${project.title}`,
         openGraph: {
             title: project.metaTitle || project.title,
             description: project.metaDescription || project.subtitle || '',
@@ -76,89 +76,37 @@ export default async function TrabalhoSingle({ params }: { params: Promise<{ slu
 
     if (!project) notFound();
 
-    // Serviços (Extraindo títulos)
-    const serviceNames = Array.isArray(project.services) 
-        ? project.services.map((s: any) => s.title) 
-        : [];
-
-    // Cliente (Extraindo nome e país/sobre)
-    const clientName = (typeof project.client === 'object') ? project.client.name : 'Cliente Confidencial';
-    const clientCountry = (typeof project.client === 'object') ? project.client.country : 'Brasil';
-
     // Depoimento Relacionado
     const testimonial = (typeof project.relatedTestimonial === 'object') ? project.relatedTestimonial : null;
 
     return (
         <main>
             <HeroPage
+                page='Projeto'
                 title={project.title}
             />
 
             <Divider size="small"/>
 
             <article className={styles.singleWrapper}>
-                    <div className={styles.heroThumbnail}>
-                        <ProjectMedia 
-                            resource={project.thumbnail} 
-                            fill={true}
-                            alt={project.title}
-                            className={styles.heroThumbnailImg}
-                        />
-                    </div>
+                {/* Thumbnail do projeto */}
+                <SectionThumbnail item={project}/>
 
                 <Divider size="small"/>
 
-                <section className={styles.infosWrapper}>
-                    <div className={styles.infoList}>
-                        <div className={styles.infoItem}>
-                            <span className={styles.infoItemTitle}>Cliente</span>
-                            <span className={styles.infoItemValue}>{ clientName }</span>
-                        </div>
-                        <div className={styles.infoItem}>
-                            <span className={styles.infoItemTitle}>País</span>
-                            <span className={styles.infoItemValue}>{ clientCountry }</span>
-                        </div>
-                        <div className={styles.infoItem}>
-                            <span className={styles.infoItemTitle}>Ano</span>
-                            <span className={styles.infoItemValue}>{ project.year }</span>
-                        </div>
-                    </div>
-                    <div className={styles.infoResume}>
-                        <div className={styles.infoItem}>
-                            <ul className={styles.servicesList}>
-                                {serviceNames.length > 0 ? (
-                                    serviceNames.map((name, index) => (
-                                        <li key={index}>{name}</li>
-                                    ))
-                                ) : (
-                                    <li>Geral</li>
-                                )}
-                            </ul>
-                        </div>
-
-                        <h2>
-                            { project.subtitle }
-                        </h2>
-                    </div>
-                </section>
+                {/* Resumo do projeto */}
+                <SectionInfos item={project}/>
 
                 <Divider size="small"/>
 
-                {/* CONTEÚDO PRINCIPAL (BLOCOS) */}
-                <section className={styles.contentWrapper}>
-                    <ProjectBlocks blocks={project.layout || []} />
-                </section>
+                {/* Conteúdo principal (blocos) */}
+                <SectionContent blocks={project.layout || []} />
 
-                {/* DEPOIMENTO RELACIONADO (OPCIONAL) */}
+                {/* Depoimento Relacionado (se houver) */}
                 {testimonial && (
                     <>
                         <Divider size="medium" />
-                        <ProjectTestimonial 
-                            author={testimonial.author}
-                            role={testimonial.authorRole}
-                            company={clientName} // Ou testimonial.client se preferir
-                            content={testimonial.content}
-                        />
+                        <SectionTestimonial testimonial={testimonial}/>
                     </>
                 )}
             </article>
@@ -166,8 +114,8 @@ export default async function TrabalhoSingle({ params }: { params: Promise<{ slu
             <Divider size="medium" />
 
             <CallToAction 
-              title="Tem um projeto em mente?"
-              content="Vamos criar juntos um website com estética forte e mensagem clara — pronto para converter e fazer sucesso."
+              title="Gostou deste projeto?"
+              content="Pronto para construir um projeto que dimensione com o seu negócio e o coloque no controle? Vamos criar uma base para o seu sucesso futuro juntos."
               linkTitle="Vamos falar sobre isso!"
               url="/contato"
               target="_self"
