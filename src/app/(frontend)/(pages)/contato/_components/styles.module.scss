@@ -1,0 +1,447 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+// Conteúdo do início
+.contentSection {
+    width: 100%;
+    height: auto;
+    padding-left: tokens.$spacing-5;
+    padding-right: tokens.$spacing-5;
+    margin: 0 auto;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-left: tokens.$spacing-3;
+        padding-right: tokens.$spacing-3;
+    }
+
+    .contentWrapper {
+        width: 100%;
+        max-width: 1600px;
+        height: auto;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
+        align-items: start;
+        gap: tokens.$spacing-4;
+
+        @media screen and (max-width: tokens.$breakpoint-md) {
+            grid-template-columns: 1fr;
+            justify-content: center;
+            align-items: center;
+            gap: tokens.$spacing-7;
+        }
+
+        .image {
+            position: relative;
+            
+            width: 100%;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                justify-content: center;
+                align-items: center;
+                order: -1;
+            }
+
+            .imageWrapper {
+                position: relative;
+
+                width: 100%;
+                max-width: 480px;
+                aspect-ratio: 3/4;
+                overflow: hidden;
+
+                border-radius: tokens.$radius-lg;
+                background-color: tokens.$off-white;
+
+                img {
+                    object-fit: cover;
+                    border-radius: tokens.$radius-lg;
+                }
+            }
+        }
+
+        .description {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: tokens.$spacing-4;
+
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                justify-content: flex-start;
+                gap: tokens.$spacing-7;
+            }
+
+            .title {
+                width: 100%;
+                height: 100%;
+
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: tokens.$spacing-4;
+            }
+
+            .contact {
+                width: 100%;
+                height: auto;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: tokens.$spacing-4;
+
+                .button {
+                    width: 80px;
+                    height: 80px;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    border-radius: 40px;
+                    background-color: tokens.$black;
+
+                    cursor: pointer;
+
+                    svg {
+                        fill: tokens.$white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Embed do Typebot
+.typebotSection {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    padding-left: tokens.$spacing-5;
+    padding-right: tokens.$spacing-5;
+    margin: 0 auto;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-left: tokens.$spacing-3;
+        padding-right: tokens.$spacing-3;
+    }
+}
+
+// Social Proff
+.sectionSocialProof {
+    width: 100%;
+    height: auto;
+    padding-left: tokens.$spacing-5;
+    padding-right: tokens.$spacing-5;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-left: tokens.$spacing-3;
+        padding-right: tokens.$spacing-3;
+    }
+
+    .sectionWrapper {
+        width: 100%;
+        max-width: 1600px;
+        height: auto;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-4;
+
+        @media screen and (max-width: tokens.$breakpoint-md) {
+           grid-template-columns: 1fr;
+           justify-content: center;
+           align-items: center;
+           gap: tokens.$spacing-7;
+        }
+
+        .sectionTitle {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: tokens.$spacing-4;
+
+            h2 {
+                position: sticky;
+                top: 96px;
+                z-index: 1;
+
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    position: relative;
+                    top: 0;
+                    text-align: center;
+                }
+            }
+        }
+
+        .sectionContent {
+            width: 100%;
+            height: auto;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .sectionItem {
+                width: 100%;
+                padding-top: tokens.$spacing-7;
+                padding-bottom: tokens.$spacing-7;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: tokens.$spacing-3;
+
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    padding-top: tokens.$spacing-5;
+                    padding-bottom: tokens.$spacing-5;
+
+                    justify-content: center;
+                    align-items: center;
+
+                    text-align: center;
+                }
+
+                &:first-child {
+                    padding-top: 0;
+                }
+
+                &:last-child {
+                    padding-bottom: 0;
+                }
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid rgba(tokens.$black, 0.1);
+                }
+            }
+        }
+    }
+}
+
+// CTA para projetos
+.projectsSection {
+    width: 100%;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-left: tokens.$spacing-3;
+        padding-right: tokens.$spacing-3;
+    }
+
+    .projectsWrapper {
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: tokens.$spacing-8;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: tokens.$spacing-4;
+
+        background: tokens.$white;
+        border-radius: tokens.$radius-lg;
+        box-shadow: 0px 1px 3px rgba(tokens.$black, 0.1);
+
+        @media screen and (max-width: tokens.$breakpoint-lg) {
+            padding: tokens.$spacing-5;
+        }
+
+        @media screen and (max-width: tokens.$breakpoint-md) {
+            flex-direction: column;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .projectsContent {
+            width: 100%;
+            max-width: 420px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: tokens.$spacing-3;
+        }
+
+        .projectsButton {
+            width: 80px;
+            height: 80px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: rgba(232, 232, 237, 0.72);
+            border-radius: 40px;
+
+            transition: transform 0.45s ease-in-out;
+        }
+
+        &:hover {
+            .projectsButton {
+                transform: rotate(45deg);
+
+                transition: transform 0.45s ease-in-out;
+            }
+        }
+    }
+}
+
+// FAQ
+.faqSection {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-right: tokens.$spacing-5;
+    padding-left: tokens.$spacing-5;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: tokens.$spacing-4;
+
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-right: tokens.$spacing-3;
+        padding-left: tokens.$spacing-3;
+
+        flex-direction: column;
+        gap: tokens.$spacing-7;
+    }
+
+    .faqTitle {
+        flex: 1;
+        width: 100%;
+
+        .faqTitleWrapper {
+            width: 100%;
+
+            h2 {
+                width: 100%;
+                max-width: 480px;
+
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    max-width: 100%;
+
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .faqContent {
+        flex: 1;
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: tokens.$spacing-4;
+
+        .faqItem {
+            width: 100%;
+            padding: tokens.$spacing-2 tokens.$spacing-4;
+
+            background: rgba(232, 232, 237, 0.72);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border-radius: tokens.$radius-lg;
+            cursor: pointer;
+
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background: rgba(232, 232, 237, 0.9);
+
+                transition: all 0.3s ease-in-out;
+            }
+
+            .faqHeader {
+                width: 100%;
+                height: 40px;
+                
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: tokens.$spacing-2;
+
+                span {
+                    font-size: tokens.$fs-sm;
+                    font-weight: tokens.$fw-bold;
+                    line-height: tokens.$lh-relaxed;
+                    color: tokens.$black;
+                }
+
+                .icon {
+                    width: 10px;
+                    height: 10px;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    svg {
+                        color: tokens.$black;
+                    }
+                }
+            }
+
+            &.open {
+                width: 100%;
+                height: auto;
+                padding: tokens.$spacing-4;
+
+                background: rgba(232, 232, 237, 0.98);
+                border-radius: tokens.$radius-lg;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                align-self: flex-end;
+                gap: tokens.$spacing-2;
+
+                transition: all 0.3s ease-in-out;
+
+                @media (max-width: tokens.$breakpoint-md) {
+                    align-self: flex-start;
+                }
+
+                .faqHeader {
+                    height: auto;
+
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .faqBody {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}

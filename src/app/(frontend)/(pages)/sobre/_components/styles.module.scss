@@ -222,6 +222,11 @@
     padding-right: tokens.$spacing-5;
     padding-left: tokens.$spacing-5;
 
+    @media screen and (max-width: tokens.$breakpoint-md) {
+        padding-left: tokens.$spacing-3;
+        padding-right: tokens.$spacing-3;
+    }
+
     .servicesWrapper {
         width: 100%;
         max-width: 1600px;
