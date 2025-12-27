@@ -343,6 +343,11 @@
 
             flex: 1;
 
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                position: static;
+                top: 0;
+            }
+
             span {
                 font-family: tokens.$font-tenez;
                 font-weight: tokens.$fw-regular;

@@ -76,7 +76,7 @@ export function SectionNumbers() {
                 className={styles.numbersContent}
             >
                 <span className={styles.numbersContentNumber}>
-                    50+
+                    200+
                 </span>
                 <span className={styles.numbersContentText}>
                     projetos desenhados<br />
@@ -98,8 +98,8 @@ export function SectionNumbers() {
                     100%
                 </span>
                 <span className={styles.numbersContentText}>
-                    foco em conversão, usabilidade<br />
-                    e ROI do cliente
+                    foco em função, usabilidade<br />
+                    e retorno do cliente
                 </span>
             </motion.div>
         </motion.section>

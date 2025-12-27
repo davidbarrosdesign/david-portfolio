@@ -50,7 +50,7 @@ export default async function SobrePage() {
     return (
         <main>
             <HeroPage
-                title="Design estratégico para produtos que escalam e marcas que lideram."
+                title="Olá, meu nome é David! Sou designer desde 2013 apaixonado por arte e tecnologia."
                 page="Sobre mim"
             />
             <Divider size="small" />
@@ -73,7 +73,7 @@ export default async function SobrePage() {
             <Divider size="large" />
             <CallToAction 
               title="Vamos falar sobre o seu projeto"
-              content="Pronto para elevar o nível do seu produto digital?"
+              content="Pronto para elevar o nível do seu produto digital e fazer a diferença no mercado?"
               linkTitle="Entre em contato"
               url="/contato"
               target="_self"
