@@ -31,7 +31,7 @@ export const data_curiosities = [
         id: 3,
         text: "Antes do design, fui músico profissional por cerca de 5 anos",
         image: Piano,
-        imageAlt: "Músico tocando piano"
+        imageAlt: "Livros de teoria musical e partituras sobre o piano"
     },
     {
         id: 4,
@@ -49,7 +49,7 @@ export const data_curiosities = [
         id: 6,
         text: "Também tenho formação em confeitaria e barista",
         image: Confeitaria,
-        imageAlt: "Curso de confeitaria"
+        imageAlt: "Mesa com doces confeccionados no curso de confeitaria"
     },
     // {
     //     id: 6,

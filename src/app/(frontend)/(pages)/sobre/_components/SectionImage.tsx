@@ -39,7 +39,7 @@ export function SectionImage() {
             >
                 <Image
                     src={Profile}
-                    alt="David Barros - Designer"
+                    alt="David Barros - Designer independente brasileiro, com mais de 12 anos de carreira"
                     loading="lazy"
                     fill
                     style={{ objectFit: 'contain' }}

@@ -44,8 +44,8 @@ export function SectionBenefits() {
                     >
                         <article className={styles.benefitsCard}>
                             <div className={styles.benefitsCardContent}>
-                                <h3>Eficiência e Agilidade</h3>
-                                <p>Processos otimizados e uso de ferramentas low-code e IA para entregar protótipos e produtos finais em tempo recorde, reduzindo custos operacionais.</p>
+                                <h3>Eficiência e agilidade</h3>
+                                <p>Processos otimizados e uso de ferramentas low-code e IA para entregar protótipos e produtos finais em tempo recorde, reduzindo custos operacionais, sem abrir mão da qualidade.</p>
                             </div>
                         </article>
                 </motion.div>
@@ -62,7 +62,7 @@ export function SectionBenefits() {
                     >
                         <article className={styles.benefitsCard}>
                             <div className={styles.benefitsCardContent}>
-                                <h3>Comunicação Direta</h3>
+                                <h3>Comunicação direta</h3>
                                 <p>Sem intermediários. Você fala diretamente com o especialista que entende do seu negócio e executa a solução, garantindo alinhamento total.</p>
                             </div>
                         </article>
@@ -80,8 +80,8 @@ export function SectionBenefits() {
                     >
                         <article className={styles.benefitsCard}>
                             <div className={styles.benefitsCardContent}>
-                                <h3>Visão de Produto 360º</h3>
-                                <p>Minha expertise não para na interface. Entrego soluções que consideram SEO, acessibilidade, performance de carregamento e escalabilidade técnica.</p>
+                                <h3>Visão de produto 360º</h3>
+                                <p>Minha expertise não acaba no design. Entrego soluções que consideram SEO, acessibilidade, performance de carregamento e escalabilidade técnica.</p>
                             </div>
                         </article>
                 </motion.div>
@@ -98,7 +98,7 @@ export function SectionBenefits() {
                     >
                         <article className={styles.benefitsCard}>
                             <div className={styles.benefitsCardContent}>
-                                <h3>Foco Total em Resultados</h3>
+                                <h3>Foco total em resultados</h3>
                                 <p>Cada pixel tem um propósito. Meu trabalho é orientado por métricas e comportamento do usuário para garantir que o design aumente o seu faturamento.</p>
                             </div>
                         </article>

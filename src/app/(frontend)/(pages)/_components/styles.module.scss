@@ -260,13 +260,8 @@
         flex: 1;
 
         display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-
-        @media (max-width: tokens.$breakpoint-md) {
-            justify-content: center;
-            align-items: center;
-        }
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -323,6 +318,8 @@
     }
 
     .servicesWrapper {
+        position: relative;
+
         width: 100%;
         max-width: 1600px;
         margin: 0 auto;
@@ -340,7 +337,16 @@
         }
 
         .servicesTitle {
+            position: sticky;
+            top: 80px;
+            z-index: 1;
+
             flex: 1;
+
+            @media screen and (max-width: tokens.$breakpoint-md) {
+                position: static;
+                top: 0;
+            }
 
             span {
                 font-family: tokens.$font-tenez;

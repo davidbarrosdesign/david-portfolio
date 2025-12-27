@@ -36,13 +36,19 @@ export function SectionAbout() {
 
             <div className={styles.aboutContent}>
                 <ScrollRevealText>
-                    Minha trajetória como designer de produtos digitais é pautada por um único objetivo: criar soluções que não apenas funcionem, mas que impulsionem o crescimento real. Ao longo de mais de uma década, colaborei com empresas no Brasil, Estados Unidos, Espanha e Itália, desenvolvendo desde ecossistemas complexos de SaaS até estratégias agressivas de conversão (CRO).
+                    Minha trajetória como designer de produtos digitais é pautada por um objetivo: criar soluções que não apenas funcionem, mas que impulsionem o crescimento real.
                 </ScrollRevealText>
             </div>
 
             <div className={styles.aboutContent}>
                 <ScrollRevealText>
-                    Acredito que o design de alto nível é a intersecção entre estética refinada, psicologia do usuário e eficiência tecnológica. Por isso, meu processo integra ferramentas de ponta e Inteligência Artificial para acelerar o time-to-market sem abrir mão da precisão técnica e do cuidado artesanal com a interface.
+                    Ao longo de mais de uma década, colaborei com empresas no Brasil, Estados Unidos, Espanha e Itália, desenvolvendo desde produtos digitais complexos até estratégias de conversão melhorando a experiência do usuário (CRO).
+                </ScrollRevealText>
+            </div>
+
+            <div className={styles.aboutContent}>
+                <ScrollRevealText>
+                    Acredito que o design de alto nível é o encontro entre estética refinada, psicologia do usuário e tecnologia bem aplicada. Por isso, meu processo integra ferramentas de ponta e Inteligência Artificial para acelerar o tempo de lançamento no mercado sem abrir mão da precisão técnica e do cuidado artesanal com a experiência do usuário e a estética.
                 </ScrollRevealText>
             </div>
         </motion.section>
