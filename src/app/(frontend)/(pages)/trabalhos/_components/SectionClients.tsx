@@ -38,7 +38,7 @@ export function SectionClients({ clients }: SectionClientsProps) {
             <div className={styles.clientsContent}>
                 <h2>Colaborando com os melhores</h2>
 
-                <p>Atuo tanto como consultor direto para fundadores quanto como braço estratégico de UX/UI para agências de performance líderes no mercado.</p>
+                <p>Atuo tanto como consultor direto tanto para fundadores como também braço estratégico de UX/UI para agências de performance líderes no mercado.</p>
             </div>
 
             <MarqueeClients clients={clients} />
