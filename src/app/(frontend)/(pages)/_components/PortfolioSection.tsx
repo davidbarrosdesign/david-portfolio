@@ -58,9 +58,9 @@ export function PortfolioSection({ trabalhos }: { trabalhos: PortfolioItem[] }) 
             <Divider size="medium" />
 
             <section className={styles.portfolioAll}>
-                <div className={styles.portfolioAllContent}>
+                {/* <div className={styles.portfolioAllContent}>
                     <h2>Desde sites de primeira linha, produtos digitais, marcas e experiências de usuário, criei soluções que transformam ideias em realidade.</h2>
-                </div>
+                </div> */}
                 <div className={styles.portfolioAllButton}>
                         <Button
                             href="/trabalhos"
