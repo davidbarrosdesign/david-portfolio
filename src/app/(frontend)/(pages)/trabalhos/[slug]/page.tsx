@@ -115,7 +115,7 @@ export default async function TrabalhoSingle({ params }: { params: Promise<{ slu
 
             <CallToAction 
               title="Gostou deste projeto?"
-              content="Pronto para construir um projeto que dimensione com o seu negócio e o coloque no controle? Vamos criar uma base para o seu sucesso futuro juntos."
+              content="Pronto para construir um projeto que dimensione com o seu negócio e o coloque no controle? Vamos criar uma base para o seu sucesso juntos."
               linkTitle="Vamos falar sobre isso!"
               url="/contato"
               target="_self"
