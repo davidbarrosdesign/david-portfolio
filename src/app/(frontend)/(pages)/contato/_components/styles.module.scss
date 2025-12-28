@@ -312,6 +312,7 @@
 
 // FAQ
 .faqSection {
+    position: relative;
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
@@ -332,8 +333,16 @@
     }
 
     .faqTitle {
+        position: sticky;
+        top: 96px;
+
         flex: 1;
         width: 100%;
+
+        @media screen and (max-width: tokens.$breakpoint-md) {
+            position: relative;
+            top: 0;
+        }
 
         .faqTitleWrapper {
             width: 100%;
