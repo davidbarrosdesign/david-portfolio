@@ -49,7 +49,7 @@ export function SectionContent() {
                     <div className={styles.contact}>
                         <h4>Consultoria Instantânea e Inteligente</h4>
 
-                        <p>Utilize meu assistente virtual abaixo para descrever seu projeto em menos de 2 minutos. Isso me ajuda a chegar na nossa primeira reunião já com uma análise prévia e soluções em mente.</p>
+                        <p>Fale com o Geniozinho, meu assistente virtual, abaixo para descrever seu projeto em menos de 2 minutos. Isso me ajuda a chegar na nossa primeira reunião já com uma análise prévia e soluções em mente.</p>
 
                         <div
                             className={styles.button}
@@ -64,13 +64,12 @@ export function SectionContent() {
                     <div className={styles.imageWrapper}>
                         <Image
                             src={Profile}
-                            alt="David Barros - Designer"
+                            alt="David Barros - Designer brasileiro com mais de 12 anos de experiência"
                             loading="lazy"
                             fill
                         />
                     </div>
                 </div>
-                
             </motion.div>
         </div>
     );

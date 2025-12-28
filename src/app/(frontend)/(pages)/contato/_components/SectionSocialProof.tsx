@@ -50,6 +50,20 @@ export function SectionSocialProof() {
                             ease: [0.16, 1, 0.3, 1]
                         }}
                     >
+                        <h4>Design de qualidade e com propósito</h4>
+                        <p>Criei projetos que não só se destacam visualmente, mas também proporcionam resultados tangíveis para os negócios.</p>
+                    </motion.div>
+
+                    <motion.div
+                        className={styles.sectionItem}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{
+                            duration: 0.7,
+                            delay: 0.50,
+                            ease: [0.16, 1, 0.3, 1]
+                        }}
+                    >
                         <h4>Experiência global</h4>
                         <p>Mais de 12 anos atuando com empresas no Brasil, EUA, Espanha e Itália.</p>
                     </motion.div>
@@ -60,7 +74,7 @@ export function SectionSocialProof() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{
                             duration: 0.7,
-                            delay: 0.50,
+                            delay: 0.75,
                             ease: [0.16, 1, 0.3, 1]
                         }}
                     >
@@ -74,7 +88,7 @@ export function SectionSocialProof() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{
                             duration: 0.7,
-                            delay: 0.75,
+                            delay: 1,
                             ease: [0.16, 1, 0.3, 1]
                         }}
                     >
@@ -88,7 +102,7 @@ export function SectionSocialProof() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{
                             duration: 0.7,
-                            delay: 1,
+                            delay: 1.25,
                             ease: [0.16, 1, 0.3, 1]
                         }}
                     >
