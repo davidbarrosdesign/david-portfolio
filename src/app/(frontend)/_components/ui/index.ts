@@ -7,5 +7,6 @@ import { TransitionLink } from "./transition-link/TransitionLink";
 import { ScrollRevealText } from "./scroll-review-text/ScrollRevealText";
 import { InitialLoader } from "./initial-loader/InitialLoader";
 import { MarqueeClients } from "./marquee-clients/MarqueeClients";
+import { AnimatedIcon } from "./animated-icon/AnimatedIcon";
 
-export { Button, MenuToggle, TextArc, Divider, PageTransition, TransitionLink, ScrollRevealText, InitialLoader, MarqueeClients };
+export { Button, MenuToggle, TextArc, Divider, PageTransition, TransitionLink, ScrollRevealText, InitialLoader, MarqueeClients, AnimatedIcon };

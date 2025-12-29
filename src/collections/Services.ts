@@ -50,11 +50,22 @@ export const Services: CollectionConfig = {
               name: 'icon',
               type: 'upload',
               relationTo: 'media',
-              required: true,
+              required: false,
               label: 'Ícone',
               admin: {
                 position: 'sidebar',
                 description: 'Ícone do serviço',
+              },
+            },
+            {
+              name: 'iconCode',
+              type: 'code',
+              required: false,
+              label: 'Código SVG do Ícone (Otimizado)',
+              admin: {
+                position: 'sidebar',
+                language: 'html',
+                description: 'Cole o código <svg>...</svg> aqui. Isso substitui a imagem de upload e permite animações.',
               },
             },
             {
@@ -118,8 +129,19 @@ export const Services: CollectionConfig = {
                   name: 'icon',
                   type: 'upload',
                   relationTo: 'media',
-                  required: true,
+                  required: false,
                   label: 'Ícone'
+                },
+                {
+                  name: 'iconCode',
+                  type: 'code',
+                  required: false,
+                  label: 'Código SVG do Ícone (Otimizado)',
+                  admin: {
+                    position: 'sidebar',
+                    language: 'html',
+                    description: 'Cole o código <svg>...</svg> aqui. Isso substitui a imagem de upload e permite animações.',
+                  },
                 },
               ]
             },

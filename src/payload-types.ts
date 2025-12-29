@@ -155,6 +155,7 @@ export interface Service {
   description: string;
   order: number;
   icon: string | Media;
+  iconCode?: string | null;
   relatedProject?: (string | null) | Project;
   deliverables?:
     | {
@@ -169,6 +170,7 @@ export interface Service {
         title?: string | null;
         description?: string | null;
         icon: string | Media;
+        iconCode?: string | null;
         id?: string | null;
       }[]
     | null;

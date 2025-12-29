@@ -1,0 +1,23 @@
+@use '@/app/_styles/tokens.scss' as tokens;
+
+.svgIcon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    
+    // IMPORTANTE:
+    // Para a animação de "linha desenhando" funcionar bem, 
+    // o SVG idealmente deve ter 'stroke' (borda) e 'fill: none'.
+    // Se seus ícones forem preenchidos (fill), a animação fica diferente (parece um fade).
+    
+    path, circle, rect, line, polyline {
+        vector-effect: non-scaling-stroke; // Mantém a espessura da linha ao redimensionar
+    }
+}
+
+.placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.05); // Um cinza clarinho enquanto carrega
+    border-radius: 4px;
+}

@@ -40,6 +40,7 @@
     "framer-motion": "^12.23.24",
     "graphql": "^16.8.1",
     "gsap": "^3.13.0",
+    "html-react-parser": "^5.2.11",
     "motion": "^12.23.24",
     "next": "^15.0.3",
     "payload": "3.0.0-beta.135",
