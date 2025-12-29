@@ -154,7 +154,7 @@ export interface Service {
   slug: string;
   description: string;
   order: number;
-  icon: string | Media;
+  icon?: (string | null) | Media;
   iconCode?: string | null;
   relatedProject?: (string | null) | Project;
   deliverables?:
@@ -169,7 +169,7 @@ export interface Service {
         order?: string | null;
         title?: string | null;
         description?: string | null;
-        icon: string | Media;
+        icon?: (string | null) | Media;
         iconCode?: string | null;
         id?: string | null;
       }[]
@@ -432,6 +432,7 @@ export interface ServicesSelect<T extends boolean = true> {
   description?: T;
   order?: T;
   icon?: T;
+  iconCode?: T;
   relatedProject?: T;
   deliverables?:
     | T
@@ -447,6 +448,7 @@ export interface ServicesSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         icon?: T;
+        iconCode?: T;
         id?: T;
       };
   metaTitle?: T;

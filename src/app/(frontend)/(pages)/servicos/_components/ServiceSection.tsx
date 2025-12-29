@@ -29,15 +29,7 @@ export function ServiceSection({ data, index }: { data: Service; index: number }
                             </div>
                         ) : (
                            /* Seu código antigo de imagem ou ícone padrão aqui */
-                           (typeof data.icon !== 'string' && data.icon.url) && (
-                               <Image
-                                    src={data.icon.url}
-                                    alt={data.icon.alt}
-                                    fill
-                                    style={{ objectFit: 'contain' }}
-                                    className={styles.iconImage}
-                                />
-                           )
+                           <p>Ícone</p>
                         )}
                     </div>
                 </div>
