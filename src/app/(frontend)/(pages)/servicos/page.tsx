@@ -13,7 +13,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Serviços | David Barros",
-  description: "Soluções em Design de Produto, Web Design Premium, CRO e Inteligência Artificial. Leve seu produto digital ao próximo nível com estratégias focadas em conversão, usabilidade e tecnologias escaláveis."
+  description: "Soluções em Design de Produto Digital, Web Design Premium, CRO e Design Estratégico. Leve seu produto digital ao próximo nível com estratégias focadas em conversão, usabilidade e tecnologias escaláveis."
 }
 
 export default async function ServicosPage() {
@@ -40,7 +40,7 @@ export default async function ServicosPage() {
     return (
         <>
             <HeroPage
-                title="Design estratégico e tecnologia para marcas que buscam o próximo nível de impacto"
+                title="Design estratégico e tecnologia para marcas que buscam o próximo nível de impacto."
                 page="Serviços"
             />
             <Divider size="small" />
@@ -49,7 +49,7 @@ export default async function ServicosPage() {
             <Divider size="large" />
             <CallToAction 
               title="Tem um projeto em mente?"
-              content="Vamos criar juntos um website com estética forte e mensagem clara — pronto para converter e fazer sucesso."
+              content="Vamos fazer um projeto de sucesso juntos e evoluir a sua marca com estratégia."
               linkTitle="Vamos falar sobre isso!"
               url="/contato"
               target="_self"

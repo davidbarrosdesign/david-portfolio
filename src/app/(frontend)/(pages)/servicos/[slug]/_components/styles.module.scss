@@ -312,6 +312,7 @@
 }
 
 .methodWrapper {
+    position: relative;
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
@@ -336,6 +337,8 @@
     }
 
     .methodTitle {
+        position: sticky;
+        top: 96px;
         width: 100%;
 
         flex: 1;
@@ -346,6 +349,7 @@
         gap: tokens.$spacing-4;
 
         @media screen and (max-width: tokens.$breakpoint-md) {
+            position: static;
             justify-content: center;
             align-items: center;
         }
@@ -402,6 +406,23 @@
 
             &:not(:last-child) {
                 border-bottom: 1px solid rgba(tokens.$black, 0.1);
+            }
+
+            .methodOrder {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: tokens.$spacing-3;
+
+                @media screen and (max-width: tokens.$breakpoint-md) {
+                    justify-content: center;
+                }
+
+                img {
+                    position: relative !important;
+                    width: auto !important;
+                    height: 30px !important;
+                }
             }
 
             .methodText {

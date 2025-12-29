@@ -71,8 +71,8 @@ export default async function ServicoSingle({ params }: Props) {
             <Divider size="medium" />
 
             <CallToAction 
-              title="Tem um projeto em mente?"
-              content="Vamos criar juntos um website com estética forte e mensagem clara — pronto para converter e fazer sucesso."
+              title="Acho a solução perfeita para você?"
+              content="Não trabalho com pacotes fechados, cada projeto é único e personalizado para atender às suas necessidades."
               linkTitle="Vamos falar sobre isso!"
               url="/contato"
               target="_self"

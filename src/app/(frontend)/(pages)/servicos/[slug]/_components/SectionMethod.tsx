@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useRef } from "react";
 import { motion, useInView } from 'framer-motion';
 import { Service } from "@/payload-types";
@@ -45,7 +46,16 @@ export function SectionMethod({ item }: { item: Service }) {
                         }}
                     >
                         <div className={styles.methodOrder}>
-                            <h4>{process.order}</h4>
+                            {typeof process.icon !== 'string' && process.icon.url && (
+                                <Image
+                                    src={process.icon.url}
+                                    alt={process.icon.alt}
+                                    fill
+                                    style={{ objectFit: 'contain' }}
+                                    className={styles.icon}
+                                />
+                            )}
+                            {/* <h4>{process.order}</h4> */}
                         </div>
 
                         <div className={styles.methodText}>

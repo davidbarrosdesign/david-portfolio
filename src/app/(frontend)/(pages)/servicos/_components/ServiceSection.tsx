@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Button } from "@/app/(frontend)/_components/ui";
 import { Service } from "@/payload-types";
 import styles from './styles.module.scss';
@@ -7,13 +8,22 @@ import styles from './styles.module.scss';
 export function ServiceSection({ data, index }: { data: Service; index: number }) {
 
     return (
-        <section className={styles.serviceSection} data-index={index}>
+        <section
+            className={styles.serviceSection}
+            data-index={index}
+        >
             <div className={styles.serviceWrapper}>
                 {/* COLUNA ESQUERDA */}
                 <div className={styles.leftColumn}>
-                    <p>
-                        Icone
-                    </p>
+                    {typeof data.icon !== 'string' && data.icon.url && (
+                        <Image
+                            src={data.icon.url}
+                            alt={data.icon.alt}
+                            fill
+                            style={{ objectFit: 'contain' }}
+                            className={styles.icon}
+                        />
+                    )}
                 </div>
 
                 {/* COLUNA DIREITA */}

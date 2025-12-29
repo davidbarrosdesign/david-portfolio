@@ -81,6 +81,12 @@
             .leftColumn {
                 width: 100%;
                 height: auto;
+
+                img {
+                    position: relative !important;
+                    width: auto !important;
+                    height: 60px !important;
+                }
             }
 
             .rightColumn {
