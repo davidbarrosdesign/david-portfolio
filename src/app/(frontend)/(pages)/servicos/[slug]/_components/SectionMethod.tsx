@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useRef } from "react";
 import { motion, useInView } from 'framer-motion';
+import { AnimatedIcon } from "@/app/(frontend)/_components/ui";
 import { Service } from "@/payload-types";
 import styles from "./styles.module.scss";
 
@@ -46,16 +47,30 @@ export function SectionMethod({ item }: { item: Service }) {
                         }}
                     >
                         <div className={styles.methodOrder}>
-                            {typeof process.icon !== 'string' && process.icon.url && (
-                                <Image
-                                    src={process.icon.url}
-                                    alt={process.icon.alt}
-                                    fill
-                                    style={{ objectFit: 'contain' }}
-                                    className={styles.icon}
-                                />
-                            )}
-                            {/* <h4>{process.order}</h4> */}
+                            <div className={styles.iconWrapper}>
+                                {process.iconCode ? (
+                                    <div className={styles.iconContainer}>
+                                        <AnimatedIcon 
+                                            svgCode={process.iconCode} 
+                                            className={styles.iconCode} 
+                                        />
+                                    </div>
+                                ) : (
+                                (() => {
+                                    const iconSrc = typeof process.icon === 'string' ? process.icon : process.icon?.url;
+
+                                    return iconSrc ? (
+                                        <Image
+                                            src={iconSrc}
+                                            alt={process.title || ''}
+                                            width={100}
+                                            height={100}
+                                            className={styles.icon}
+                                        />
+                                    ) : null;
+                                })()
+                                )}
+                            </div>
                         </div>
 
                         <div className={styles.methodText}>

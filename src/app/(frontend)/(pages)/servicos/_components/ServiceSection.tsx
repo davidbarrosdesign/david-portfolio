@@ -16,10 +16,6 @@ export function ServiceSection({ data, index }: { data: Service; index: number }
                 {/* COLUNA ESQUERDA */}
                 <div className={styles.leftColumn}>
                     <div className={styles.iconWrapper}>
-                        {/* Lógica Híbrida:
-                           1. Se tiver código SVG (novo), usa o AnimatedIcon.
-                           2. Se não, tenta usar a imagem antiga (fallback).
-                        */}
                         {data.iconCode ? (
                             <div className={styles.iconContainer}>
                                 <AnimatedIcon 
@@ -28,8 +24,19 @@ export function ServiceSection({ data, index }: { data: Service; index: number }
                                 />
                             </div>
                         ) : (
-                           /* Seu código antigo de imagem ou ícone padrão aqui */
-                           <p>Ícone</p>
+                           (() => {
+                               const iconSrc = typeof data.icon === 'string' ? data.icon : data.icon?.url;
+
+                               return iconSrc ? (
+                                   <Image
+                                       src={iconSrc}
+                                       alt={data.title}
+                                       width={100}
+                                       height={100}
+                                       className={styles.icon}
+                                   />
+                               ) : null;
+                           })()
                         )}
                     </div>
                 </div>

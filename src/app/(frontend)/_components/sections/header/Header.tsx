@@ -7,7 +7,7 @@ import Image from "next/image";
 import styles from "./Header.module.scss";
 
 import { Button, MenuToggle, TransitionLink } from "../../ui";
-import { useSpotlightHover } from "../../../_hooks/useSpotlightHover";
+import { useSpotlightHover } from "../../../_utils/useSpotlightHover";
 
 // Sons
 const openSound =
@@ -26,7 +26,10 @@ function play(s: HTMLAudioElement | null) {
 export function Header() {
   const [open, setOpen] = useState(false);
   const menuSpotlight = useSpotlightHover();
+  const { reset: resetMenuSpotlight } = menuSpotlight;
+
   const socialSpotlight = useSpotlightHover();
+  const { reset: resetSocialSpotlight } = socialSpotlight;
 
   const pathname = usePathname();
 
@@ -58,7 +61,9 @@ export function Header() {
   // Sempre que o pathname mudar (navegação ocorreu), fecha o menu.
   useEffect(() => {
     setOpen(false);
-  }, [pathname]);
+    resetMenuSpotlight();
+    resetSocialSpotlight();
+  }, [pathname, resetMenuSpotlight, resetSocialSpotlight]);
 
   // scroll lock
   useEffect(() => {

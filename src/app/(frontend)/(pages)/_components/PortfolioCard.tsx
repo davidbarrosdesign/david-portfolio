@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { ProjectMedia } from "../trabalhos/[slug]/_components/ProjectMedia";
+import { ProjectMedia } from "@/app/(frontend)/_utils/ProjectMedia";
 import { TransitionLink } from "@/app/(frontend)/_components/ui";
 
 import styles from "./styles.module.scss";

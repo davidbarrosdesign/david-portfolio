@@ -6,6 +6,7 @@ import { TransitionProvider } from "./_context/TransitionContext";
 import { PageTransition, InitialLoader } from "./_components/ui";
 import { Header, Footer, CookieBanner } from "./_components/sections";
 import { Analytics } from "./_analytics/Analytics";
+import { ScrollReset } from "./_utils/ScrollReset";
 
 export const halcom = localFont({
   src: [
@@ -61,6 +62,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       className={`${halcom.variable} ${tenez.variable}`}
     >
       <body>
+        <ScrollReset />
         <InitialLoader />
 
         <TransitionProvider>

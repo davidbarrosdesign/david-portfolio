@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -9,7 +8,7 @@ import { ArrowUpRight, ArrowUp } from "@phosphor-icons/react";
 import { Button, TransitionLink } from "../../../_components/ui"
 import styles from "./Footer.module.scss";
 
-import { useSpotlightHover } from "../../../_hooks/useSpotlightHover";
+import { useSpotlightHover } from "../../../_utils/useSpotlightHover";
 
 export function Footer() {
     const footerContactsSpotlight = useSpotlightHover();

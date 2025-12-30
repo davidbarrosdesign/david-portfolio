@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from 'framer-motion';
-import { ProjectMedia } from "./ProjectMedia";
+import { ProjectMedia } from "@/app/(frontend)/_utils/ProjectMedia";
 import { Project } from "@/payload-types";
 import styles from './styles.module.scss';
 
