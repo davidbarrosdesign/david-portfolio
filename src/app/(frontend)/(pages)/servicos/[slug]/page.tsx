@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPayload } from 'payload';
 import configPromise from '@payload-config';
+import { Service, Project } from "@/payload-types";
 import { Divider } from "@/app/(frontend)/_components/ui";
 import { HeroPage, CallToAction } from "@/app/(frontend)/_components/sections";
 import { SectionContent } from "./_components/SectionContent";
@@ -46,8 +47,22 @@ export default async function ServicoSingle({ params }: Props) {
     });
 
     const service = docs[0];
-
     if (!service) notFound();
+
+    const sanitizedService: Service = {
+        ...service,
+        relatedProject: (service.relatedProject && typeof service.relatedProject === 'object') ? {
+            ...service.relatedProject,
+            // Removemos o campo 'services' de dentro do projeto para evitar loop infinito
+            services: [], 
+            // Garantimos que a thumb está segura
+            thumbnail: service.relatedProject.thumbnail,
+            title: service.relatedProject.title,
+            slug: service.relatedProject.slug,
+            client: service.relatedProject.client,
+            relatedTestimonial: service.relatedProject.relatedTestimonial
+        } as Project : null
+    };
 
     return (
         <main>
@@ -58,15 +73,15 @@ export default async function ServicoSingle({ params }: Props) {
 
             <Divider size="small"/>
 
-            <SectionContent item={service} />
+            <SectionContent item={sanitizedService} />
 
             <Divider size="medium" />
 
-            <SectionFeatured item={service} />
+            <SectionFeatured item={sanitizedService} />
 
             <Divider size="medium" />
 
-            <SectionMethod item={service} />
+            <SectionMethod item={sanitizedService} />
 
             <Divider size="medium" />
 

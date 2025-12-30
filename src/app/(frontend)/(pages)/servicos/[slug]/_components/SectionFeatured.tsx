@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from 'framer-motion';
 import { Service, Project, Testimonial, Client } from "@/payload-types";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
-import { ProjectMedia } from "../../../trabalhos/[slug]/_components/ProjectMedia";
+import { ProjectMedia } from "@/app/(frontend)/_utils/ProjectMedia";
 import { TransitionLink } from "@/app/(frontend)/_components/ui";
 import styles from "./styles.module.scss";
 
@@ -28,6 +28,9 @@ export function SectionFeatured({ item }: { item: Service }) {
     }
 
     const project = item.relatedProject as Project;
+
+    // Verificamos se o projeto tem thumbnail válido antes de tentar renderizar
+    const hasThumbnail = project && project.thumbnail;
 
     // 2. Extrair dados do Testimonial (se houver)
     const testimonial = (project.relatedTestimonial && typeof project.relatedTestimonial === 'object')
@@ -75,12 +78,18 @@ export function SectionFeatured({ item }: { item: Service }) {
                         target="_self"
                     >
                         <div className={styles.projectImageContainer}>
-                            <ProjectMedia 
-                                resource={project.thumbnail}
-                                alt={project.title}
-                                fill={true}
-                                className={styles.projectImage}
-                            />
+                            {/* SÓ RENDERIZA SE TIVER THUMBNAIL */}
+                            {hasThumbnail ? (
+                                <ProjectMedia 
+                                    resource={project.thumbnail}
+                                    alt={project.title}
+                                    fill={true}
+                                    className={styles.projectImage}
+                                />
+                            ) : (
+                                // Fallback caso não tenha imagem (opcional)
+                                <div style={{width: '100%', height: '100%', background: '#fafafa'}} />
+                            )}
                         </div>
 
                         <div className={styles.projectTitle}>

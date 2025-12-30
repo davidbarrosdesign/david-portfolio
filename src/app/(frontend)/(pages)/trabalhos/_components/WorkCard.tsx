@@ -5,7 +5,7 @@ import { useMotionValue, motion, useSpring } from 'framer-motion';
 // 1. Removemos o import de Image
 import { TransitionLink } from '@/app/(frontend)/_components/ui';
 // 2. Importamos o ProjectMedia
-import { ProjectMedia } from '../[slug]/_components/ProjectMedia';
+import { ProjectMedia } from '@/app/(frontend)/_utils/ProjectMedia';
 import styles from './styles.module.scss';
 import { WorkItem } from '../types';
 

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import type { Project } from '@/payload-types';
-import { ProjectMedia } from "./ProjectMedia";
+import { ProjectMedia } from "@/app/(frontend)/_utils/ProjectMedia";
 import { RichTextParser } from "./RichTextParser";
 import { ArrowUp } from '@phosphor-icons/react';
 import styles from './styles.module.scss';
