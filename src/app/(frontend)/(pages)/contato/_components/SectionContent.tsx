@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion';
 import { ArrowDown } from '@phosphor-icons/react';
 import styles from "./styles.module.scss";
 
-import Profile from "@/../public/images/david-barros-profile-wide.webp";
+import Profile from "@/../public/images/david-barros-contato.webp";
 
 export function SectionContent() {
 
