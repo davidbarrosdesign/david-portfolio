@@ -4,10 +4,21 @@ export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'author', 'authorRole', 'client', 'updatedAt'],
+    defaultColumns: ['title', 'author', 'authorRole', 'client', '_status', 'updatedAt'],
+  },
+  versions: {
+    drafts: true,
   },
   access: {
-    read: () => true,
+    read: ({ req: { user } }) => {
+      if (user) return true
+      
+      return {
+        _status: {
+          equals: 'published',
+        },
+      }
+    },
   },
   fields: [
     {
