@@ -11,7 +11,7 @@ export const Clients: CollectionConfig = {
   },
   access: {
     read: ({ req: { user } }) => {
-      if (user) return true
+      if (user) return false
       
       return {
         _status: {
