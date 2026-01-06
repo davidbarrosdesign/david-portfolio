@@ -4,10 +4,21 @@ export const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'client', 'year', 'featured', 'status'],
+    defaultColumns: ['title', 'client', 'year', 'featured', '_status', 'updatedAt'],
+  },
+  versions: {
+    drafts: true,
   },
   access: {
-    read: () => true,
+    read: ({ req: { user } }) => {
+      if (user) return true
+      
+      return {
+        _status: {
+          equals: 'published',
+        },
+      }
+    },
   },
   fields: [
     {

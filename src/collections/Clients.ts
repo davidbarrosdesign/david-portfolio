@@ -4,9 +4,21 @@ export const Clients: CollectionConfig = {
   slug: 'clients',
   admin: {
     useAsTitle: 'name', // O nome do cliente vai aparecer na listagem
+    defaultColumns: ['name', 'country', 'featured', '_status', 'updatedAt'],
+  },
+  versions: {
+    drafts: true,
   },
   access: {
-    read: () => true, // Público pode ler (necessário para exibir no site)
+    read: ({ req: { user } }) => {
+      if (user) return true
+      
+      return {
+        _status: {
+          equals: 'published',
+        },
+      }
+    },
   },
   fields: [
     {
