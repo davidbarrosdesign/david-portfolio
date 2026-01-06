@@ -10,15 +10,7 @@ export const Services: CollectionConfig = {
     drafts: true,
   },
   access: {
-    read: ({ req: { user } }) => {
-      if (user) return false
-      
-      return {
-        _status: {
-          equals: 'published',
-        },
-      }
-    },
+    read: () => true,
   },
   fields: [
     {
