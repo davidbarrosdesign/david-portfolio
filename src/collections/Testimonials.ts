@@ -10,7 +10,18 @@ export const Testimonials: CollectionConfig = {
     drafts: true,
   },
   access: {
-    read: () => true,
+    // Importante: Define quem pode ver rascunhos
+    read: ({ req: { user } }) => {
+      // Se tiver logado no admin, vê tudo (incluindo rascunhos)
+      if (user) return true
+      
+      // Se for público (site), só vê o que está publicado
+      return {
+        _status: {
+          equals: 'published',
+        },
+      }
+    },
   },
   fields: [
     {
